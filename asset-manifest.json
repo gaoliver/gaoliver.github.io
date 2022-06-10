@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.js": "/static/js/main.6059a306.js",
+    "static/media/professinal_profile_edited.png": "/static/media/professinal_profile_edited.0f78a8da3416b8acc8bf.png",
+    "static/media/mobile_background.webp": "/static/media/mobile_background.af2ea1b18ef5340d16b3.webp",
+    "static/media/desktop_background.webp": "/static/media/desktop_background.26696fc5137bc860ae71.webp",
+    "static/media/Gabriel_Ramos_CV.pdf": "/static/media/Gabriel_Ramos_CV.0af3052d2e02b6b6b90d.pdf",
+    "static/media/email-background.webp": "/static/media/email-background.d90b0458f766984ff755.webp",
+    "static/media/folder.png": "/static/media/folder.6f60a6e41862e6fddda3.png",
+    "static/media/GabrielRamos-whiteIcon.png": "/static/media/GabrielRamos-whiteIcon.80db500d75f8a5d520ad.png",
+    "static/media/GabrielRamos-blackIcon.png": "/static/media/GabrielRamos-blackIcon.3ea6a9a5f3f7b7487427.png",
+    "static/media/email.png": "/static/media/email.f047dd338734f8f28f99.png",
+    "static/media/gabrielramos-logowithbackground.svg": "/static/media/gabrielramos-logowithbackground.4f9a1d39330d50901e73924d18cb6589.svg",
+    "static/media/gabrielramos-logo.svg": "/static/media/gabrielramos-logo.6696b111c913bef83704b36b0a0a1098.svg",
+    "static/media/instagram.svg": "/static/media/instagram.fb44b26a633e6923281bea120fb4effd.svg",
+    "static/media/gabrielramos-logo-transparent.svg": "/static/media/gabrielramos-logo-transparent.27169670488301cfa634bae6adfeabed.svg",
+    "index.html": "/index.html",
+    "static/media/linkedin.svg": "/static/media/linkedin.528c90c3be92a6a97ca3eaba169c7a02.svg",
+    "static/media/github.svg": "/static/media/github.0acc5d6ab3d6b38059d9095c284dca90.svg",
+    "main.6059a306.js.map": "/static/js/main.6059a306.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.6059a306.js"
+  ]
+}

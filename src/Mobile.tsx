@@ -89,7 +89,7 @@ export const Mobile: FC = () => {
           <ScreenIcon
             id="about-me"
             imageSource={blackIcon}
-            label="About me asdv asdv asdv asdv "
+            label="About me"
           >
             <AboutMe />
           </ScreenIcon>

@@ -44,7 +44,7 @@ const ImageStyled = styled.img`
 
 const LabelStyled = styled.span`
   width: 100%;
-  height: 25%;
+  flex: 0.8;
   margin-bottom: 5%;
   color: ${props => props.theme.text};
   display: -webkit-box;

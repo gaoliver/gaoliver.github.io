@@ -44,7 +44,7 @@ const ImageStyled = styled.img`
 
 const LabelStyled = styled.span`
   width: 100%;
-  height: 25%;
+  flex: 0.8;
   margin-bottom: 5%;
   color: ${colors.white};
   filter: drop-shadow(0px 0px 2px ${colors.black});

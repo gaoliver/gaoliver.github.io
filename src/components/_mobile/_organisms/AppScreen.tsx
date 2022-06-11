@@ -25,8 +25,8 @@ const WindowWrapper = styled.article<
   overflow: hidden;
   background-color: ${(props) =>
     darken(props.theme === light ? 0.05 : 0, props.theme.window)};
-  animation: open-app 5ms;
-  -webkit-animation: open-app 5ms;
+  animation: open-app 0.5s;
+  -webkit-animation: open-app 0.5s;
 
   @keyframes open-app {
     0% {

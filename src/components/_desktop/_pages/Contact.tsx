@@ -16,8 +16,9 @@ const ContactWrapper = styled.section`
   justify-content: center;
   background-image: url(${EmailBackground});
   background-color: ${props => rgba(props.theme.window, 0.9)};
-  background-size: contain;
+  background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   background-blend-mode: overlay;
 
   h2 {

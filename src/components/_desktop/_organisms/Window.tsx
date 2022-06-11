@@ -97,7 +97,7 @@ export const Window: FC<WindowProps> = ({ children, onClose, title, id }) => {
 
   function limiter(pos: number, direction: 'X' | 'Y') {
     const rightLimit =
-      window.screen.width - (windowRef.current?.offsetWidth || 0);
+      document.body.offsetWidth - (windowRef.current?.offsetWidth || 0);
     const leftLimit = 0;
     const topLimit = 0;
     const bottomLimit =

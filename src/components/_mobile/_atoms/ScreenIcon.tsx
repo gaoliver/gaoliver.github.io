@@ -28,7 +28,7 @@ const ScreenIconImage = styled.img`
   width: 100%;
   aspect-ratio: 1;
   background-color: ${colors.white};
-  padding: 10px;
+  padding: 0 10px;
   border-radius: 15px;
   object-fit: contain;
 `;

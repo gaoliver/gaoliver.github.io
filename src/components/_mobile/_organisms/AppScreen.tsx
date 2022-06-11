@@ -25,9 +25,10 @@ const WindowWrapper = styled.article<
   overflow: hidden;
   background-color: ${(props) =>
     darken(props.theme === light ? 0.05 : 0, props.theme.window)};
-  animation: openApp 0.5s;
+  animation: open-app 5ms;
+  -webkit-animation: open-app 5ms;
 
-  @keyframes openApp {
+  @keyframes open-app {
     0% {
       opacity: 0;
       transform: scale(0) translateY(-50%);
@@ -35,6 +36,21 @@ const WindowWrapper = styled.article<
     100% {
       opacity: 1;
       transform: scale(1);
+    }
+  }
+
+  @-webkit-keyframes open-app {
+    0% {
+      opacity: 0;
+      -webkit-opacity: 0;
+      transform: scale(0) translateY(-50%);
+      -webkit-transform: scale(0) translateY(-50%);
+    }
+    100% {
+      opacity: 1;
+      -webkit-opacity: 1;
+      transform: scale(1);
+      -webkit-transform: scale(1);
     }
   }
 

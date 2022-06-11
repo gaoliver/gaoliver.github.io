@@ -21,8 +21,7 @@ type WindowProps = {
 };
 
 const WindowWrapper = styled.article<
-  HTMLAttributes<HTMLDivElement> & { isFullSize?: boolean }
->`
+  HTMLAttributes<HTMLDivElement> & { isFullSize?: boolean }>`
   position: absolute;
   z-index: ${(props) => handleWindowPosition(props.id || '')};
   width: 800px;
@@ -43,7 +42,7 @@ const WindowWrapper = styled.article<
   .window--content {
     width: 100%;
     height: 93%;
-    overflow: scroll;
+    overflow: auto;
   }
 `;
 

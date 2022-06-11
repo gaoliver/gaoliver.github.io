@@ -145,7 +145,7 @@ export const ProjectContent: FC<ProjectContentProps> = ({ project }) => {
           <div className="project--gallery-images" key={image}>
             <ImageIcon
               id={image}
-              imageSource={image}
+              imageSource={baseUrl + image}
               label={`${project.name} - Image ${index + 1}`}
             >
               <ImageContainer style={{ backgroundImage: `url(${baseUrl + image})` }} />

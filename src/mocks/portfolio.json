@@ -1,4 +1,50 @@
 [{
+        "id": 10,
+        "name": "Hogeschool Rotterdam - App",
+        "company": "DEPT®",
+        "mainImage": "/src/assets/images/optimized/portfolio/hr-app/hr-logo.webp",
+        "url": "https://mijn.hr.nl",
+        "slug": "hr-app",
+        "color": "red",
+        "jobInfo": {
+            "role": "React Native Developer",
+            "type": "Mobile",
+            "language": "React Native",
+            "startDate": {
+                "month": "April",
+                "year": 2022
+            },
+            "endDate": {
+                "month": "",
+                "year": 2022
+            },
+            "mainTools": [
+                "React Native",
+                "TypeScript",
+                "Axios",
+                "React Query",
+                "Atomic Design",
+                "Chakra-UI",
+                "Styled Component",
+                "Node.js",
+                "GIT",
+                "Scrum Methodology",
+                "Jira"
+            ],
+            "images": [
+                "/src/assets/images/optimized/portfolio/hr-app/hr-1.webp",
+                "/src/assets/images/optimized/portfolio/hr-app/hr-2.webp",
+                "/src/assets/images/optimized/portfolio/hr-app/hr-3.webp",
+                "/src/assets/images/optimized/portfolio/hr-app/hr-4.webp",
+                "/src/assets/images/optimized/portfolio/hr-app/hr-5.webp",
+                "/src/assets/images/optimized/portfolio/hr-app/hr-6.webp",
+                "/src/assets/images/optimized/portfolio/hr-app/hr-7.webp",
+                "/src/assets/images/optimized/portfolio/hr-app/hr-8.webp"
+            ]
+        },
+        "text": "A mobile version of Mijn HR, which is a portal for the University Students to be in touch with their activities, courses, exams, friends and teachers. Made by DEPT® to Hogeschool Rotterdam."
+    },
+    {
         "id": 9,
         "name": "SOUB!",
         "company": "Americanas S.A.",

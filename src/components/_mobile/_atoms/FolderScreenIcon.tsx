@@ -15,7 +15,7 @@ type ScreenIconProps = {
 const ScreenIconWrapper = styled.button`
   display: flex;
   flex-direction: column;
-  width: ${window.screen.width / 5}px;
+  width: ${window.innerWidth / 5}px;
   aspect-ratio: 0;
   margin: 10px 0;
   border: none;
@@ -28,7 +28,7 @@ const ScreenIconImage = styled.img`
   width: 100%;
   aspect-ratio: 1;
   background-color: ${colors.white};
-  padding: 10px;
+  padding: 0 10px;
   border-radius: 15px;
   object-fit: contain;
 `;

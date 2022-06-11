@@ -6,17 +6,14 @@ import { FolderScreenIcon } from '../../_atoms/FolderScreenIcon';
 import { baseUrl } from 'src/mocks';
 
 const PortfolioWrapper = styled.section`
-  display: block;
+  display: table;
   width: 100%;
   height: 100%;
 `;
 
 const FolderIconContainer = styled.div`
-  display: inline-block;
-
-  button {
-    margin: 10px 10px;
-  }
+  display: inline-table;
+  margin: 5px ${window.innerWidth / 40}px;
 `;
 
 export const Portfolio = () => {

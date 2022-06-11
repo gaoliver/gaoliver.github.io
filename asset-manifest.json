@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/static/js/main.8f7dad29.js",
+    "main.js": "/static/js/main.bd366728.js",
     "static/media/professinal_profile_edited.png": "/static/media/professinal_profile_edited.0f78a8da3416b8acc8bf.png",
     "static/media/mobile_background.webp": "/static/media/mobile_background.af2ea1b18ef5340d16b3.webp",
     "static/media/desktop_background.webp": "/static/media/desktop_background.26696fc5137bc860ae71.webp",
-    "static/media/Gabriel_Ramos_CV.pdf": "/static/media/Gabriel_Ramos_CV.bd3062db4c0a499c99d7.pdf",
+    "static/media/Gabriel_Ramos_CV.pdf": "/static/media/Gabriel_Ramos_CV.b295f987ce10a9b2a11b.pdf",
     "static/media/email-background.webp": "/static/media/email-background.d90b0458f766984ff755.webp",
     "static/media/folder.png": "/static/media/folder.6f60a6e41862e6fddda3.png",
     "static/media/GabrielRamos-whiteIcon.png": "/static/media/GabrielRamos-whiteIcon.80db500d75f8a5d520ad.png",
@@ -17,9 +17,9 @@
     "index.html": "/index.html",
     "static/media/linkedin.svg": "/static/media/linkedin.528c90c3be92a6a97ca3eaba169c7a02.svg",
     "static/media/github.svg": "/static/media/github.0acc5d6ab3d6b38059d9095c284dca90.svg",
-    "main.8f7dad29.js.map": "/static/js/main.8f7dad29.js.map"
+    "main.bd366728.js.map": "/static/js/main.bd366728.js.map"
   },
   "entrypoints": [
-    "static/js/main.8f7dad29.js"
+    "static/js/main.bd366728.js"
   ]
 }

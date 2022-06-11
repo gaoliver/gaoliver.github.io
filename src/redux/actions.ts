@@ -198,7 +198,6 @@ export const getPortfolio = () => {
       .get(portfolioUrl)
       .then((res) => {
         data = res.data;
-        console.log(res.data)
       })
       .catch((err) => console.log('Erro:', err));
     dispatch({

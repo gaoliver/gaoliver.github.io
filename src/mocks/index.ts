@@ -1,6 +1,10 @@
-const baseUrl =
-  'https://raw.githubusercontent.com/gaoliver/gaoliver.github.io/master/src/mocks/';
+export const baseUrl =
+  'https://raw.githubusercontent.com/gaoliver/gaoliver.github.io/master';
 
-export const toolsUrl = baseUrl + 'tools.json';
-export const myInfoUrl = baseUrl + 'my-info.json';
-export const portfolioUrl = baseUrl + 'portfolio.json';
+const location = baseUrl + "/src/mocks/"
+
+const version = ""
+
+export const toolsUrl = location + 'tools.json' + version;
+export const myInfoUrl = location + 'my-info.json' + version;
+export const portfolioUrl = location + 'portfolio.json' + version;

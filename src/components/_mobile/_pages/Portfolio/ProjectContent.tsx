@@ -1,6 +1,7 @@
 import { rgba } from 'polished';
 import React, { FC, HTMLAttributes } from 'react';
 import { Button } from 'src/components/_desktop';
+import { baseUrl } from 'src/mocks';
 import { PortfolioModel } from 'src/redux';
 import { dark } from 'src/styles';
 import listFormatter from 'src/utils/listFormatter';
@@ -116,7 +117,7 @@ export const ProjectContent: FC<ProjectContentProps> = ({ project }) => {
   };
 
   return (
-    <ProjectContentWrapper imageUrl={project.mainImage}>
+    <ProjectContentWrapper imageUrl={baseUrl + project.mainImage}>
       <h1>{project.name}</h1>
       <h2>by {project.company}</h2>
       <span className='project--date'>{`from ${translator.startDate.month}, ${translator.startDate.year} to ${translator.endDate.month}, ${translator.endDate.year}`}</span>
@@ -147,7 +148,7 @@ export const ProjectContent: FC<ProjectContentProps> = ({ project }) => {
               imageSource={image}
               label={`${project.name} - Image ${index + 1}`}
             >
-              <ImageContainer style={{ backgroundImage: `url(${image})` }} />
+              <ImageContainer style={{ backgroundImage: `url(${baseUrl + image})` }} />
             </ImageIcon>
           </div>
         ))}

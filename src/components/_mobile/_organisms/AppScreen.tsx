@@ -1,8 +1,8 @@
-import React, { FC, HTMLAttributes, useEffect, useRef } from 'react';
+import React, { FC, HTMLAttributes, useRef } from 'react';
 import styled, { useTheme } from 'styled-components';
 import { WindowButton } from 'src/components/_desktop/_atoms';
 import { BiChevronLeft } from 'react-icons/bi';
-import { useAppSelector, windowOnFocus } from 'src/redux';
+import { windowOnFocus } from 'src/redux';
 import { useDispatch } from 'react-redux';
 import { darken, rgba } from 'polished';
 import { light } from 'src/styles';
@@ -40,16 +40,17 @@ const WindowWrapper = styled.article<
 
   .window--content {
     width: 100%;
-    height: 90%;
+    height: 93%;
     overflow: scroll;
 
     section {
-      padding-bottom: 100px;
+      padding-bottom: 150px;
     }
 
     #contact-page {
-      p, button {
-        width: 350px
+      p,
+      button {
+        width: 350px;
       }
     }
   }
@@ -58,7 +59,7 @@ const WindowWrapper = styled.article<
 const HeaderWindow = styled.div`
   display: flex;
   width: 100%;
-  height: 6%;
+  height: 7%;
   flex-direction: row;
   justify-content: flex-end;
   background-color: ${(props) => props.theme.window};
@@ -66,16 +67,19 @@ const HeaderWindow = styled.div`
 `;
 
 const HeaderTitle = styled.h3`
+  display: flex;
   flex: 1;
-  font-size: 1.1rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
   opacity: 0.7;
   text-align: center;
-  padding: 8px 5px 0;
+  /* padding: 8px 5px 0; */
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   user-select: none;
-  ${fonts.h2}
+  font-weight: ${fonts.h2.fontWeight};
 `;
 
 export const AppScreen: FC<WindowProps> = ({

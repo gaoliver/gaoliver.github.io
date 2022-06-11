@@ -31,8 +31,7 @@ type SocialOptions = 'instagram' | 'linkedin' | 'github';
 const ScreenWrapper = styled.div`
   display: block;
   overflow: hidden;
-  height: 100vh;
-  width: 100%;
+  height: ${window.innerHeight}px;
   background-color: ${(props) => rgba(props.theme.primary, 0.4)};
 `;
 

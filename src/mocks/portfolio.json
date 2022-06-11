@@ -1,4 +1,52 @@
 [{
+        "id": 11,
+        "name": "Hogeschool Rotterdam - Web",
+        "company": "DEPT®",
+        "mainImage": "/src/assets/images/optimized/portfolio/hr-web/hr-logo.webp",
+        "url": "https://mijn.hr.nl",
+        "slug": "hr-web",
+        "color": "red",
+        "jobInfo": {
+            "role": "React Native Developer",
+            "type": "Web",
+            "language": "Next.js",
+            "startDate": {
+                "month": "April",
+                "year": 2022
+            },
+            "endDate": {
+                "month": "",
+                "year": 2022
+            },
+            "mainTools": [
+                "Next.js",
+                "TypeScript",
+                "React Query",
+                "Atomic Design",
+                "Chakra-UI",
+                "Styled Component",
+                "Node.js",
+                "GIT",
+                "Scrum Methodology",
+                "Jira"
+            ],
+            "images": [
+                "/src/assets/images/optimized/portfolio/hr-web/hr-1.webp",
+                "/src/assets/images/optimized/portfolio/hr-web/hr-2.webp",
+                "/src/assets/images/optimized/portfolio/hr-web/hr-3.webp",
+                "/src/assets/images/optimized/portfolio/hr-web/hr-4.webp",
+                "/src/assets/images/optimized/portfolio/hr-web/hr-5.webp",
+                "/src/assets/images/optimized/portfolio/hr-web/hr-6.webp",
+                "/src/assets/images/optimized/portfolio/hr-web/hr-7.webp",
+                "/src/assets/images/optimized/portfolio/hr-web/hr-8.webp",
+                "/src/assets/images/optimized/portfolio/hr-web/hr-9.webp",
+                "/src/assets/images/optimized/portfolio/hr-web/hr-10.webp",
+                "/src/assets/images/optimized/portfolio/hr-web/hr-11.webp"
+            ]
+        },
+        "text": "This is a web portal for the University Students to be in touch with their activities, courses, exams, friends and teachers. Made by DEPT® to Hogeschool Rotterdam."
+    },
+    {
         "id": 10,
         "name": "Hogeschool Rotterdam - App",
         "company": "DEPT®",

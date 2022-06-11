@@ -53,7 +53,7 @@ export const Taskbar: FC<TaskbarMobileProps> = ({ onBack, onHome }) => {
   const dispatch = useDispatch();
 
   function actionVibrate(action: ActionsNavigation) {
-    navigator.vibrate(10);
+    if (navigator.vibrate) navigator.vibrate(10);
 
     switch (action) {
       case ActionsNavigation.TOOGLE:
@@ -61,11 +61,11 @@ export const Taskbar: FC<TaskbarMobileProps> = ({ onBack, onHome }) => {
         break;
 
       case ActionsNavigation.HOME:
-        onHome()
+        onHome();
         break;
 
       case ActionsNavigation.BACK:
-        onBack()
+        onBack();
         break;
 
       default:

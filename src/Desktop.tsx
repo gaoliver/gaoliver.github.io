@@ -19,11 +19,13 @@ import {
   useAppSelector
 } from 'src/redux';
 import { useDispatch } from 'react-redux';
-import { AboutMe } from './components/_shared';
+import { AboutMe, EmbedModel } from './components/_shared';
 
 import whiteIcon from 'src/assets/images/GabrielRamos-whiteIcon.png';
 import folderIcon from 'src/assets/images/folder.png';
 import EmailIcon from 'src/assets/images/email.png';
+import WebsiteIcon from 'src/assets/images/website.png';
+import { colors } from './constants/colors';
 
 const PageWrapper = styled.div`
   display: flex;
@@ -89,6 +91,28 @@ export const Desktop: FC = () => {
         </DesktopIcon>
         <DesktopIcon label="Contact" imageSource={EmailIcon} id="contact">
           <Contact />
+        </DesktopIcon>
+        <DesktopIcon
+          label="No-sense website I just made for fun"
+          imageSource={WebsiteIcon}
+          id="infinity_scroller"
+        >
+          <div
+            style={{
+              height: '100%',
+              width: '100%',
+              backgroundColor: colors.white
+            }}
+          >
+            <EmbedModel url="https://gaoliver.github.io/scroller/" />
+          </div>
+        </DesktopIcon>
+        <DesktopIcon
+          label="About the project"
+          imageSource={WebsiteIcon}
+          id="post_about_project"
+        >
+          <EmbedModel url="https://www.linkedin.com/embed/feed/update/urn:li:share:6941295016061358081" />
         </DesktopIcon>
 
         {windowsList.map((window) => {

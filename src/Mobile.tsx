@@ -11,6 +11,7 @@ import {
 import blackIcon from 'src/assets/images/GabrielRamos-blackIcon.png';
 import folderIcon from 'src/assets/images/folder.png';
 import EmailIcon from 'src/assets/images/email.png';
+import WebsiteIcon from 'src/assets/images/website.png';
 import {
   closeAllApps,
   closeWindow,
@@ -25,6 +26,7 @@ import { useDispatch } from 'react-redux';
 import Instagram from 'src/assets/svg/instagram.svg';
 import LinkedIn from 'src/assets/svg/linkedin.svg';
 import GitHub from 'src/assets/svg/github.svg';
+import { colors } from './constants/colors';
 
 type SocialOptions = 'instagram' | 'linkedin' | 'github';
 
@@ -36,16 +38,15 @@ const ScreenWrapper = styled.div`
 `;
 
 const InnerPage = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, ${window.screen.width / 3}px);
-  grid-template-rows: 140px 1fr 1fr;
+  display: table;
   width: 100%;
   height: 100%;
-  padding: 15px ${window.screen.width / 15}px;
+  padding: 15px 0;
 `;
 
 const FolderIconContainer = styled.div`
-  display: inline-block;
+  display: inline-table;
+  margin: 5px ${window.innerWidth / 40}px;
 `;
 
 export const Mobile: FC = () => {
@@ -85,11 +86,7 @@ export const Mobile: FC = () => {
     <ScreenWrapper>
       <InnerPage>
         <FolderIconContainer>
-          <ScreenIcon
-            id="about-me"
-            imageSource={blackIcon}
-            label="About me"
-          >
+          <ScreenIcon id="about-me" imageSource={blackIcon} label="About me">
             <AboutMe />
           </ScreenIcon>
         </FolderIconContainer>
@@ -101,6 +98,32 @@ export const Mobile: FC = () => {
         <FolderIconContainer>
           <ScreenIcon id="contact" imageSource={EmailIcon} label="Contact">
             <Contact />
+          </ScreenIcon>
+        </FolderIconContainer>
+        <FolderIconContainer>
+          <ScreenIcon
+            label="No-sense website I just made for fun"
+            imageSource={WebsiteIcon}
+            id="infinity_scroller"
+          >
+            <div
+              style={{
+                height: '100%',
+                width: '100%',
+                backgroundColor: colors.white
+              }}
+            >
+              <EmbedModel url="https://gaoliver.github.io/scroller/" />
+            </div>
+          </ScreenIcon>
+        </FolderIconContainer>
+        <FolderIconContainer>
+          <ScreenIcon
+            label="About this project"
+            imageSource={WebsiteIcon}
+            id="post_about_project"
+          >
+            <EmbedModel url="https://www.linkedin.com/embed/feed/update/urn:li:share:6941295016061358081" />
           </ScreenIcon>
         </FolderIconContainer>
         {MYINFO?.social.map((social) => (

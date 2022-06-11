@@ -23,6 +23,16 @@ const TaskbarIconWrapper = styled.button<TaskbarIconProps>`
   border: 0;
   background-color: transparent;
 
+  :first-of-type {
+    width: 110px;
+  }
+
+  :not(:first-of-type) {
+    svg {
+      width: 39px;
+    }
+  }
+
   svg {
     path {
       object-position: center;

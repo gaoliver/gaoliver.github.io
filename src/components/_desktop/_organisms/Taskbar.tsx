@@ -39,7 +39,7 @@ const TaskbarWrapper = styled.footer`
 
 const WindowsListWrapper = styled.div`
   display: flex;
-  width: 73%;
+  flex: 1;
   height: 100%;
   overflow: scroll;
   align-items: center;
@@ -111,6 +111,7 @@ export const Taskbar: FC<TaskbarProps> = ({ windowsList, onClickWindow }) => {
     <TaskbarWrapper id="taskbar">
       <TaskbarIcon onClick={cleanUpDesktop}>
         <Icon
+          id="website-logo"
           icon="logo-transparent"
           height="35px"
           color={useTheme().text}
@@ -138,14 +139,12 @@ export const Taskbar: FC<TaskbarProps> = ({ windowsList, onClickWindow }) => {
       <div
         style={{
           display: 'flex',
-          flexDirection: 'row',
-          position: 'fixed',
-          right: 0
+          flexDirection: 'row'
         }}
       >
         <TaskbarIcon
           onClick={() => dispatch(toggleTaskSettings())}
-          style={{ minWidth: 30 }}
+          style={{ minWidth: 30, width: "fit-content" }}
         >
           <BsFillCaretUpFill color={rgba(theme.text, 0.5)} />
         </TaskbarIcon>

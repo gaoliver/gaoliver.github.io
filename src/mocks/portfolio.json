@@ -7,17 +7,14 @@
         "slug": "hr-web",
         "color": "red",
         "jobInfo": {
-            "role": "React Native Developer",
+            "role": "Frontend Developer",
             "type": "Web",
             "language": "Next.js",
             "startDate": {
                 "month": "April",
                 "year": 2022
             },
-            "endDate": {
-                "month": "",
-                "year": 2022
-            },
+            "endDate": null,
             "mainTools": [
                 "Next.js",
                 "TypeScript",
@@ -62,10 +59,7 @@
                 "month": "April",
                 "year": 2022
             },
-            "endDate": {
-                "month": "",
-                "year": 2022
-            },
+            "endDate": null,
             "mainTools": [
                 "React Native",
                 "TypeScript",
@@ -150,7 +144,7 @@
                 "year": 2021
             },
             "endDate": {
-                "month": "",
+                "month": "June",
                 "year": 2021
             },
             "mainTools": [
@@ -274,7 +268,7 @@
                 "year": 2021
             },
             "endDate": {
-                "month": "",
+                "month": "July",
                 "year": 2021
             },
             "mainTools": [

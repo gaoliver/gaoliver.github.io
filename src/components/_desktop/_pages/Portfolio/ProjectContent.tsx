@@ -11,30 +11,36 @@ export type ProjectContentProps = {
   project: PortfolioModel;
 };
 
-const width = "600px"
+const width = '600px';
 
-const ProjectContentWrapper = styled.section<HTMLAttributes<HTMLDivElement> & {imageUrl?: string}>`
+const ProjectContentWrapper = styled.section<
+  HTMLAttributes<HTMLDivElement> & { imageUrl?: string }
+>`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  background-image: url(${props => props.imageUrl});
+  background-image: url(${(props) => props.imageUrl});
   background-position: center;
   background-size: cover;
-  background-color: ${props => rgba(props.theme.window, 0.93)};
-  background-blend-mode: ${props => props.theme === dark ? "darken" : "lighten"};
+  background-color: ${(props) => rgba(props.theme.window, 0.93)};
+  background-blend-mode: ${(props) =>
+    props.theme === dark ? 'darken' : 'lighten'};
 
-  h1, h2, p {
+  h1,
+  h2,
+  p {
     width: ${width};
   }
 
-  h1, h2 {
+  h1,
+  h2 {
     text-align: center;
   }
 
   h1 {
     margin-top: 20px;
-    color: ${props => props.theme.h1};
+    color: ${(props) => props.theme.h1};
   }
 
   a {
@@ -56,8 +62,8 @@ const ProjectContentWrapper = styled.section<HTMLAttributes<HTMLDivElement> & {i
     margin: 20px 0;
     padding: 10px;
     border: 2px dotted ${(props) => props.theme.h1};
-    background-color: ${props => rgba(props.theme.h1, 0.1)};
-    color: ${props => props.theme.h1};
+    background-color: ${(props) => rgba(props.theme.h1, 0.1)};
+    color: ${(props) => props.theme.h1};
     word-spacing: 3px;
     text-align: center;
   }
@@ -111,7 +117,7 @@ export const ProjectContent: FC<ProjectContentProps> = ({ project }) => {
       ? project?.jobInfo.endDate
       : {
           month: 'current',
-          year: new Date().getFullYear()
+          year: undefined
         }
   };
 
@@ -119,7 +125,11 @@ export const ProjectContent: FC<ProjectContentProps> = ({ project }) => {
     <ProjectContentWrapper imageUrl={baseUrl + project.mainImage}>
       <h1>{project.name}</h1>
       <h2>by {project.company}</h2>
-      <span className='project--date'>{`from ${translator.startDate.month}, ${translator.startDate.year} to ${translator.endDate.month}, ${translator.endDate.year}`}</span>
+      <span className="project--date">{`from ${translator.startDate.month}, ${
+        translator.startDate.year
+      } to ${translator.endDate.month}${
+        translator.endDate.year && ', ' + translator.endDate.year
+      }`}</span>
 
       <p className="project--info">
         This is a <b>{translator.type}</b> project in which I am the{' '}
@@ -147,7 +157,9 @@ export const ProjectContent: FC<ProjectContentProps> = ({ project }) => {
               imageSource={baseUrl + image}
               label={`${project.name} - Image ${index + 1}`}
             >
-              <ImageContainer style={{ backgroundImage: `url(${baseUrl + image})` }} />
+              <ImageContainer
+                style={{ backgroundImage: `url(${baseUrl + image})` }}
+              />
             </FolderIcon>
           </div>
         ))}

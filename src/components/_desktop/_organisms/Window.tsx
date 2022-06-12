@@ -4,10 +4,10 @@ import { WindowButton } from 'src/components/_desktop/_atoms';
 import { IoClose, IoExpand, IoRemove } from 'react-icons/io5';
 import { colors } from 'src/constants/colors';
 import {
+  changeWindowOnFocus,
   minimizeWindow,
   store,
-  useAppSelector,
-  windowOnFocus
+  useAppSelector
 } from 'src/redux';
 import { useDispatch } from 'react-redux';
 import { handleWindowPosition } from 'src/utils/handleWindowPosition';
@@ -87,7 +87,7 @@ export const Window: FC<WindowProps> = ({ children, onClose, title, id }) => {
 
     if (windowItem) {
       windowRef.current.style.display = 'block';
-      dispatch(windowOnFocus(id));
+      dispatch(changeWindowOnFocus(id));
     } else {
       windowRef.current.style.opacity = '0';
       windowRef.current.style.display = 'block';
@@ -128,7 +128,7 @@ export const Window: FC<WindowProps> = ({ children, onClose, title, id }) => {
     document.addEventListener('mouseup', closeDragging);
     document.addEventListener('mousemove', handleDragging);
 
-    dispatch(windowOnFocus(id));
+    dispatch(changeWindowOnFocus(id));
   }
 
   function handleDragging(e: MouseEvent) {
@@ -183,7 +183,7 @@ export const Window: FC<WindowProps> = ({ children, onClose, title, id }) => {
     handleTransition();
 
     if (!isMinimized) {
-      dispatch(windowOnFocus(id));
+      dispatch(changeWindowOnFocus(id));
       return (windowRef.current.style.transform = `translateY(0px)`);
     }
 
@@ -227,7 +227,7 @@ export const Window: FC<WindowProps> = ({ children, onClose, title, id }) => {
       ref={windowRef}
       isFullSize={fullSize}
       style={{ top: position.y1, left: position.x1 }}
-      onClick={() => dispatch(windowOnFocus(id))}
+      onClick={() => dispatch(changeWindowOnFocus(id))}
     >
       <HeaderWindow
         onMouseDown={handleDragElement}

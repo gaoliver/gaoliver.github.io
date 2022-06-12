@@ -111,7 +111,7 @@ export const reducer = (
     case ActionTypes.WINDOW_ON_FOCUS:
       return {
         ...state,
-        windowOnFocus: action.payload
+        windowOnFocus: action.payload.length > 0 ? action.payload : undefined
       };
     case ActionTypes.MINIMIZE_WINDOW:
       return {

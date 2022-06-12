@@ -11,7 +11,7 @@ import {
   store,
   toggleTaskSettings,
   WindowListProps,
-  windowOnFocus
+  changeWindowOnFocus
 } from 'src/redux';
 import { useDispatch } from 'react-redux';
 import { BsFillCaretUpFill } from 'react-icons/bs';
@@ -82,7 +82,7 @@ export const Taskbar: FC<TaskbarProps> = ({ windowsList, onClickWindow }) => {
   function cleanUpDesktop() {
     const filteredList = windowsList.filter((window) => !window.minimized);
     filteredList.forEach((window) => dispatch(minimizeWindow(window.id)));
-    dispatch(windowOnFocus(''));
+    dispatch(changeWindowOnFocus(''));
   }
 
   const RenderList = () => {

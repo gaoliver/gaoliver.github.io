@@ -2,7 +2,7 @@ import React, { FC, HTMLAttributes, useRef } from 'react';
 import styled, { useTheme } from 'styled-components';
 import { WindowButton } from 'src/components/_desktop/_atoms';
 import { BiChevronLeft } from 'react-icons/bi';
-import { windowOnFocus } from 'src/redux';
+import { changeWindowOnFocus } from 'src/redux';
 import { useDispatch } from 'react-redux';
 import { darken, rgba } from 'polished';
 import { light } from 'src/styles';
@@ -136,7 +136,7 @@ export const AppScreen: FC<WindowProps> = ({
     <WindowWrapper
       id={id}
       ref={windowRef}
-      onClick={() => dispatch(windowOnFocus(id))}
+      onClick={() => dispatch(changeWindowOnFocus(id))}
     >
       <HeaderWindow>
         <WindowButton onClick={() => dispatch(handleCloseWindow())}>

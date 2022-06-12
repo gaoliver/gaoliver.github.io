@@ -17,7 +17,7 @@ import {
   getTools,
   minimizeWindow,
   useAppSelector,
-  windowOnFocus
+  changeWindowOnFocus
 } from 'src/redux';
 import { useDispatch } from 'react-redux';
 import { AboutMe, EmbedModel, HomeInfo } from './components/_shared';
@@ -45,7 +45,7 @@ const DesktopWrapper = styled.article`
 
 export const Desktop: FC = () => {
   const dispatch = useDispatch();
-  const { windowsList, MYINFO, theme } = useAppSelector(
+  const { windowsList, MYINFO, theme, windowOnFocus } = useAppSelector(
     (state: AppState) => state
   );
 
@@ -55,10 +55,12 @@ export const Desktop: FC = () => {
 
   function onCloseWindow(id: string) {
     dispatch(closeWindow(id));
-    history.back()
+    history.back();
 
     if (windowsList.length) {
-      dispatch(windowOnFocus(windowsList[windowsList.length - 1].id));
+      dispatch(changeWindowOnFocus(windowsList[windowsList.length - 1].id));
+    } else {
+      dispatch(changeWindowOnFocus(""));
     }
   }
 

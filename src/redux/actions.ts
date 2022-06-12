@@ -115,7 +115,7 @@ export const addNewWindow = (
   };
 };
 
-export const windowOnFocus = (id: string) => {
+export const changeWindowOnFocus = (id: string) => {
   return async (dispatch: Dispatch<AppActions>) => {
     dispatch({
       type: ActionTypes.WINDOW_ON_FOCUS,

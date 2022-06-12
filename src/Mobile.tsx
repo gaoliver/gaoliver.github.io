@@ -20,7 +20,7 @@ import {
   getTools,
   useAppSelector
 } from './redux';
-import { AboutMe, Contact, EmbedModel } from './components/_shared';
+import { AboutMe, Contact, EmbedModel, HomeInfo } from './components/_shared';
 import { useDispatch } from 'react-redux';
 
 import Instagram from 'src/assets/svg/instagram.svg';
@@ -96,6 +96,7 @@ export const Mobile: FC = () => {
 
   return (
     <ScreenWrapper>
+      {MYINFO && <HomeInfo info={MYINFO} />}
       <InnerPage>
         <FolderIconContainer>
           <ScreenIcon id="about-me" imageSource={blackIcon} label="About me">

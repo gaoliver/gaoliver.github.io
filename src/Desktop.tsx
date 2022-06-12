@@ -19,7 +19,7 @@ import {
   useAppSelector
 } from 'src/redux';
 import { useDispatch } from 'react-redux';
-import { AboutMe, EmbedModel } from './components/_shared';
+import { AboutMe, EmbedModel, HomeInfo } from './components/_shared';
 
 import whiteIcon from 'src/assets/images/GabrielRamos-whiteIcon.png';
 import folderIcon from 'src/assets/images/folder.png';
@@ -35,21 +35,6 @@ const PageWrapper = styled.div`
   height: 100vh;
   width: 100%;
   background-color: ${(props) => rgba(props.theme.primary, 0.7)};
-`;
-
-const HomeInfoWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  z-index: 1;
-  width: 500px;
-  height: 200px;
-  place-self: center;
-  transform: translateY(30vh);
-  align-items: center;
-  justify-content: center;
-  color: ${(props) => props.theme.window};
-  user-select: none;
 `;
 
 const DesktopWrapper = styled.article`
@@ -85,11 +70,7 @@ export const Desktop: FC = () => {
 
   return (
     <PageWrapper>
-      <HomeInfoWrapper>
-        <h1>{`${MYINFO?.name} ${MYINFO?.surname}`}</h1>
-        <h2>{MYINFO?.position}</h2>
-        <h3>{`@ ${MYINFO?.company}`}</h3>
-      </HomeInfoWrapper>
+      {MYINFO && <HomeInfo info={MYINFO} />}
       <DesktopWrapper id="desktop">
         <DesktopIcon label="About me" imageSource={whiteIcon} id="about_me">
           <AboutMe />

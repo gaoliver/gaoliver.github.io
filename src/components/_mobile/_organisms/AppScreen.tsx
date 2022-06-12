@@ -9,7 +9,7 @@ import { light } from 'src/styles';
 import { fonts } from 'src/constants/fonts';
 
 type WindowProps = {
-  onClose: (id: string) => void;
+  onClose: () => void;
   title: string;
   id: string;
 };
@@ -128,7 +128,7 @@ export const AppScreen: FC<WindowProps> = ({
     windowRef.current.style.opacity = '0';
 
     setTimeout(() => {
-      onClose(id);
+      onClose();
     }, 200);
   }
 

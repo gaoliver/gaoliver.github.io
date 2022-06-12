@@ -57,9 +57,8 @@ export const Mobile: FC = () => {
     dispatch(closeWindow(windowsList[windowsList.length - 1].id));
   };
 
-  function onCloseWindow(id: string) {
+  function onCloseWindow() {
     history.back()
-    dispatch(closeWindow(id));
   }
 
   function goToHome() {
@@ -166,7 +165,7 @@ export const Mobile: FC = () => {
       })}
 
       <Taskbar
-        onBack={() => onCloseWindow(windowsList[windowsList.length - 1].id)}
+        onBack={() => onCloseWindow()}
         onHome={goToHome}
       />
     </ScreenWrapper>

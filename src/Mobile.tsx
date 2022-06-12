@@ -58,6 +58,7 @@ export const Mobile: FC = () => {
   };
 
   function onCloseWindow(id: string) {
+    history.back()
     dispatch(closeWindow(id));
   }
 

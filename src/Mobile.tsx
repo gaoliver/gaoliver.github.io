@@ -53,12 +53,17 @@ export const Mobile: FC = () => {
   const dispatch = useDispatch();
   const { windowsList, MYINFO, theme } = useAppSelector((state) => state);
 
+  window.onhashchange = function () {
+    dispatch(closeWindow(windowsList[windowsList.length - 1].id));
+  };
+
   function onCloseWindow(id: string) {
     dispatch(closeWindow(id));
   }
 
   function goToHome() {
     dispatch(closeAllApps());
+    window.location.hash = "/"
   }
 
   function handleSocialImage(id: SocialOptions) {

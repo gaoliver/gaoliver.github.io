@@ -90,7 +90,6 @@ const HeaderTitle = styled.h3`
   font-size: 1.5rem;
   opacity: 0.7;
   text-align: center;
-  /* padding: 8px 5px 0; */
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

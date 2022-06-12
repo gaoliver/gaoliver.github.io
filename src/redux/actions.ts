@@ -12,50 +12,63 @@ import { store } from './store';
 import { Theme } from 'src/styles/styled';
 import { dark, light } from 'src/styles';
 
+export enum ActionTypes {
+  ADD_NEW_WINDOW = "ADD_NEW_WINDOW",
+  WINDOW_ON_FOCUS = "WINDOW_ON_FOCUS",
+  MINIMIZE_WINDOW = "MINIMIZE_WINDOW",
+  CLOSE_WINDOW = "CLOSE_WINDOW",
+  CLOSE_ALL_APP = "CLOSE_ALL_APP",
+  TOGGLE_TASK_SETTINGS = "TOGGLE_TASK_SETTINGS",
+  TOGGLE_THEME = "TOGGLE_THEME",
+  ON_SET_TOOLS = "ON_SET_TOOLS",
+  ON_SET_INFO = "ON_SET_INFO",
+  ON_SET_PORTFOLIO = "ON_SET_PORTFOLIO"
+}
+
 export interface AddNewWindow {
-  readonly type: 'ADD_NEW_WINDOW';
+  readonly type: ActionTypes.ADD_NEW_WINDOW;
   payload: WindowListProps;
 }
 
 export interface WindowOnFocus {
-  readonly type: 'WINDOW_ON_FOCUS';
+  readonly type: ActionTypes.WINDOW_ON_FOCUS;
   payload: string;
 }
 
 export interface MinimizeWindow {
-  readonly type: 'MINIMIZE_WINDOW';
+  readonly type: ActionTypes.MINIMIZE_WINDOW;
   payload: WindowListProps[];
 }
 
 export interface CloseWindow {
-  readonly type: 'CLOSE_WINDOW';
+  readonly type: ActionTypes.CLOSE_WINDOW;
   payload: WindowListProps[];
 }
 
 export interface CloseAllApps {
-  readonly type: 'CLOSE_ALL_APP';
+  readonly type: ActionTypes.CLOSE_ALL_APP;
 }
 
 export interface ToggleTaskSettings {
-  readonly type: 'TOGGLE_TASK_SETTINGS';
+  readonly type: ActionTypes.TOGGLE_TASK_SETTINGS;
 }
 export interface ToggleTheme {
-  readonly type: 'TOGGLE_THEME';
+  readonly type: ActionTypes.TOGGLE_THEME;
   payload: Theme;
 }
 
 export interface SetTools {
-  readonly type: 'ON_SET_TOOLS';
+  readonly type: ActionTypes.ON_SET_TOOLS;
   payload: ToolsModel;
 }
 
 export interface SetInfo {
-  readonly type: 'ON_SET_INFO';
+  readonly type: ActionTypes.ON_SET_INFO;
   payload: MyInfoModel;
 }
 
 export interface SetPortfolio {
-  readonly type: 'ON_SET_PORTFOLIO';
+  readonly type: ActionTypes.ON_SET_PORTFOLIO;
   payload: Array<PortfolioModel>;
 }
 
@@ -74,7 +87,7 @@ export type AppActions =
 export const toggleTaskSettings = () => {
   return async (dispatch: Dispatch<AppActions>) => {
     dispatch({
-      type: 'TOGGLE_TASK_SETTINGS'
+      type: ActionTypes.TOGGLE_TASK_SETTINGS
     });
   };
 };
@@ -82,7 +95,7 @@ export const toggleTaskSettings = () => {
 export const toggleTheme = (theme?: Theme) => {
   return async (dispatch: Dispatch<AppActions>) => {
     dispatch({
-      type: 'TOGGLE_THEME',
+      type: ActionTypes.TOGGLE_THEME,
       payload: theme || (store.getState().theme === light ? dark : light)
     });
   };
@@ -93,9 +106,10 @@ export const addNewWindow = (
   title: string,
   content: JSX.Element
 ) => {
+  history.pushState(id, "", `#${id}`)
   return async (dispatch: Dispatch<AppActions>) => {
     dispatch({
-      type: 'ADD_NEW_WINDOW',
+      type: ActionTypes.ADD_NEW_WINDOW,
       payload: { id, title, minimized: false, content }
     });
   };
@@ -104,7 +118,7 @@ export const addNewWindow = (
 export const windowOnFocus = (id: string) => {
   return async (dispatch: Dispatch<AppActions>) => {
     dispatch({
-      type: 'WINDOW_ON_FOCUS',
+      type: ActionTypes.WINDOW_ON_FOCUS,
       payload: id
     });
   };
@@ -128,7 +142,7 @@ export const minimizeWindow = (id: string) => {
 
   return async (dispatch: Dispatch<AppActions>) => {
     dispatch({
-      type: 'MINIMIZE_WINDOW',
+      type: ActionTypes.MINIMIZE_WINDOW,
       payload: checkMinimized()
     });
   };
@@ -145,7 +159,7 @@ export const closeWindow = (id: string) => {
 
   return async (dispatch: Dispatch<AppActions>) => {
     dispatch({
-      type: 'CLOSE_WINDOW',
+      type: ActionTypes.CLOSE_WINDOW,
       payload: removeWindow()
     });
   };
@@ -154,7 +168,7 @@ export const closeWindow = (id: string) => {
 export const closeAllApps = () => {
   return async (dispatch: Dispatch<AppActions>) => {
     dispatch({
-      type: 'CLOSE_ALL_APP'
+      type: ActionTypes.CLOSE_ALL_APP
     });
   };
 };
@@ -169,7 +183,7 @@ export const getTools = () => {
       })
       .catch((err) => console.log('Erro:', err));
     dispatch({
-      type: 'ON_SET_TOOLS',
+      type: ActionTypes.ON_SET_TOOLS,
       payload: data
     });
   };
@@ -185,7 +199,7 @@ export const getInfo = () => {
       })
       .catch((err) => console.log('Erro:', err));
     dispatch({
-      type: 'ON_SET_INFO',
+      type: ActionTypes.ON_SET_INFO,
       payload: data
     });
   };
@@ -201,7 +215,7 @@ export const getPortfolio = () => {
       })
       .catch((err) => console.log('Erro:', err));
     dispatch({
-      type: 'ON_SET_PORTFOLIO',
+      type: ActionTypes.ON_SET_PORTFOLIO,
       payload: data
     });
   };

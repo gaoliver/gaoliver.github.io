@@ -45,7 +45,7 @@ const DesktopWrapper = styled.article`
 
 export const Desktop: FC = () => {
   const dispatch = useDispatch();
-  const { windowsList, MYINFO, theme, windowOnFocus } = useAppSelector(
+  const { windowsList, MYINFO, theme } = useAppSelector(
     (state: AppState) => state
   );
 

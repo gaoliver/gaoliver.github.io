@@ -34,7 +34,7 @@ const ScreenWrapper = styled.div`
   display: block;
   overflow: hidden;
   height: ${window.innerHeight}px;
-  background-color: ${(props) => rgba(props.theme.primary, 0.4)};
+  background-color: ${(props) => rgba(props.theme.primary, 0.7)};
 `;
 
 const InnerPage = styled.div`
@@ -97,6 +97,7 @@ export const Mobile: FC = () => {
   return (
     <ScreenWrapper>
       {MYINFO && <HomeInfo info={MYINFO} />}
+
       <InnerPage>
         <FolderIconContainer>
           <ScreenIcon id="about-me" imageSource={blackIcon} label="About me">

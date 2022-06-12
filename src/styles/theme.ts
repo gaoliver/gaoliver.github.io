@@ -9,6 +9,7 @@ export const themeColors = {
 
 export const light = {
   ...themeColors,
+  primary: colors.primary,
   text: colors.black,
   window: colors.white,
   selection: colors.primaryDark,
@@ -19,6 +20,7 @@ export const light = {
 
 export const dark = {
   ...themeColors,
+  primary: colors.primaryDark,
   text: colors.white,
   window: colors.black,
   selection: colors.secondary,

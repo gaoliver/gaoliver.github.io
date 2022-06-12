@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { colors } from 'src/constants/colors';
 import { MyInfoModel } from 'src/redux';
 import styled from 'styled-components';
 
@@ -10,15 +11,15 @@ const HomeInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   position: fixed;
-  z-index: 0;
+  z-index: -1;
   width: 100%;
   height: 200px;
   place-self: center;
   transform: translateY(30vh);
   align-items: center;
   justify-content: center;
-  color: ${(props) => props.theme.window};
-  opacity: 0.3;
+  color: ${colors.white};
+  opacity: 0.7;
   user-select: none;
 
   :hover {

@@ -55,6 +55,7 @@ export const Desktop: FC = () => {
 
   function onCloseWindow(id: string) {
     dispatch(closeWindow(id));
+    history.back()
 
     if (windowsList.length) {
       dispatch(windowOnFocus(windowsList[windowsList.length - 1].id));

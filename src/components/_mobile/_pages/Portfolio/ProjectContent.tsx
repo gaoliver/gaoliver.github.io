@@ -115,9 +115,7 @@ export const ProjectContent: FC<ProjectContentProps> = ({ project }) => {
           month: '',
           year: new Date().getFullYear()
         },
-    endDate: project?.jobInfo.endDate
-      ? project?.jobInfo.endDate
-      : handleEndDate(project.jobInfo.endDate)
+    endDate: handleEndDate(project.jobInfo.endDate)
   };
 
   return (

@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 
 import { colors } from 'src/constants/colors';
-import { fonts } from 'src/constants/fonts';
 import { addNewWindow } from 'src/redux';
 import { useDispatch } from 'react-redux';
 

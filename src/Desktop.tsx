@@ -16,7 +16,8 @@ import {
   getPortfolio,
   getTools,
   minimizeWindow,
-  useAppSelector
+  useAppSelector,
+  windowOnFocus
 } from 'src/redux';
 import { useDispatch } from 'react-redux';
 import { AboutMe, EmbedModel, HomeInfo } from './components/_shared';
@@ -54,6 +55,10 @@ export const Desktop: FC = () => {
 
   function onCloseWindow(id: string) {
     dispatch(closeWindow(id));
+
+    if (windowsList.length) {
+      dispatch(windowOnFocus(windowsList[windowsList.length - 1].id));
+    }
   }
 
   useEffect(() => {

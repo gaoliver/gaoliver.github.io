@@ -59,7 +59,9 @@ const DesktopWrapper = styled.article`
 
 export const Desktop: FC = () => {
   const dispatch = useDispatch();
-  const { windowsList, MYINFO } = useAppSelector((state: AppState) => state);
+  const { windowsList, MYINFO, theme } = useAppSelector(
+    (state: AppState) => state
+  );
 
   function handleToggleWindow(id: string) {
     dispatch(minimizeWindow(id));
@@ -74,6 +76,12 @@ export const Desktop: FC = () => {
     dispatch(getTools());
     dispatch(getPortfolio());
   }, []);
+
+  useEffect(() => {
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute('content', theme.window);
+  }, [theme]);
 
   return (
     <PageWrapper>

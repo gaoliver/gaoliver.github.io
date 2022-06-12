@@ -51,7 +51,7 @@ const FolderIconContainer = styled.div`
 
 export const Mobile: FC = () => {
   const dispatch = useDispatch();
-  const { windowsList, MYINFO } = useAppSelector((state) => state);
+  const { windowsList, MYINFO, theme } = useAppSelector((state) => state);
 
   function onCloseWindow(id: string) {
     dispatch(closeWindow(id));
@@ -82,6 +82,13 @@ export const Mobile: FC = () => {
     dispatch(getPortfolio());
     dispatch(getTools());
   }, []);
+
+  useEffect(() => {
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute('content', theme.window);
+  }, [theme]);
+
   return (
     <ScreenWrapper>
       <InnerPage>

@@ -46,17 +46,17 @@ const WindowsListWrapper = styled.div`
 `;
 
 const WindowButton = styled(TaskbarIcon)<
-  typeof TaskbarIcon & { isActive: boolean }
->`
+  typeof TaskbarIcon & { isActive: boolean }>`
+  display: -webkit-box;
   flex: 1;
   max-width: 25%;
   color: ${(props) => rgba(props.theme.text, props.isActive ? 1 : 0.8)};
   background-color: ${(props) =>
     props.isActive ? props.theme.window : 'transparent'};
   border: none;
-  font-size: ${fonts.body.fontSize};
-  text-overflow: ellipsis;
+  padding: 0 5px;
   overflow: hidden;
+  font-size: ${fonts.body.fontSize};
   white-space: nowrap;
   ${(props) => props.isActive && taskbarIconsShadow}
   ${(props) =>

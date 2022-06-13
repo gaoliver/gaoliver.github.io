@@ -46,8 +46,8 @@ const WindowsListWrapper = styled.div`
 `;
 
 const WindowButton = styled(TaskbarIcon)<
-  typeof TaskbarIcon & { isActive: boolean }>`
-  display: -webkit-box;
+  typeof TaskbarIcon & { isActive: boolean }
+>`
   flex: 1;
   max-width: 25%;
   color: ${(props) => rgba(props.theme.text, props.isActive ? 1 : 0.8)};
@@ -55,15 +55,21 @@ const WindowButton = styled(TaskbarIcon)<
     props.isActive ? props.theme.window : 'transparent'};
   border: none;
   padding: 0 5px;
-  overflow: hidden;
   font-size: ${fonts.body.fontSize};
-  white-space: nowrap;
   ${(props) => props.isActive && taskbarIconsShadow}
   ${(props) =>
     props.theme === dark &&
     props.isActive && {
       border: `0.5px solid ${rgba(colors.white, 0.5)}`
     }}
+
+    span {
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 `;
 
 export const Taskbar: FC<TaskbarProps> = ({ windowsList, onClickWindow }) => {
@@ -100,7 +106,7 @@ export const Taskbar: FC<TaskbarProps> = ({ windowsList, onClickWindow }) => {
                 : store.getState().windowOnFocus === item.id
             }
           >
-            {item.title}
+            <span>{item.title}</span>
           </WindowButton>
         ))}
       </>
@@ -144,7 +150,7 @@ export const Taskbar: FC<TaskbarProps> = ({ windowsList, onClickWindow }) => {
       >
         <TaskbarIcon
           onClick={() => dispatch(toggleTaskSettings())}
-          style={{ minWidth: 30, width: "fit-content" }}
+          style={{ minWidth: 30, width: 'fit-content' }}
         >
           <BsFillCaretUpFill color={rgba(theme.text, 0.5)} />
         </TaskbarIcon>

@@ -40,7 +40,7 @@ export const WindowButton: FC<WindowButtonProps> = ({
   children
 }) => {
   return (
-    <WindowButtonWrapper onClick={onClick} buttonColor={buttonColor}>
+    <WindowButtonWrapper onClick={onClick} buttonColor={buttonColor} role="button">
       {children}
     </WindowButtonWrapper>
   );

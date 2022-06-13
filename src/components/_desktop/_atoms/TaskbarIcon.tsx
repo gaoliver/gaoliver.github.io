@@ -59,7 +59,7 @@ export const TaskbarIcon: FC<TaskbarIconProps> = ({
   ...props
 }) => {
   return (
-    <TaskbarIconWrapper isMobile={isMobile} {...props}>
+    <TaskbarIconWrapper isMobile={isMobile} role="button" {...props}>
       {children}
     </TaskbarIconWrapper>
   );

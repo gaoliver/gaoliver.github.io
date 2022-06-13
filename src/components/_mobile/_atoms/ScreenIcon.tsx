@@ -63,7 +63,7 @@ export const ScreenIcon: FC<ScreenIconProps> = ({
   }
 
   return (
-    <ScreenIconWrapper onClick={openWindow}>
+    <ScreenIconWrapper onClick={openWindow} role="button" aria-label={`${label} icon`}>
       <ScreenIconImage src={imageSource} />
       <LabelStyled>{label}</LabelStyled>
     </ScreenIconWrapper>

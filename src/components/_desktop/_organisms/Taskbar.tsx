@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, HTMLAttributes } from 'react';
 import styled, { useTheme } from 'styled-components';
 import { Icon } from 'src/components/_shared';
 import { TaskbarIcon } from '../_atoms';
@@ -96,8 +96,8 @@ export const Taskbar: FC<TaskbarProps> = ({ windowsList, onClickWindow }) => {
       <>
         {windowsList.map((item) => (
           <WindowButton
-            onClick={() => onClickWindow(item.id)}
             key={item.id}
+            onClick={() => onClickWindow(item.id)}
             isActive={
               store
                 .getState()
@@ -115,7 +115,7 @@ export const Taskbar: FC<TaskbarProps> = ({ windowsList, onClickWindow }) => {
 
   return (
     <TaskbarWrapper id="taskbar">
-      <TaskbarIcon onClick={cleanUpDesktop}>
+      <TaskbarIcon onClick={cleanUpDesktop} aria-label='home'>
         <Icon
           id="website-logo"
           icon="logo-transparent"
@@ -151,10 +151,11 @@ export const Taskbar: FC<TaskbarProps> = ({ windowsList, onClickWindow }) => {
         <TaskbarIcon
           onClick={() => dispatch(toggleTaskSettings())}
           style={{ minWidth: 30, width: 'fit-content' }}
+          aria-label='settings'
         >
           <BsFillCaretUpFill color={rgba(theme.text, 0.5)} />
         </TaskbarIcon>
-        <TaskbarIcon>
+        <TaskbarIcon aria-label='clock'>
           <ClockComponent />
         </TaskbarIcon>
       </div>

@@ -91,6 +91,8 @@ export const FolderIcon: FC<FolderIconProps> = ({
       onClick={selectIcon}
       onDoubleClick={openWindow}
       onDrag={selectIcon}
+      role="button"
+      aria-label={`${label} icon`}
       draggable
     >
       <ImageStyled src={imageSource} draggable={false} />

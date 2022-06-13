@@ -43,7 +43,7 @@ export const EmbedModel: FC<EmbedModelProps> = ({ url, notWorking, icon }) => {
           {`Unfortunately, the target website doesn't allow itself to be embedded to my page. So, please, click the button bellow to open it in a blank page.`}
         </TextStyled>
         <a href={url} target="_blank" rel="noreferrer">
-          <Button label='Open in blank page' />
+          <Button aria-label='open in blank page' label='Open in blank page' />
         </a>
       </EmbedWrapper>
     );

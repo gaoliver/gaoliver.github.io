@@ -193,7 +193,7 @@ export const AboutMe: React.FC = () => {
           download="Gabriel_Ramos_CV"
           style={{ display: 'contents' }}
         >
-          <Button label="Click to download my resumé (C.V.)" />
+          <Button aria-label='download' label="Click to download my resumé (C.V.)" />
         </a>
       </div>
     </AboutMeWrapper>

@@ -137,7 +137,7 @@ export const ProjectContent: FC<ProjectContentProps> = ({ project }) => {
       </span>
 
       <a href={translator.url} target="_blank" rel="noopener noreferrer">
-        <Button label="Go to project page" />
+        <Button aria-label='open in blank page' label="Go to project page" />
       </a>
 
       <div className="project--gallery">

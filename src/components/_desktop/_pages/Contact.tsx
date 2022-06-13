@@ -4,7 +4,7 @@ import { useAppSelector } from 'src/redux';
 import styled from 'styled-components';
 import { Button } from '../_atoms';
 
-import EmailBackground from "src/assets/images/email-background.webp"
+import EmailBackground from 'src/assets/images/email-background.webp';
 import { rgba } from 'polished';
 
 const ContactWrapper = styled.section`
@@ -15,7 +15,7 @@ const ContactWrapper = styled.section`
   align-items: center;
   justify-content: center;
   background-image: url(${EmailBackground});
-  background-color: ${props => rgba(props.theme.window, 0.9)};
+  background-color: ${(props) => rgba(props.theme.window, 0.9)};
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -51,7 +51,7 @@ export const Contact = () => {
   const emailLink = `mailto:${MYINFO?.contact.email}`;
 
   return (
-    <ContactWrapper id='contact-page'>
+    <ContactWrapper id="contact-page">
       <h2>Send me a message!</h2>
       <p>
         You can reach me through my social networks - just like LinkedIn - But
@@ -60,6 +60,7 @@ export const Contact = () => {
 
       <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
         <StyledButton
+          aria-label="whatsapp"
           label="Reach me on "
           color="#72f172"
           fontColor={colors.primary}
@@ -68,12 +69,17 @@ export const Contact = () => {
         </StyledButton>
       </a>
       <a href={telegramLink} target="_blank" rel="noopener noreferrer">
-        <StyledButton label="Reach me on " color="#2496c0">
+        <StyledButton
+          aria-label="telegram"
+          label="Reach me on "
+          color="#2496c0"
+        >
           <b>Telegram</b>
         </StyledButton>
       </a>
       <a href={emailLink}>
         <StyledButton
+          aria-label="email"
           label="Reach me on "
           color={colors.secondary}
           fontColor={colors.black}

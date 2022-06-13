@@ -128,6 +128,7 @@ export const Taskbar: FC<TaskbarProps> = ({ windowsList, onClickWindow }) => {
         <TaskbarIcon
           id={social.id}
           key={social.id}
+          aria-label={`${social.title} icon`}
           onClick={() =>
             openWindow(
               social.id,

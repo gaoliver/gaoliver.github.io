@@ -93,7 +93,7 @@ export const DesktopIcon: FC<DesktopIconProps> = ({
       onDoubleClick={openWindow}
       onDrag={selectIcon}
       role="button"
-      aria-aria-label={`${label} icon`}
+      aria-label={`${label} icon`}
       draggable
     >
       <ImageStyled src={imageSource} draggable={false} />

@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 const TaskSettingsWrapper = styled.div`
   display: flex;
   position: absolute;
-  z-index: 100;
+  z-index: 10000;
   padding: 10px;
   border-radius: 5px;
   background-color: ${(props) => props.theme.window};
@@ -26,11 +26,9 @@ export const TaskSettings = () => {
     if (store.getState().taskSettings) {
       settingsRef.current.style.transform = 'translateY(0px)';
       settingsRef.current.style.opacity = '1';
-      settingsRef.current.style.zIndex = '100';
     } else {
       settingsRef.current.style.transform = 'translateY(30px)';
       settingsRef.current.style.opacity = '0';
-      settingsRef.current.style.zIndex = '0';
     }
   }
 

@@ -13,7 +13,8 @@ import ProfilePicture from "src/assets/images/professinal_profile_edited.png"
 const AboutMeWrapper = styled.section`
   display: flex;
   height: fit-content;
-  padding: 20px 0;
+  padding-top: 20px;
+  padding-bottom: 80px !important;
   width: 100%;
   flex-direction: column;
   justify-content: center;

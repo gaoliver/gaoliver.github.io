@@ -42,8 +42,12 @@ const WindowWrapper = styled.article<
 
   .window--content {
     width: 100%;
-    height: 93%;
+    height: 100%;
     overflow: auto;
+
+    section {
+      padding-bottom: 5%
+    }
   }
 `;
 

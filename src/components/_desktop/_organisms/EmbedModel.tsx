@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { Icon } from 'src/components/Icon';
-import { colors } from 'src/constants/colors';
 import { fonts, fontWeights } from 'src/constants/fonts';
 import { IconOption } from 'src/constants/icons';
 import styled from 'styled-components';

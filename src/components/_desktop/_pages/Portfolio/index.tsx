@@ -15,7 +15,7 @@ const FolderIconContainer = styled.div`
   display: inline-block;
 `;
 
-export const Portfolio = () => {
+export const Portfolio: React.FC = () => {
   const { PORTFOLIO } = useAppSelector((state) => state);
 
   return (

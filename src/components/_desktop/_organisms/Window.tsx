@@ -195,7 +195,7 @@ export const Window: FC<WindowProps> = ({ children, onClose, title, id }) => {
 
     handleTransition();
 
-    windowRef.current.style.transform = 'scale(1.1)';
+    windowRef.current.style.transform = 'scale(0.9)';
     windowRef.current.style.opacity = '0';
 
     setTimeout(() => {

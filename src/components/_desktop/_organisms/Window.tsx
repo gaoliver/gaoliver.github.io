@@ -21,7 +21,8 @@ type WindowProps = {
 };
 
 const WindowWrapper = styled.article<
-  HTMLAttributes<HTMLDivElement> & { isFullSize?: boolean }>`
+  HTMLAttributes<HTMLDivElement> & { isFullSize?: boolean }
+>`
   position: absolute;
   z-index: ${(props) => handleWindowPosition(props.id || '')};
   width: 800px;
@@ -184,10 +185,13 @@ export const Window: FC<WindowProps> = ({ children, onClose, title, id }) => {
 
     if (!isMinimized) {
       dispatch(changeWindowOnFocus(id));
-      return (windowRef.current.style.transform = `translateY(0px)`);
+      windowRef.current.style.transform = `translateY(0px)`;
+      windowRef.current.style.opacity = '1';
+      return;
     }
 
-    return (windowRef.current.style.transform = `translateY(${window.screen.height}px) scaleX(0.4)`);
+    windowRef.current.style.transform = `translateY(${window.innerHeight}px) scale(0.2)`;
+    windowRef.current.style.opacity = `0`;
   }
 
   function handleCloseWindow() {

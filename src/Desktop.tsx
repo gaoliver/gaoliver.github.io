@@ -41,6 +41,7 @@ const PageWrapper = styled.div`
 const DesktopWrapper = styled.article`
   flex: 1;
   position: relative;
+  overflow: hidden;
 `;
 
 export const Desktop: FC = () => {

@@ -15,8 +15,7 @@ type WindowProps = {
 };
 
 const WindowWrapper = styled.article<
-  HTMLAttributes<HTMLDivElement> & { isFullSize?: boolean }
->`
+  HTMLAttributes<HTMLDivElement> & { isFullSize?: boolean }>`
   position: absolute;
   top: 0;
   z-index: 100;
@@ -41,15 +40,11 @@ const WindowWrapper = styled.article<
 
   @-webkit-keyframes open-app {
     0% {
-      opacity: 0;
       -webkit-opacity: 0;
-      transform: scale(0) translateY(-50%);
       -webkit-transform: scale(0) translateY(-50%);
     }
     100% {
-      opacity: 1;
       -webkit-opacity: 1;
-      transform: scale(1);
       -webkit-transform: scale(1);
     }
   }
@@ -83,16 +78,19 @@ const HeaderWindow = styled.div`
 `;
 
 const HeaderTitle = styled.h3`
-  display: flex;
+  display: -webkit-box;
   flex: 1;
+  height: fit-content;
   align-items: center;
   justify-content: center;
+  align-self: center;
   font-size: 1.5rem;
   opacity: 0.7;
   text-align: center;
   overflow: hidden;
-  white-space: nowrap;
   text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
   user-select: none;
   font-weight: ${fonts.h2.fontWeight};
 `;

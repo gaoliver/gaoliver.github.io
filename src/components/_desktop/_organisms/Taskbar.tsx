@@ -63,7 +63,7 @@ const WindowButton = styled(TaskbarIcon)<
       border: `0.5px solid ${rgba(colors.white, 0.5)}`
     }}
 
-    span {
+  span {
     display: -webkit-box;
     text-overflow: ellipsis;
     -webkit-line-clamp: 1;

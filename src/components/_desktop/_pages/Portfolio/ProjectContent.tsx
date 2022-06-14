@@ -87,14 +87,18 @@ const ProjectContentWrapper = styled.section<
 
 const ImageContainer = styled.section`
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: center;
-  margin: 5px;
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 97%;
-  width: 98%;
+  padding: 5px;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+
+  img {
+    max-height: 100%;
+    max-width: 100%;
+  }
 `;
 
 export const ProjectContent: FC<ProjectContentProps> = ({ project }) => {
@@ -136,7 +140,7 @@ export const ProjectContent: FC<ProjectContentProps> = ({ project }) => {
       </span>
 
       <a href={translator.url} target="_blank" rel="noopener noreferrer">
-        <Button aria-label='open in blank page' label="Go to project page" />
+        <Button aria-label="open in blank page" label="Go to project page" />
       </a>
 
       <div className="project--gallery">
@@ -149,9 +153,12 @@ export const ProjectContent: FC<ProjectContentProps> = ({ project }) => {
               imageSource={baseUrl + image}
               label={`${project.name} - Image ${index + 1}`}
             >
-              <ImageContainer
-                style={{ backgroundImage: `url(${baseUrl + image})` }}
-              />
+              <ImageContainer>
+                <img
+                  src={baseUrl + image}
+                  alt={`${project.company} - image ${index + 1}`}
+                />
+              </ImageContainer>
             </FolderIcon>
           </div>
         ))}

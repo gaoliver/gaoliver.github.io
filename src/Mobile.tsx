@@ -58,12 +58,12 @@ export const Mobile: FC = () => {
   };
 
   function onCloseWindow() {
-    history.back()
+    history.back();
   }
 
   function goToHome() {
     dispatch(closeAllApps());
-    window.location.hash = "/"
+    window.location.hash = '/';
   }
 
   function handleSocialImage(id: SocialOptions) {
@@ -140,6 +140,15 @@ export const Mobile: FC = () => {
             <EmbedModel url="https://www.linkedin.com/embed/feed/update/urn:li:share:6941295016061358081" />
           </ScreenIcon>
         </FolderIconContainer>
+        <FolderIconContainer>
+          <ScreenIcon
+            label="External links"
+            imageSource={WebsiteIcon}
+            id="external_links"
+          >
+            <EmbedModel url="https://bio.link/gaoliver" />
+          </ScreenIcon>
+        </FolderIconContainer>
         {MYINFO?.social.map((social) => (
           <FolderIconContainer key={social.id}>
             <ScreenIcon
@@ -166,10 +175,7 @@ export const Mobile: FC = () => {
         );
       })}
 
-      <Taskbar
-        onBack={() => onCloseWindow()}
-        onHome={goToHome}
-      />
+      <Taskbar onBack={() => onCloseWindow()} onHome={goToHome} />
     </ScreenWrapper>
   );
 };

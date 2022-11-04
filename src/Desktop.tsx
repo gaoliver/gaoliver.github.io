@@ -30,9 +30,7 @@ import { colors } from './constants/colors';
 
 const PageWrapper = styled.div`
   display: flex;
-  overflow: hidden;
   flex-direction: column;
-  flex: 1;
   height: 100vh;
   width: 100%;
   background-color: ${(props) => rgba(props.theme.primary, 0.7)};
@@ -41,6 +39,8 @@ const PageWrapper = styled.div`
 const DesktopWrapper = styled.article`
   flex: 1;
   position: relative;
+  columns: 10;
+  column-fill: auto;
   overflow: hidden;
 `;
 

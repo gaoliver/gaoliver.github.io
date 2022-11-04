@@ -91,13 +91,6 @@ export const Desktop: FC = () => {
           <Contact />
         </DesktopIcon>
         <DesktopIcon
-          label="External links"
-          imageSource={WebsiteIcon}
-          id="external_links"
-        >
-          <EmbedModel url="https://bio.link/gaoliver" />
-        </DesktopIcon>
-        <DesktopIcon
           label="No-sense website I just made for fun"
           imageSource={WebsiteIcon}
           id="infinity_scroller"
@@ -118,6 +111,13 @@ export const Desktop: FC = () => {
           id="post_about_project"
         >
           <EmbedModel url="https://www.linkedin.com/embed/feed/update/urn:li:share:6941295016061358081" />
+        </DesktopIcon>
+        <DesktopIcon
+          label="External links"
+          imageSource={WebsiteIcon}
+          id="external_links"
+        >
+          <EmbedModel url="https://bio.link/gaoliver" />
         </DesktopIcon>
 
         {windowsList.map((window) => {

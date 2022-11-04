@@ -61,7 +61,7 @@ export const Desktop: FC = () => {
     if (windowsList.length) {
       dispatch(changeWindowOnFocus(windowsList[windowsList.length - 1].id));
     } else {
-      dispatch(changeWindowOnFocus(""));
+      dispatch(changeWindowOnFocus(''));
     }
   }
 
@@ -89,6 +89,13 @@ export const Desktop: FC = () => {
         </DesktopIcon>
         <DesktopIcon label="Contact" imageSource={EmailIcon} id="contact">
           <Contact />
+        </DesktopIcon>
+        <DesktopIcon
+          label="External links"
+          imageSource={WebsiteIcon}
+          id="external_links"
+        >
+          <EmbedModel url="https://bio.link/gaoliver" />
         </DesktopIcon>
         <DesktopIcon
           label="No-sense website I just made for fun"

@@ -11,14 +11,10 @@ type WindowButtonProps = {
 const WindowButtonWrapper = styled.button<
   HTMLAttributes<HTMLButtonElement> & {
     buttonColor?: string;
-  }
->`
-  display: flex;
+  }>`
   border: 0 none;
   height: 100%;
   width: 50px;
-  justify-content: center;
-  align-items: center;
   background-color: transparent;
   opacity: 0.7;
   :hover {

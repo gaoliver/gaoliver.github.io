@@ -11,7 +11,7 @@ import {
 } from 'src/redux';
 import { useDispatch } from 'react-redux';
 import { handleWindowPosition } from 'src/utils/handleWindowPosition';
-import { darken, rgba } from 'polished';
+import { backgrounds, darken, rgba } from 'polished';
 import { light } from 'src/styles';
 
 type WindowProps = {
@@ -62,11 +62,15 @@ const HeaderWindow = styled.div`
 `;
 
 const HeaderTitle = styled.h3`
-  flex: 1;
+  display: flex;
+  flex-grow: 5;
+  flex-shrink: 0;
+  flex: 3;
+  justify-content: center;
+  align-items: center;
+  height: auto;
   font-size: 1.1rem;
   opacity: 0.7;
-  text-align: center;
-  padding: 8px 5px 0;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -224,16 +228,35 @@ export const Window: FC<WindowProps> = ({ children, onClose, title, id }) => {
         onMouseDown={handleDragElement}
         onDoubleClick={onResizeWindow}
       >
-        <HeaderTitle>{title}</HeaderTitle>
-        <WindowButton onClick={() => dispatch(minimizeWindow(id))}>
-          <IoRemove size={20} color={theme.text} />
-        </WindowButton>
-        <WindowButton onClick={onResizeWindow}>
-          <IoExpand size={17} color={theme.text} />
-        </WindowButton>
-        <WindowButton onClick={handleCloseWindow} buttonColor={colors.red}>
-          <IoClose size={20} color={theme.text} />
-        </WindowButton>
+        <div
+          style={{
+            flexGrow: 0.5,
+            flex: 0.5
+          }}
+        ></div>
+        <HeaderTitle>
+          {title}
+          {/* Lorem ipsum, dolor sit amet consectetur adipisicing elit. In veniam
+          molestiae omnis voluptate atque */}
+        </HeaderTitle>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            width: '150px',
+            height: 'auto'
+          }}
+        >
+          <WindowButton onClick={() => dispatch(minimizeWindow(id))}>
+            <IoRemove size={20} color={theme.text} />
+          </WindowButton>
+          <WindowButton onClick={onResizeWindow}>
+            <IoExpand size={17} color={theme.text} />
+          </WindowButton>
+          <WindowButton onClick={handleCloseWindow} buttonColor={colors.red}>
+            <IoClose size={20} color={theme.text} />
+          </WindowButton>
+        </div>
       </HeaderWindow>
       <div className="window--content">{children}</div>
     </WindowWrapper>

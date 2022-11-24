@@ -46,7 +46,7 @@ const WindowWrapper = styled.article<
     overflow: auto;
 
     section {
-      padding-bottom: 5%
+      padding-bottom: 5%;
     }
   }
 `;
@@ -99,29 +99,12 @@ export const Window: FC<WindowProps> = ({ children, onClose, title, id }) => {
     }
   }
 
-  function limiter(pos: number, direction: 'X' | 'Y') {
-    const rightLimit =
-      document.body.offsetWidth - (windowRef.current?.offsetWidth || 0);
-    const leftLimit = 0;
+  function limiter(pos: number) {
     const topLimit = 0;
-    const bottomLimit =
-      (document.getElementById('taskbar')?.offsetTop || 0) -
-      (windowRef.current?.offsetHeight || 0);
 
     if (!windowRef.current) return 0;
 
-    if (direction === 'X') {
-      if (windowRef.current.offsetLeft <= leftLimit) {
-        return Math.max(pos, leftLimit);
-      }
-      return Math.min(pos, rightLimit);
-    }
-
-    if (windowRef.current.offsetTop <= topLimit) {
-      return Math.max(pos - position.y2, topLimit);
-    }
-
-    return Math.min(pos - position.y2, bottomLimit);
+    return Math.max(pos - position.y2, topLimit);
   }
 
   function handleDragElement(e: React.DragEvent<HTMLDivElement>) {
@@ -142,8 +125,8 @@ export const Window: FC<WindowProps> = ({ children, onClose, title, id }) => {
 
     setPosition((pos) => ({
       ...pos,
-      x1: limiter(e.clientX - (pos.x2 - position.x1), 'X'),
-      y1: limiter(e.clientY - (pos.y2 - position.y1), 'Y')
+      x1: e.clientX - (pos.x2 - position.x1),
+      y1: limiter(e.clientY - (pos.y2 - position.y1))
     }));
   }
 

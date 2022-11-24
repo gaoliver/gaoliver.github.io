@@ -66,6 +66,16 @@ export const Desktop: FC = () => {
   }
 
   useEffect(() => {
+    document.addEventListener('contextmenu', (ev: MouseEvent) =>
+      ev.preventDefault()
+    );
+
+    document.addEventListener('keydown', (ev: KeyboardEvent) =>
+      ev.preventDefault()
+    );
+  }, []);
+
+  useEffect(() => {
     dispatch(getInfo());
     dispatch(getTools());
     dispatch(getPortfolio());

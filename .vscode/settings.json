@@ -1,5 +1,7 @@
 {
   "conventionalCommits.scopes": [
-    "info"
+    "info",
+    "frontend",
+    "structure"
   ]
 }

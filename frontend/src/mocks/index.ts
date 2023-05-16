@@ -1,7 +1,7 @@
 export const baseUrl =
   'https://raw.githubusercontent.com/gaoliver/gaoliver.github.io/master';
 
-const location = baseUrl + "/src/mocks/"
+const location = baseUrl + "/frontend/src/mocks/"
 
 const version = ""
 

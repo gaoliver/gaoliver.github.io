@@ -2,7 +2,7 @@
         "id": 11,
         "name": "Hogeschool Rotterdam - Web",
         "company": "DEPT®",
-        "mainImage": "/src/assets/images/optimized/portfolio/hr-web/hr-logo.webp",
+        "mainImage": "/frontend/src/assets/images/optimized/portfolio/hr-web/hr-logo.webp",
         "url": "https://mijn.hr.nl",
         "slug": "hr-web",
         "color": "red",
@@ -28,17 +28,17 @@
                 "Jira"
             ],
             "images": [
-                "/src/assets/images/optimized/portfolio/hr-web/hr-1.webp",
-                "/src/assets/images/optimized/portfolio/hr-web/hr-2.webp",
-                "/src/assets/images/optimized/portfolio/hr-web/hr-3.webp",
-                "/src/assets/images/optimized/portfolio/hr-web/hr-4.webp",
-                "/src/assets/images/optimized/portfolio/hr-web/hr-5.webp",
-                "/src/assets/images/optimized/portfolio/hr-web/hr-6.webp",
-                "/src/assets/images/optimized/portfolio/hr-web/hr-7.webp",
-                "/src/assets/images/optimized/portfolio/hr-web/hr-8.webp",
-                "/src/assets/images/optimized/portfolio/hr-web/hr-9.webp",
-                "/src/assets/images/optimized/portfolio/hr-web/hr-10.webp",
-                "/src/assets/images/optimized/portfolio/hr-web/hr-11.webp"
+                "/frontend/src/assets/images/optimized/portfolio/hr-web/hr-1.webp",
+                "/frontend/src/assets/images/optimized/portfolio/hr-web/hr-2.webp",
+                "/frontend/src/assets/images/optimized/portfolio/hr-web/hr-3.webp",
+                "/frontend/src/assets/images/optimized/portfolio/hr-web/hr-4.webp",
+                "/frontend/src/assets/images/optimized/portfolio/hr-web/hr-5.webp",
+                "/frontend/src/assets/images/optimized/portfolio/hr-web/hr-6.webp",
+                "/frontend/src/assets/images/optimized/portfolio/hr-web/hr-7.webp",
+                "/frontend/src/assets/images/optimized/portfolio/hr-web/hr-8.webp",
+                "/frontend/src/assets/images/optimized/portfolio/hr-web/hr-9.webp",
+                "/frontend/src/assets/images/optimized/portfolio/hr-web/hr-10.webp",
+                "/frontend/src/assets/images/optimized/portfolio/hr-web/hr-11.webp"
             ]
         },
         "text": "This is a web portal for the University Students to be in touch with their activities, courses, exams, friends and teachers. Made by DEPT® to Hogeschool Rotterdam."
@@ -47,7 +47,7 @@
         "id": 10,
         "name": "Hogeschool Rotterdam - App",
         "company": "DEPT®",
-        "mainImage": "/src/assets/images/optimized/portfolio/hr-app/hr-logo.webp",
+        "mainImage": "/frontend/src/assets/images/optimized/portfolio/hr-app/hr-logo.webp",
         "url": "https://mijn.hr.nl",
         "slug": "hr-app",
         "color": "red",
@@ -74,14 +74,14 @@
                 "Jira"
             ],
             "images": [
-                "/src/assets/images/optimized/portfolio/hr-app/hr-1.webp",
-                "/src/assets/images/optimized/portfolio/hr-app/hr-2.webp",
-                "/src/assets/images/optimized/portfolio/hr-app/hr-3.webp",
-                "/src/assets/images/optimized/portfolio/hr-app/hr-4.webp",
-                "/src/assets/images/optimized/portfolio/hr-app/hr-5.webp",
-                "/src/assets/images/optimized/portfolio/hr-app/hr-6.webp",
-                "/src/assets/images/optimized/portfolio/hr-app/hr-7.webp",
-                "/src/assets/images/optimized/portfolio/hr-app/hr-8.webp"
+                "/frontend/src/assets/images/optimized/portfolio/hr-app/hr-1.webp",
+                "/frontend/src/assets/images/optimized/portfolio/hr-app/hr-2.webp",
+                "/frontend/src/assets/images/optimized/portfolio/hr-app/hr-3.webp",
+                "/frontend/src/assets/images/optimized/portfolio/hr-app/hr-4.webp",
+                "/frontend/src/assets/images/optimized/portfolio/hr-app/hr-5.webp",
+                "/frontend/src/assets/images/optimized/portfolio/hr-app/hr-6.webp",
+                "/frontend/src/assets/images/optimized/portfolio/hr-app/hr-7.webp",
+                "/frontend/src/assets/images/optimized/portfolio/hr-app/hr-8.webp"
             ]
         },
         "text": "A mobile version of Mijn HR, which is a portal for the University Students to be in touch with their activities, courses, exams, friends and teachers. Made by DEPT® to Hogeschool Rotterdam."
@@ -90,7 +90,7 @@
         "id": 9,
         "name": "SOUB!",
         "company": "Americanas S.A.",
-        "mainImage": "/src/assets/images/optimized/portfolio/soub/soub-logo.webp",
+        "mainImage": "/frontend/src/assets/images/optimized/portfolio/soub/soub-logo.webp",
         "url": "https://soubarato.com.br",
         "slug": "soub-app",
         "color": "purple",
@@ -119,10 +119,10 @@
                 "Jira"
             ],
             "images": [
-                "/src/assets/images/optimized/portfolio/soub/soub-1.webp",
-                "/src/assets/images/optimized/portfolio/soub/soub-2.webp",
-                "/src/assets/images/optimized/portfolio/soub/soub-3.webp",
-                "/src/assets/images/optimized/portfolio/soub/soub-4.webp"
+                "/frontend/src/assets/images/optimized/portfolio/soub/soub-1.webp",
+                "/frontend/src/assets/images/optimized/portfolio/soub/soub-2.webp",
+                "/frontend/src/assets/images/optimized/portfolio/soub/soub-3.webp",
+                "/frontend/src/assets/images/optimized/portfolio/soub/soub-4.webp"
             ]
         },
         "text": "New Soub! app development in React Native for international e-commerce."
@@ -131,7 +131,7 @@
         "id": 8,
         "name": "Tennis Pro",
         "company": "Loomer Tech",
-        "mainImage": "/src/assets/images/optimized/portfolio/tennispro/tennispro-logo.webp",
+        "mainImage": "/frontend/src/assets/images/optimized/portfolio/tennispro/tennispro-logo.webp",
         "url": "https://tennisproapp.com/",
         "slug": "tennis-pro",
         "color": "orange",
@@ -160,13 +160,13 @@
                 "Microsoft Azure for versioning"
             ],
             "images": [
-                "/src/assets/images/optimized/portfolio/tennispro/tennispro-1.webp",
-                "/src/assets/images/optimized/portfolio/tennispro/tennispro-2.webp",
-                "/src/assets/images/optimized/portfolio/tennispro/tennispro-3.webp",
-                "/src/assets/images/optimized/portfolio/tennispro/tennispro-4.webp",
-                "/src/assets/images/optimized/portfolio/tennispro/tennispro-5.webp",
-                "/src/assets/images/optimized/portfolio/tennispro/tennispro-6.webp",
-                "/src/assets/images/optimized/portfolio/tennispro/tennispro-7.webp"
+                "/frontend/src/assets/images/optimized/portfolio/tennispro/tennispro-1.webp",
+                "/frontend/src/assets/images/optimized/portfolio/tennispro/tennispro-2.webp",
+                "/frontend/src/assets/images/optimized/portfolio/tennispro/tennispro-3.webp",
+                "/frontend/src/assets/images/optimized/portfolio/tennispro/tennispro-4.webp",
+                "/frontend/src/assets/images/optimized/portfolio/tennispro/tennispro-5.webp",
+                "/frontend/src/assets/images/optimized/portfolio/tennispro/tennispro-6.webp",
+                "/frontend/src/assets/images/optimized/portfolio/tennispro/tennispro-7.webp"
             ]
         },
         "text": "Mobile app for tennis players around the world, to participate on competitions, ranks, buy materials and hire a coach. The team had to create a connection between all the players and clubs, and that made this the most complex project."
@@ -175,7 +175,7 @@
         "id": 7,
         "name": "LOB Imóveis",
         "company": "Loomer Tech",
-        "mainImage": "/src/assets/images/optimized/portfolio/lobimoveis/lobimoveis-logo.webp",
+        "mainImage": "/frontend/src/assets/images/optimized/portfolio/lobimoveis/lobimoveis-logo.webp",
         "url": "https://lobimoveis.com/",
         "slug": "lob-imoveis",
         "color": "blue",
@@ -203,9 +203,9 @@
                 "Microsoft Azure for versioning"
             ],
             "images": [
-                "/src/assets/images/optimized/portfolio/lobimoveis/lobimoveis-1.webp",
-                "/src/assets/images/optimized/portfolio/lobimoveis/lobimoveis-2.webp",
-                "/src/assets/images/optimized/portfolio/lobimoveis/lobimoveis-3.webp"
+                "/frontend/src/assets/images/optimized/portfolio/lobimoveis/lobimoveis-1.webp",
+                "/frontend/src/assets/images/optimized/portfolio/lobimoveis/lobimoveis-2.webp",
+                "/frontend/src/assets/images/optimized/portfolio/lobimoveis/lobimoveis-3.webp"
             ]
         },
         "text": "Mobile app for people to buy, sell and rent properties. The project was made using React Native framework, Node.js and Postgres database. As front-end, I worked on it by using much knowledge of JavaScript, React Native, Node.js, Redux and Axios for API request."
@@ -214,7 +214,7 @@
         "id": 6,
         "name": "Ferti-Peixe",
         "company": "Loomer Tech",
-        "mainImage": "/src/assets/images/optimized/portfolio/ferti/fertipeixe-logo.webp",
+        "mainImage": "/frontend/src/assets/images/optimized/portfolio/ferti/fertipeixe-logo.webp",
         "url": "https://fertipeixeapp.com.br/",
         "slug": "ferti-peixe",
         "color": "green",
@@ -242,11 +242,11 @@
                 "Microsoft Azure for versioning"
             ],
             "images": [
-                "/src/assets/images/optimized/portfolio/ferti/fertipeixe-1.webp",
-                "/src/assets/images/optimized/portfolio/ferti/fertipeixe-2.webp",
-                "/src/assets/images/optimized/portfolio/ferti/fertipeixe-3.webp",
-                "/src/assets/images/optimized/portfolio/ferti/fertipeixe-4.webp",
-                "/src/assets/images/optimized/portfolio/ferti/fertipeixe-5.webp"
+                "/frontend/src/assets/images/optimized/portfolio/ferti/fertipeixe-1.webp",
+                "/frontend/src/assets/images/optimized/portfolio/ferti/fertipeixe-2.webp",
+                "/frontend/src/assets/images/optimized/portfolio/ferti/fertipeixe-3.webp",
+                "/frontend/src/assets/images/optimized/portfolio/ferti/fertipeixe-4.webp",
+                "/frontend/src/assets/images/optimized/portfolio/ferti/fertipeixe-5.webp"
             ]
         },
         "text": "This Project was made for an external company to manage the representatives and show their fertilizer products for farm owners and plantation companies, as much as help them to know how to use it, calculate the values of use and results. We made two mobile apps, one for the representatives and other for the clients, and a web system for the Company to manage everything."
@@ -255,7 +255,7 @@
         "id": 5,
         "name": "Gonçalves e Filhos Importações",
         "company": "Inventa Produtos Digitais",
-        "mainImage": "/src/assets/images/optimized/portfolio/gf/GF-logo.webp",
+        "mainImage": "/frontend/src/assets/images/optimized/portfolio/gf/GF-logo.webp",
         "url": "https://www.goncalvesefilhos.com.br/",
         "slug": "goncalvez-e-filhos-importacoes",
         "color": "maroon",
@@ -280,13 +280,13 @@
                 "Microsoft Azure for versionin"
             ],
             "images": [
-                "/src/assets/images/optimized/portfolio/gf/GF-1.webp",
-                "/src/assets/images/optimized/portfolio/gf/GF-2.webp",
-                "/src/assets/images/optimized/portfolio/gf/GF-3.webp",
-                "/src/assets/images/optimized/portfolio/gf/GF-4.webp",
-                "/src/assets/images/optimized/portfolio/gf/GF-5.webp",
-                "/src/assets/images/optimized/portfolio/gf/GF-6.webp",
-                "/src/assets/images/optimized/portfolio/gf/GF-7.webp"
+                "/frontend/src/assets/images/optimized/portfolio/gf/GF-1.webp",
+                "/frontend/src/assets/images/optimized/portfolio/gf/GF-2.webp",
+                "/frontend/src/assets/images/optimized/portfolio/gf/GF-3.webp",
+                "/frontend/src/assets/images/optimized/portfolio/gf/GF-4.webp",
+                "/frontend/src/assets/images/optimized/portfolio/gf/GF-5.webp",
+                "/frontend/src/assets/images/optimized/portfolio/gf/GF-6.webp",
+                "/frontend/src/assets/images/optimized/portfolio/gf/GF-7.webp"
             ]
         },
         "text": "Development of a mobile app for an importation company. In the same app, users can find their importation processes, download documents and see invoices. The admin users can manage all the processes, upload documents and invoices."
@@ -295,7 +295,7 @@
         "id": 4,
         "name": "AMPERJ 2021 Layout",
         "company": "Inventa Produtos Digitais",
-        "mainImage": "/src/assets/images/optimized/portfolio/amperj/amperj-logo.webp",
+        "mainImage": "/frontend/src/assets/images/optimized/portfolio/amperj/amperj-logo.webp",
         "url": "https://www.amperj.org/",
         "slug": "amperj-2021-layout",
         "color": "black",
@@ -322,13 +322,13 @@
                 "Bitbucket for versioning"
             ],
             "images": [
-                "/src/assets/images/optimized/portfolio/amperj/amperj-1.webp",
-                "/src/assets/images/optimized/portfolio/amperj/amperj-2.webp",
-                "/src/assets/images/optimized/portfolio/amperj/amperj-3.webp",
-                "/src/assets/images/optimized/portfolio/amperj/amperj-4.webp",
-                "/src/assets/images/optimized/portfolio/amperj/amperj-5.webp",
-                "/src/assets/images/optimized/portfolio/amperj/amperj-6.webp",
-                "/src/assets/images/optimized/portfolio/amperj/amperj-7.webp"
+                "/frontend/src/assets/images/optimized/portfolio/amperj/amperj-1.webp",
+                "/frontend/src/assets/images/optimized/portfolio/amperj/amperj-2.webp",
+                "/frontend/src/assets/images/optimized/portfolio/amperj/amperj-3.webp",
+                "/frontend/src/assets/images/optimized/portfolio/amperj/amperj-4.webp",
+                "/frontend/src/assets/images/optimized/portfolio/amperj/amperj-5.webp",
+                "/frontend/src/assets/images/optimized/portfolio/amperj/amperj-6.webp",
+                "/frontend/src/assets/images/optimized/portfolio/amperj/amperj-7.webp"
             ]
         },
         "text": "The Rio de Janeiro Public Ministry Association needed a new layout for their website and intranet system. I was the lead front-end developer of all development projects for them, so I created features for their interface, as I’ve already created a new layout from scratch by the end on 2020."
@@ -337,7 +337,7 @@
         "id": 3,
         "name": "FEMPERJ App",
         "company": "Inventa Produtos Digitais",
-        "mainImage": "/src/assets/images/optimized/portfolio/femperj/femperj-logo.webp",
+        "mainImage": "/frontend/src/assets/images/optimized/portfolio/femperj/femperj-logo.webp",
         "url": "https://appadvice.com/app/femperj/1450208563",
         "slug": "femperj-app",
         "color": "red",
@@ -364,10 +364,10 @@
                 "BitBucket"
             ],
             "images": [
-                "/src/assets/images/optimized/portfolio/femperj/femperj-1.webp",
-                "/src/assets/images/optimized/portfolio/femperj/femperj-2.webp",
-                "/src/assets/images/optimized/portfolio/femperj/femperj-3.webp",
-                "/src/assets/images/optimized/portfolio/femperj/femperj-4.webp"
+                "/frontend/src/assets/images/optimized/portfolio/femperj/femperj-1.webp",
+                "/frontend/src/assets/images/optimized/portfolio/femperj/femperj-2.webp",
+                "/frontend/src/assets/images/optimized/portfolio/femperj/femperj-3.webp",
+                "/frontend/src/assets/images/optimized/portfolio/femperj/femperj-4.webp"
             ]
         },
         "text": "Development from scratch of Rio de Janeiro Public Ministry Foundation, a Superior Degree Faculty, front-end mobile app. This app was made for the students to follow the course, watch classes, get the material and files for studying and keep up with their grades and course performance."
@@ -376,7 +376,7 @@
         "id": 2,
         "name": "NerdLine website",
         "company": "NerdLine Youtube Channel",
-        "mainImage": "/src/assets/images/optimized/portfolio/nerdline/nerdline-logo.webp",
+        "mainImage": "/frontend/src/assets/images/optimized/portfolio/nerdline/nerdline-logo.webp",
         "url": "https://nerdline.com.br",
         "slug": "nerdline-website",
         "color": "black",
@@ -402,10 +402,10 @@
                 "LocaWeb"
             ],
             "images": [
-                "/src/assets/images/optimized/portfolio/nerdline/nerdline-1.webp",
-                "/src/assets/images/optimized/portfolio/nerdline/nerdline-2.webp",
-                "/src/assets/images/optimized/portfolio/nerdline/nerdline-3.webp",
-                "/src/assets/images/optimized/portfolio/nerdline/nerdline-4.webp"
+                "/frontend/src/assets/images/optimized/portfolio/nerdline/nerdline-1.webp",
+                "/frontend/src/assets/images/optimized/portfolio/nerdline/nerdline-2.webp",
+                "/frontend/src/assets/images/optimized/portfolio/nerdline/nerdline-3.webp",
+                "/frontend/src/assets/images/optimized/portfolio/nerdline/nerdline-4.webp"
             ]
         },
         "text": "My first project of a newspaper website about comic books for NerdLine YouTube channel. Inside it, people can post and read articles about science, technology, cinema and comic books. They can also watch video from the YouTube channel through the website."
@@ -414,7 +414,7 @@
         "id": 1,
         "name": "Milk & Fruit website",
         "company": "Leites e Frutas Sorvetes e Produtos Alimentícios LTDA",
-        "mainImage": "/src/assets/images/optimized/portfolio/milk/milkefruit-logo.webp",
+        "mainImage": "/frontend/src/assets/images/optimized/portfolio/milk/milkefruit-logo.webp",
         "url": "https://milkefruit.com.br",
         "slug": "milk-e-fruit-website",
         "color": "green",
@@ -440,14 +440,14 @@
                 "LocaWeb"
             ],
             "images": [
-                "/src/assets/images/optimized/portfolio/milk/milkefruit-1.webp",
-                "/src/assets/images/optimized/portfolio/milk/milkefruit-2.webp",
-                "/src/assets/images/optimized/portfolio/milk/milkefruit-3.webp",
-                "/src/assets/images/optimized/portfolio/milk/milkefruit-4.webp",
-                "/src/assets/images/optimized/portfolio/milk/milkefruit-5.webp",
-                "/src/assets/images/optimized/portfolio/milk/milkefruit-6.webp",
-                "/src/assets/images/optimized/portfolio/milk/milkefruit-7.webp",
-                "/src/assets/images/optimized/portfolio/milk/milkefruit-8.webp"
+                "/frontend/src/assets/images/optimized/portfolio/milk/milkefruit-1.webp",
+                "/frontend/src/assets/images/optimized/portfolio/milk/milkefruit-2.webp",
+                "/frontend/src/assets/images/optimized/portfolio/milk/milkefruit-3.webp",
+                "/frontend/src/assets/images/optimized/portfolio/milk/milkefruit-4.webp",
+                "/frontend/src/assets/images/optimized/portfolio/milk/milkefruit-5.webp",
+                "/frontend/src/assets/images/optimized/portfolio/milk/milkefruit-6.webp",
+                "/frontend/src/assets/images/optimized/portfolio/milk/milkefruit-7.webp",
+                "/frontend/src/assets/images/optimized/portfolio/milk/milkefruit-8.webp"
             ]
         },
         "text": "Work made from scratch. This website is for the relation between the company and the clients, where clients can see everything about the business and get the food catalog, contact and news."

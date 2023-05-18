@@ -86,8 +86,6 @@ const server = http.createServer(async (req, res) => {
           social: socialNetworks
         }));
 
-      // const personalDetails = query.results
-
       res.setHeader('Content-Type', 'application/json');
       res.writeHead(200);
       res.end(JSON.stringify(personalDetails));

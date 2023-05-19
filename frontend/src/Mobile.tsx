@@ -88,6 +88,10 @@ export const Mobile: FC = () => {
     dispatch(getInfo());
     dispatch(getPortfolio());
     dispatch(getTools());
+
+    if (window.location.hash) {
+      window.location.hash = '';
+    }
   }, []);
 
   useEffect(() => {

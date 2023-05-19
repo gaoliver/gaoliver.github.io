@@ -96,7 +96,7 @@ const AboutMeWrapper = styled.section`
 export const AboutMe: React.FC = () => {
   const { TOOLS, MYINFO } = useSelector((state: AppState) => state);
   const translate = {
-    age: MYINFO?.age ? MYINFO.age : ''
+    birthdate: MYINFO?.birthdate ? MYINFO.birthdate : ''
   };
 
   return (
@@ -106,7 +106,7 @@ export const AboutMe: React.FC = () => {
         <h1>About me</h1>
         <p>
           My name is {`${MYINFO?.name} ${MYINFO?.surname}`} 👨🏽‍💻.{' '}
-          {`(${getAge(translate.age)} y-o)`}
+          {`(${getAge(translate.birthdate)} y-o)`}
         </p>
         <p>
           I am Frontend and Mobile Developer - with some few experiences as
@@ -161,7 +161,7 @@ export const AboutMe: React.FC = () => {
         <p>You can download my resumé (C.V.) in the end of the page.</p>
 
         <div className="profile">
-          <h2>{MYINFO?.position}</h2>
+          <h2>{MYINFO?.role}</h2>
           <p>{TOOLS?.description}</p>
           <h3>Languages and Frameworks</h3>
           <p>

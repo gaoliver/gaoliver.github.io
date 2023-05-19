@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
+import { PersonalDetails } from 'src/@types/Api';
 import { colors } from 'src/constants/colors';
-import { MyInfoModel } from 'src/redux';
 import styled from 'styled-components';
 
 type HomeInfoProps = {
-  info: MyInfoModel;
+  info: PersonalDetails;
 };
 
 const HomeInfoWrapper = styled.div`
@@ -29,12 +29,12 @@ const HomeInfoWrapper = styled.div`
 `;
 
 export const HomeInfo: FC<HomeInfoProps> = ({
-  info: { name, surname, position, company }
+  info: { name, surname, role, company }
 }) => {
   return (
     <HomeInfoWrapper>
       <h1>{`${name} ${surname}`}</h1>
-      <h2>{position}</h2>
+      <h2>{role}</h2>
       <h3>{`@ ${company}`}</h3>
     </HomeInfoWrapper>
   );

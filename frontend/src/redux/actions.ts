@@ -2,27 +2,24 @@
 import axios from 'axios';
 import { myInfoUrl, portfolioUrl, toolsUrl } from 'src/mocks/index';
 import { Dispatch } from 'react';
-import {
-  MyInfoModel,
-  PortfolioModel,
-  ToolsModel,
-  WindowListProps
-} from './reducer';
+import { PortfolioModel, ToolsModel, WindowListProps } from './reducer';
 import { store } from './store';
 import { Theme } from 'src/styles/styled';
 import { dark, light } from 'src/styles';
+import { PersonalDetails } from 'src/@types/Api';
 
 export enum ActionTypes {
-  ADD_NEW_WINDOW = "ADD_NEW_WINDOW",
-  WINDOW_ON_FOCUS = "WINDOW_ON_FOCUS",
-  MINIMIZE_WINDOW = "MINIMIZE_WINDOW",
-  CLOSE_WINDOW = "CLOSE_WINDOW",
-  CLOSE_ALL_APP = "CLOSE_ALL_APP",
-  TOGGLE_TASK_SETTINGS = "TOGGLE_TASK_SETTINGS",
-  TOGGLE_THEME = "TOGGLE_THEME",
-  ON_SET_TOOLS = "ON_SET_TOOLS",
-  ON_SET_INFO = "ON_SET_INFO",
-  ON_SET_PORTFOLIO = "ON_SET_PORTFOLIO"
+  ADD_NEW_WINDOW = 'ADD_NEW_WINDOW',
+  WINDOW_ON_FOCUS = 'WINDOW_ON_FOCUS',
+  MINIMIZE_WINDOW = 'MINIMIZE_WINDOW',
+  CLOSE_WINDOW = 'CLOSE_WINDOW',
+  CLOSE_ALL_APP = 'CLOSE_ALL_APP',
+  TOGGLE_TASK_SETTINGS = 'TOGGLE_TASK_SETTINGS',
+  TOGGLE_THEME = 'TOGGLE_THEME',
+  ON_SET_TOOLS = 'ON_SET_TOOLS',
+  ON_SET_INFO = 'ON_SET_INFO',
+  ON_SET_PORTFOLIO = 'ON_SET_PORTFOLIO',
+  TOGGLE_LOADING = 'TOGGLE_LOADING'
 }
 
 export interface AddNewWindow {
@@ -57,6 +54,11 @@ export interface ToggleTheme {
   payload: Theme;
 }
 
+export interface ToggleLoading {
+  readonly type: ActionTypes.TOGGLE_LOADING;
+  payload: boolean;
+}
+
 export interface SetTools {
   readonly type: ActionTypes.ON_SET_TOOLS;
   payload: ToolsModel;
@@ -64,7 +66,7 @@ export interface SetTools {
 
 export interface SetInfo {
   readonly type: ActionTypes.ON_SET_INFO;
-  payload: MyInfoModel;
+  payload: PersonalDetails;
 }
 
 export interface SetPortfolio {
@@ -82,7 +84,8 @@ export type AppActions =
   | ToggleTaskSettings
   | ToggleTheme
   | WindowOnFocus
-  | CloseAllApps;
+  | CloseAllApps
+  | ToggleLoading;
 
 export const toggleTaskSettings = () => {
   return async (dispatch: Dispatch<AppActions>) => {
@@ -106,7 +109,7 @@ export const addNewWindow = (
   title: string,
   content: JSX.Element
 ) => {
-  history.pushState(id, "", `#${id}`)
+  history.pushState(id, '', `#${id}`);
   return async (dispatch: Dispatch<AppActions>) => {
     dispatch({
       type: ActionTypes.ADD_NEW_WINDOW,
@@ -165,6 +168,15 @@ export const closeWindow = (id: string) => {
   };
 };
 
+export const toggleLoading = (value: boolean) => {
+  return async (dispatch: Dispatch<AppActions>) => {
+    dispatch({
+      type: ActionTypes.TOGGLE_LOADING,
+      payload: value
+    });
+  };
+};
+
 export const closeAllApps = () => {
   return async (dispatch: Dispatch<AppActions>) => {
     dispatch({
@@ -190,7 +202,7 @@ export const getTools = () => {
 };
 
 export const getInfo = () => {
-  let data: MyInfoModel;
+  let data: PersonalDetails;
   return async (dispatch: Dispatch<AppActions>) => {
     await axios
       .get(myInfoUrl)

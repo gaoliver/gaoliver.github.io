@@ -70,6 +70,10 @@ export const Desktop: FC = () => {
     // document.addEventListener('contextmenu', (ev: MouseEvent) =>
     //   ev.preventDefault()
     // );
+
+    if (window.location.hash) {
+      window.location.hash = '';
+    }
   }, []);
 
   useEffect(() => {

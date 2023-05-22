@@ -201,23 +201,19 @@ export const getTools = () => {
   let data: ToolsModel;
   return async (dispatch: Dispatch<AppActions>) => {
     await client
-      .getEntry('3QDAFEZ45yGvCmOxf0wDsC')
+      .getEntry(process.env.REACT_APP_CONTENTFUL_GET_TOOL || '')
       .then((response) => {
         const res: ToolsRetrieve = response.fields as unknown as ToolsRetrieve;
+        const languages = res.languages.reduce(
+          (prev, curr) => ({
+            ...prev,
+            [curr.fields.category]: curr.fields.list
+          }),
+          {}
+        );
         data = {
           ...res,
-          languages: {
-            pro:
-              res.languages.find((lan) => lan.fields.category === 'pro')?.fields
-                .list || [],
-            intermediate:
-              res.languages.find(
-                (lan) => lan.fields.category === 'intermediate'
-              )?.fields.list || [],
-            beginner:
-              res.languages.find((lan) => lan.fields.category === 'beginner')
-                ?.fields.list || []
-          }
+          languages
         } as unknown as ToolsModel;
       })
       .catch((err) => console.log('Erro:', err));
@@ -232,7 +228,7 @@ export const getInfo = () => {
   let data: PersonalDetails;
   return async (dispatch: Dispatch<AppActions>) => {
     await client
-      .getEntry('2zzOqAKD22WxCDSgPrSNOk')
+      .getEntry(process.env.REACT_APP_CONTENTFUL_GET_INFO || '')
       .then((response) => {
         const res: PersonalDetailsRetrieve =
           response.fields as unknown as PersonalDetailsRetrieve;

@@ -7,7 +7,6 @@ import { store } from './store';
 import { Theme } from 'src/styles/styled';
 import { dark, light } from 'src/styles';
 import {
-  Contact,
   PersonalDetails,
   PersonalDetailsRetrieve,
   ToolsRetrieve

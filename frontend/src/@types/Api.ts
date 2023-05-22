@@ -22,4 +22,6 @@ export interface PersonalDetails {
   country: string;
   contact: Array<Contact>;
   social: Array<SocialNetwork>;
+  // eslint-disable-next-line camelcase
+  about_me: string;
 }

@@ -6,7 +6,8 @@ import { PortfolioModel, ToolsModel, WindowListProps } from './reducer';
 import { store } from './store';
 import { Theme } from 'src/styles/styled';
 import { dark, light } from 'src/styles';
-import { PersonalDetails } from 'src/@types/Api';
+import { Contact, PersonalDetails } from 'src/@types/Api';
+import { createClient } from 'contentful';
 
 export enum ActionTypes {
   ADD_NEW_WINDOW = 'ADD_NEW_WINDOW',
@@ -201,13 +202,42 @@ export const getTools = () => {
   };
 };
 
+// export const getInfo = () => {
+//   let data: PersonalDetails;
+//   return async (dispatch: Dispatch<AppActions>) => {
+//     await axios
+//       .get(myInfoUrl)
+//       .then((res) => {
+//         data = res.data;
+//         console.log(res.data)
+//       })
+//       .catch((err) => console.log('Erro:', err));
+//     dispatch({
+//       type: ActionTypes.ON_SET_INFO,
+//       payload: data
+//     });
+//   };
+// };
+
+const client = createClient({
+  space: '60s0mvwng6j9',
+  environment: 'master', // defaults to 'master' if not set
+  accessToken: '868z5C7AQSA-sDx3YkKZjUjPCkXLJdwCG6WBh7v27Cg'
+});
+
 export const getInfo = () => {
   let data: PersonalDetails;
   return async (dispatch: Dispatch<AppActions>) => {
-    await axios
-      .get(myInfoUrl)
+    await client
+      .getEntry('2zzOqAKD22WxCDSgPrSNOk')
       .then((res) => {
-        data = res.data;
+        data = {
+          ...(res.fields as unknown as PersonalDetails),
+          contact: [
+            (res.fields.contact as typeof res)?.fields
+          ] as unknown as Contact[]
+        };
+        console.log(res.fields);
       })
       .catch((err) => console.log('Erro:', err));
     dispatch({

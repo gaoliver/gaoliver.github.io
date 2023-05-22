@@ -79,7 +79,7 @@ export const Desktop: FC = () => {
   useEffect(() => {
     dispatch(toggleLoading(true));
     dispatch(getInfo());
-    // dispatch(getTools());x
+    dispatch(getTools());
     // dispatch(getPortfolio());
   }, []);
 

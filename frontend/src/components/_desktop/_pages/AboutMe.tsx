@@ -104,7 +104,7 @@ export const AboutMe: React.FC = () => {
       <img src={ProfilePicture} alt="Profile picture" />
       <div className="col intro">
         <h1>About me</h1>
-        <p className='first-paragraph__highlight'>
+        <p className="first-paragraph__highlight">
           My name is {`${MYINFO?.name} ${MYINFO?.surname}`} 👨🏽‍💻.{' '}
           {`(${getAge(translate.birthdate)} y-o)`}
         </p>
@@ -116,7 +116,6 @@ export const AboutMe: React.FC = () => {
 
         <div className="profile">
           <h2>{MYINFO?.role}</h2>
-          <p>{TOOLS?.description}</p>
           <h3>Languages and Frameworks</h3>
           <p>
             <b>PRO level:</b>

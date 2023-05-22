@@ -1,12 +1,17 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import axios from 'axios';
-import { myInfoUrl, portfolioUrl, toolsUrl } from 'src/mocks/index';
+import { portfolioUrl } from 'src/mocks/index';
 import { Dispatch } from 'react';
 import { PortfolioModel, ToolsModel, WindowListProps } from './reducer';
 import { store } from './store';
 import { Theme } from 'src/styles/styled';
 import { dark, light } from 'src/styles';
-import { Contact, PersonalDetails } from 'src/@types/Api';
+import {
+  Contact,
+  PersonalDetails,
+  PersonalDetailsRetrieve,
+  ToolsRetrieve
+} from 'src/@types/Api';
 import { createClient } from 'contentful';
 
 export enum ActionTypes {
@@ -186,13 +191,34 @@ export const closeAllApps = () => {
   };
 };
 
+const client = createClient({
+  space: process.env.REACT_APP_CONTENTFUL_SPACE || '',
+  environment: process.env.REACT_APP_CONTENTFUL_ENV || '',
+  accessToken: process.env.REACT_APP_CONTENTFUL_TOKEN || ''
+});
+
 export const getTools = () => {
   let data: ToolsModel;
   return async (dispatch: Dispatch<AppActions>) => {
-    await axios
-      .get(toolsUrl)
-      .then((res) => {
-        data = res.data;
+    await client
+      .getEntry('3QDAFEZ45yGvCmOxf0wDsC')
+      .then((response) => {
+        const res: ToolsRetrieve = response.fields as unknown as ToolsRetrieve;
+        data = {
+          ...res,
+          languages: {
+            pro:
+              res.languages.find((lan) => lan.fields.category === 'pro')?.fields
+                .list || [],
+            intermediate:
+              res.languages.find(
+                (lan) => lan.fields.category === 'intermediate'
+              )?.fields.list || [],
+            beginner:
+              res.languages.find((lan) => lan.fields.category === 'beginner')
+                ?.fields.list || []
+          }
+        } as unknown as ToolsModel;
       })
       .catch((err) => console.log('Erro:', err));
     dispatch({
@@ -202,42 +228,18 @@ export const getTools = () => {
   };
 };
 
-// export const getInfo = () => {
-//   let data: PersonalDetails;
-//   return async (dispatch: Dispatch<AppActions>) => {
-//     await axios
-//       .get(myInfoUrl)
-//       .then((res) => {
-//         data = res.data;
-//         console.log(res.data)
-//       })
-//       .catch((err) => console.log('Erro:', err));
-//     dispatch({
-//       type: ActionTypes.ON_SET_INFO,
-//       payload: data
-//     });
-//   };
-// };
-
-const client = createClient({
-  space: '60s0mvwng6j9',
-  environment: 'master', // defaults to 'master' if not set
-  accessToken: '868z5C7AQSA-sDx3YkKZjUjPCkXLJdwCG6WBh7v27Cg'
-});
-
 export const getInfo = () => {
   let data: PersonalDetails;
   return async (dispatch: Dispatch<AppActions>) => {
     await client
       .getEntry('2zzOqAKD22WxCDSgPrSNOk')
-      .then((res) => {
+      .then((response) => {
+        const res: PersonalDetailsRetrieve =
+          response.fields as unknown as PersonalDetailsRetrieve;
         data = {
-          ...(res.fields as unknown as PersonalDetails),
-          contact: [
-            (res.fields.contact as typeof res)?.fields
-          ] as unknown as Contact[]
-        };
-        console.log(res.fields);
+          ...res,
+          contact: [res.contact.fields]
+        } as unknown as PersonalDetails;
       })
       .catch((err) => console.log('Erro:', err));
     dispatch({

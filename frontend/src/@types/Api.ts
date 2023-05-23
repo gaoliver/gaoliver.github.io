@@ -12,6 +12,7 @@ export interface Contact {
 }
 
 export interface PersonalDetails {
+  image: string;
   name: string;
   surname: string;
   birthdate: string;
@@ -49,6 +50,13 @@ export interface GetToolsApi {
 }
 
 export interface GetPersonalDetailsApi {
+  image: {
+    fields: {
+      file: {
+        url: string;
+      };
+    };
+  };
   name: string;
   surname: string;
   birthdate: string;

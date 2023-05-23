@@ -236,9 +236,11 @@ export const getInfo = () => {
         }));
         data = {
           ...res,
+          image: res.image.fields.file.url,
           contact: [res.contact.fields],
           social
         } as unknown as PersonalDetails;
+        console.log(data);
       })
       .catch((err) => console.log('Erro:', err));
     dispatch({
@@ -270,8 +272,8 @@ export const getPortfolio = () => {
       const jobInfo:
         | GetPortfolioApi['portfolio'][0]['fields']['jobInfo']['fields']
         | undefined = jobsInfoList.find(
-          (i) => i.sys.id === job.fields.jobInfo.sys.id
-        )?.fields;
+        (i) => i.sys.id === job.fields.jobInfo.sys.id
+      )?.fields;
 
       return {
         ...job.fields,

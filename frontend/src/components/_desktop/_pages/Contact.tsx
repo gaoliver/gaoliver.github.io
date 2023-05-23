@@ -46,9 +46,13 @@ const StyledButton = styled(Button)<typeof Button & { fontColor?: string }>`
 export const Contact = () => {
   const { MYINFO } = useAppSelector((state) => state);
 
-  const whatsappLink = `https://wa.me/+${MYINFO?.contact.telephone}?text=Hi%2C%20Gabriel!%20I'd%20like%20to%20talk%20to%20you`;
+  const personalContact = MYINFO?.contact.find(
+    (contact) => contact.name === 'personal_contact'
+  );
+
+  const whatsappLink = `https://wa.me/+${personalContact?.telephone}?text=Hi%2C%20Gabriel!%20I'd%20like%20to%20talk%20to%20you`;
   const telegramLink = `https://telegram.me/gaoliver`;
-  const emailLink = `mailto:${MYINFO?.contact.email}`;
+  const emailLink = `mailto:${personalContact?.email}`;
 
   return (
     <ContactWrapper id="contact-page">

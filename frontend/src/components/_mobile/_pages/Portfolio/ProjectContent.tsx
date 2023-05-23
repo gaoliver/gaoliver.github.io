@@ -1,10 +1,10 @@
 import { rgba } from 'polished';
 import React, { FC, HTMLAttributes } from 'react';
 import { Button } from 'src/components/_desktop';
-import { baseUrl } from 'src/mocks';
 import { PortfolioModel } from 'src/redux';
 import { dark } from 'src/styles';
 import { handleEndDate } from 'src/utils/handleEndDate';
+import { handleMonthYear } from 'src/utils/handleMonthYear';
 import listFormatter from 'src/utils/listFormatter';
 import styled from 'styled-components';
 import { ImageIcon } from '../../_atoms';
@@ -38,11 +38,16 @@ const ProjectContentWrapper = styled.section<
   h1,
   h2 {
     text-align: center;
+    line-height: 1;
   }
 
   h1 {
     margin-top: 20px;
     color: ${(props) => props.theme.h1};
+  }
+
+  h2 {
+    margin-top: 10px;
   }
 
   a {
@@ -113,20 +118,15 @@ export const ProjectContent: FC<ProjectContentProps> = ({ project }) => {
     mainTools: project?.jobInfo.mainTools ? project?.jobInfo.mainTools : [],
     text: project?.text ? project?.text : '',
     images: project?.jobInfo.images ? project?.jobInfo.images : [],
-    startDate: project?.jobInfo.startDate
-      ? project?.jobInfo.startDate
-      : {
-          month: '',
-          year: new Date().getFullYear()
-        },
+    startDate: handleMonthYear(project?.jobInfo.startDate || ''),
     endDate: handleEndDate(project.jobInfo.endDate)
   };
 
   return (
-    <ProjectContentWrapper imageUrl={baseUrl + project.mainImage}>
+    <ProjectContentWrapper imageUrl={project.mainImage}>
       <h1>{project.name}</h1>
       <h2>by {project.company}</h2>
-      <span className="project--date">{`from ${translator.startDate.month}, ${translator.startDate.year} to ${translator.endDate}`}</span>
+      <span className="project--date">{`from ${translator.startDate} to ${translator.endDate}`}</span>
 
       <p className="project--info">
         This is a <b>{translator.type}</b> project in which I am the{' '}
@@ -151,12 +151,12 @@ export const ProjectContent: FC<ProjectContentProps> = ({ project }) => {
           <div className="project--gallery-images" key={image}>
             <ImageIcon
               id={image}
-              imageSource={baseUrl + image}
+              imageSource={image}
               label={`${project.name} - Image ${index + 1}`}
             >
               <ImageContainer>
                 <img
-                  src={baseUrl + image}
+                  src={image}
                   alt={`${project.company} - image ${index + 1}`}
                 />
               </ImageContainer>

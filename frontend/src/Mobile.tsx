@@ -17,10 +17,11 @@ import {
   closeWindow,
   getInfo,
   getPortfolio,
+  getThemeApi,
   getTools,
   useAppSelector
 } from './redux';
-import { AboutMe, Contact, EmbedModel, HomeInfo } from './components/_shared';
+import { AboutMe, Contact, EmbedModel, HomeInfo, Loading } from './components/_shared';
 import { useDispatch } from 'react-redux';
 
 import Instagram from 'src/assets/svg/instagram.svg';
@@ -51,7 +52,9 @@ const FolderIconContainer = styled.div`
 
 export const Mobile: FC = () => {
   const dispatch = useDispatch();
-  const { windowsList, MYINFO, theme } = useAppSelector((state) => state);
+  const { windowsList, MYINFO, theme, isLoading } = useAppSelector(
+    (state) => state
+  );
 
   window.onhashchange = function () {
     dispatch(closeWindow(windowsList[windowsList.length - 1]?.id));
@@ -86,6 +89,11 @@ export const Mobile: FC = () => {
     dispatch(getInfo());
     dispatch(getPortfolio());
     dispatch(getTools());
+    dispatch(getThemeApi());
+
+    if (window.location.hash) {
+      window.location.hash = '';
+    }
   }, []);
 
   useEffect(() => {
@@ -96,6 +104,8 @@ export const Mobile: FC = () => {
 
   return (
     <ScreenWrapper>
+      {isLoading && <Loading />}
+
       {MYINFO && <HomeInfo info={MYINFO} />}
 
       <InnerPage>
@@ -153,7 +163,7 @@ export const Mobile: FC = () => {
           <FolderIconContainer key={social.id}>
             <ScreenIcon
               id={social.id}
-              label={social.title}
+              label={social.name}
               imageSource={handleSocialImage(social.id as SocialOptions)}
             >
               <EmbedModel url={social.url} icon={social.id} notWorking />

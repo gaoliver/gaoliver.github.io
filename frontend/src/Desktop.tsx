@@ -6,7 +6,7 @@ import {
   Portfolio,
   Contact
 } from 'src/components/_desktop';
-import { position, rgba } from 'polished';
+import { rgba } from 'polished';
 import React, { FC, useEffect } from 'react';
 import styled from 'styled-components';
 import {
@@ -67,9 +67,9 @@ export const Desktop: FC = () => {
   }
 
   useEffect(() => {
-    // document.addEventListener('contextmenu', (ev: MouseEvent) =>
-    //   ev.preventDefault()
-    // );
+    document.addEventListener('contextmenu', (ev: MouseEvent) =>
+      ev.preventDefault()
+    );
 
     if (window.location.hash) {
       window.location.hash = '';

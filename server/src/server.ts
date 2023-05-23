@@ -46,7 +46,7 @@ const server = http.createServer(async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
 
   switch (req.url) {
-    case '/':
+    case '/personal-details':
       const personalDetailsQuery = await notion.databases.query({
         database_id: notionDatabaseId
       });
@@ -88,7 +88,7 @@ const server = http.createServer(async (req, res) => {
 
       res.setHeader('Content-Type', 'application/json');
       res.writeHead(200);
-      res.end(JSON.stringify(personalDetails));
+      res.end(JSON.stringify(personalDetails[0]));
       break;
 
     default:

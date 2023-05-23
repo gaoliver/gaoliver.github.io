@@ -17,10 +17,12 @@ import {
   getTools,
   minimizeWindow,
   useAppSelector,
-  changeWindowOnFocus
+  changeWindowOnFocus,
+  toggleLoading,
+  getThemeApi
 } from 'src/redux';
 import { useDispatch } from 'react-redux';
-import { AboutMe, EmbedModel, HomeInfo } from './components/_shared';
+import { AboutMe, EmbedModel, HomeInfo, Loading } from './components/_shared';
 
 import whiteIcon from 'src/assets/images/GabrielRamos-whiteIcon.png';
 import folderIcon from 'src/assets/images/folder.png';
@@ -46,7 +48,7 @@ const DesktopWrapper = styled.article`
 
 export const Desktop: FC = () => {
   const dispatch = useDispatch();
-  const { windowsList, MYINFO, theme } = useAppSelector(
+  const { windowsList, MYINFO, theme, isLoading } = useAppSelector(
     (state: AppState) => state
   );
 
@@ -69,13 +71,25 @@ export const Desktop: FC = () => {
     document.addEventListener('contextmenu', (ev: MouseEvent) =>
       ev.preventDefault()
     );
+
+    if (window.location.hash) {
+      window.location.hash = '';
+    }
   }, []);
 
   useEffect(() => {
+    dispatch(toggleLoading(true));
+    dispatch(getThemeApi());
     dispatch(getInfo());
     dispatch(getTools());
     dispatch(getPortfolio());
   }, []);
+
+  useEffect(() => {
+    if (MYINFO) {
+      dispatch(toggleLoading(false));
+    }
+  }, [MYINFO]);
 
   useEffect(() => {
     document
@@ -85,6 +99,8 @@ export const Desktop: FC = () => {
 
   return (
     <PageWrapper>
+      {isLoading && <Loading />}
+
       {MYINFO && <HomeInfo info={MYINFO} />}
       <DesktopWrapper id="desktop">
         <DesktopIcon label="About me" imageSource={whiteIcon} id="about_me">

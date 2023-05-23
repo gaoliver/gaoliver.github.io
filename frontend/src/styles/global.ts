@@ -1,9 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
-import phoneImg from 'src/assets/images/optimized/mobile_background.webp';
-import desktopImg from 'src/assets/images/optimized/desktop_background.webp';
 import { fonts } from 'src/constants/fonts';
+import { ThemeModelApi } from 'src/@types/Api';
 
-export default createGlobalStyle`
+export default createGlobalStyle<{
+  backgrounds: ThemeModelApi;
+}>`
   :root {
     font-family: Ubuntu, sans-serif;
     font-size: 14px;
@@ -14,7 +15,8 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-    background-image: url(${desktopImg});
+    background-image: ${(props) =>
+      `url(${props.backgrounds.desktopBackgroundImage})`};
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -22,7 +24,9 @@ export default createGlobalStyle`
     color: ${(props) => props.theme.text};
     transition: all 0.5s ease;
     @media screen and (max-width: 800px) {
-      background-image: url(${phoneImg});
+      background-image: ${(props) =>
+        `url(${props.backgrounds.mobileBackgroundImage})`};
+
     }
   }
 

@@ -1,28 +1,32 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import axios from 'axios';
-import { myInfoUrl, portfolioUrl, toolsUrl } from 'src/mocks/index';
 import { Dispatch } from 'react';
-import {
-  MyInfoModel,
-  PortfolioModel,
-  ToolsModel,
-  WindowListProps
-} from './reducer';
+import { PortfolioModel, ToolsModel, WindowListProps } from './reducer';
 import { store } from './store';
 import { Theme } from 'src/styles/styled';
 import { dark, light } from 'src/styles';
+import {
+  PersonalDetails,
+  GetPersonalDetailsApi,
+  GetToolsApi,
+  GetPortfolioApi,
+  ThemeModelApi,
+  GetThemeApi
+} from 'src/@types/Api';
+import { createClient } from 'contentful';
 
 export enum ActionTypes {
-  ADD_NEW_WINDOW = "ADD_NEW_WINDOW",
-  WINDOW_ON_FOCUS = "WINDOW_ON_FOCUS",
-  MINIMIZE_WINDOW = "MINIMIZE_WINDOW",
-  CLOSE_WINDOW = "CLOSE_WINDOW",
-  CLOSE_ALL_APP = "CLOSE_ALL_APP",
-  TOGGLE_TASK_SETTINGS = "TOGGLE_TASK_SETTINGS",
-  TOGGLE_THEME = "TOGGLE_THEME",
-  ON_SET_TOOLS = "ON_SET_TOOLS",
-  ON_SET_INFO = "ON_SET_INFO",
-  ON_SET_PORTFOLIO = "ON_SET_PORTFOLIO"
+  ADD_NEW_WINDOW = 'ADD_NEW_WINDOW',
+  WINDOW_ON_FOCUS = 'WINDOW_ON_FOCUS',
+  MINIMIZE_WINDOW = 'MINIMIZE_WINDOW',
+  CLOSE_WINDOW = 'CLOSE_WINDOW',
+  CLOSE_ALL_APP = 'CLOSE_ALL_APP',
+  TOGGLE_TASK_SETTINGS = 'TOGGLE_TASK_SETTINGS',
+  TOGGLE_THEME = 'TOGGLE_THEME',
+  ON_SET_TOOLS = 'ON_SET_TOOLS',
+  ON_SET_INFO = 'ON_SET_INFO',
+  ON_SET_PORTFOLIO = 'ON_SET_PORTFOLIO',
+  TOGGLE_LOADING = 'TOGGLE_LOADING',
+  GET_THEME = 'GET_THEME'
 }
 
 export interface AddNewWindow {
@@ -52,9 +56,19 @@ export interface CloseAllApps {
 export interface ToggleTaskSettings {
   readonly type: ActionTypes.TOGGLE_TASK_SETTINGS;
 }
+export interface GetTheme {
+  readonly type: ActionTypes.GET_THEME;
+  payload: ThemeModelApi;
+}
+
 export interface ToggleTheme {
   readonly type: ActionTypes.TOGGLE_THEME;
   payload: Theme;
+}
+
+export interface ToggleLoading {
+  readonly type: ActionTypes.TOGGLE_LOADING;
+  payload: boolean;
 }
 
 export interface SetTools {
@@ -64,7 +78,7 @@ export interface SetTools {
 
 export interface SetInfo {
   readonly type: ActionTypes.ON_SET_INFO;
-  payload: MyInfoModel;
+  payload: PersonalDetails;
 }
 
 export interface SetPortfolio {
@@ -82,7 +96,9 @@ export type AppActions =
   | ToggleTaskSettings
   | ToggleTheme
   | WindowOnFocus
-  | CloseAllApps;
+  | CloseAllApps
+  | ToggleLoading
+  | GetTheme;
 
 export const toggleTaskSettings = () => {
   return async (dispatch: Dispatch<AppActions>) => {
@@ -106,7 +122,7 @@ export const addNewWindow = (
   title: string,
   content: JSX.Element
 ) => {
-  history.pushState(id, "", `#${id}`)
+  history.pushState(id, '', `#${id}`);
   return async (dispatch: Dispatch<AppActions>) => {
     dispatch({
       type: ActionTypes.ADD_NEW_WINDOW,
@@ -165,6 +181,15 @@ export const closeWindow = (id: string) => {
   };
 };
 
+export const toggleLoading = (value: boolean) => {
+  return async (dispatch: Dispatch<AppActions>) => {
+    dispatch({
+      type: ActionTypes.TOGGLE_LOADING,
+      payload: value
+    });
+  };
+};
+
 export const closeAllApps = () => {
   return async (dispatch: Dispatch<AppActions>) => {
     dispatch({
@@ -173,13 +198,50 @@ export const closeAllApps = () => {
   };
 };
 
+const client = createClient({
+  space: process.env.REACT_APP_CONTENTFUL_SPACE || '',
+  environment: process.env.REACT_APP_CONTENTFUL_ENV || '',
+  accessToken: process.env.REACT_APP_CONTENTFUL_TOKEN || ''
+});
+
+export const getThemeApi = () => {
+  let data: ThemeModelApi;
+  return async (dispatch: Dispatch<AppActions>) => {
+    await client
+      .getEntry(process.env.REACT_APP_CONTENTFUL_GET_THEME || '')
+      .then((response) => {
+        const res: GetThemeApi = response.fields as unknown as GetThemeApi;
+        data = {
+          desktopBackgroundImage: res.desktopBackgroundImage.fields.file.url,
+          mobileBackgroundImage: res.mobileBackgroundImage.fields.file.url
+        };
+      })
+      .catch((err) => console.log('Erro:', err));
+    dispatch({
+      type: ActionTypes.GET_THEME,
+      payload: data
+    });
+  };
+};
+
 export const getTools = () => {
   let data: ToolsModel;
   return async (dispatch: Dispatch<AppActions>) => {
-    await axios
-      .get(toolsUrl)
-      .then((res) => {
-        data = res.data;
+    await client
+      .getEntry(process.env.REACT_APP_CONTENTFUL_GET_TOOL || '')
+      .then((response) => {
+        const res: GetToolsApi = response.fields as unknown as GetToolsApi;
+        const languages = res.languages.reduce(
+          (prev, curr) => ({
+            ...prev,
+            [curr.fields.category]: curr.fields.list
+          }),
+          {}
+        );
+        data = {
+          ...res,
+          languages
+        } as unknown as ToolsModel;
       })
       .catch((err) => console.log('Erro:', err));
     dispatch({
@@ -190,12 +252,23 @@ export const getTools = () => {
 };
 
 export const getInfo = () => {
-  let data: MyInfoModel;
+  let data: PersonalDetails;
   return async (dispatch: Dispatch<AppActions>) => {
-    await axios
-      .get(myInfoUrl)
-      .then((res) => {
-        data = res.data;
+    await client
+      .getEntry(process.env.REACT_APP_CONTENTFUL_GET_INFO || '')
+      .then((response) => {
+        const res: GetPersonalDetailsApi =
+          response.fields as unknown as GetPersonalDetailsApi;
+        const social = res.social.map((item) => ({
+          ...item.fields,
+          image: item.fields.image.fields.file.url
+        }));
+        data = {
+          ...res,
+          image: res.image.fields.file.url,
+          contact: [res.contact.fields],
+          social
+        } as unknown as PersonalDetails;
       })
       .catch((err) => console.log('Erro:', err));
     dispatch({
@@ -207,16 +280,41 @@ export const getInfo = () => {
 
 export const getPortfolio = () => {
   let data: Array<PortfolioModel>;
+  let jobsList: GetPortfolioApi['portfolio'];
+  let jobsInfoList: Array<GetPortfolioApi['portfolio'][0]['fields']['jobInfo']>;
+
   return async (dispatch: Dispatch<AppActions>) => {
-    await axios
-      .get(portfolioUrl)
-      .then((res) => {
-        data = res.data;
-      })
-      .catch((err) => console.log('Erro:', err));
+    await client
+      .getEntry(process.env.REACT_APP_CONTENTFUL_GET_PORTFOLIO || '')
+      .then((response) => {
+        const res: GetPortfolioApi =
+          response.fields as unknown as GetPortfolioApi;
+        jobsList = res.portfolio;
+      });
+
+    await client
+      .getEntries({ content_type: 'jobInfo' })
+      .then((res) => (jobsInfoList = res.items as typeof jobsInfoList));
+
+    data = jobsList.map((job) => {
+      const jobInfo:
+        | GetPortfolioApi['portfolio'][0]['fields']['jobInfo']['fields']
+        | undefined = jobsInfoList.find(
+        (i) => i.sys.id === job.fields.jobInfo.sys.id
+      )?.fields;
+
+      return {
+        ...job.fields,
+        mainImage: job.fields.mainImage.fields.file.url,
+        jobInfo: {
+          ...jobInfo,
+          images: jobInfo?.images.map((i) => i.fields.file.url)
+        }
+      };
+    }) as typeof data;
     dispatch({
       type: ActionTypes.ON_SET_PORTFOLIO,
-      payload: data
+      payload: data.reverse()
     });
   };
 };

@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes } from 'react';
+import React, { FC } from 'react';
 import styled, { useTheme } from 'styled-components';
 import { Icon } from 'src/components/_shared';
 import { TaskbarIcon } from '../_atoms';
@@ -7,7 +7,6 @@ import { rgba } from 'polished';
 import {
   addNewWindow,
   minimizeWindow,
-  SocialNetwork,
   store,
   toggleTaskSettings,
   WindowListProps,
@@ -21,6 +20,7 @@ import { fonts } from 'src/constants/fonts';
 import { colors } from 'src/constants/colors';
 import { taskbarIconsShadow } from 'src/constants/taskbarIconsShadow';
 import { dark } from 'src/styles';
+import { SocialNetwork } from 'src/@types/Api';
 
 type TaskbarProps = {
   windowsList: WindowListProps[];
@@ -78,7 +78,7 @@ export const Taskbar: FC<TaskbarProps> = ({ windowsList, onClickWindow }) => {
   const theme = useTheme();
 
   const renderSocialContent = (social: SocialNetwork) => {
-    return <EmbedModel url={social.url} icon={social.image} notWorking />;
+    return <EmbedModel url={social.url} icon={social.id} notWorking />;
   };
 
   function openWindow(id: string, title: string, content: JSX.Element) {
@@ -124,20 +124,20 @@ export const Taskbar: FC<TaskbarProps> = ({ windowsList, onClickWindow }) => {
           style={{ opacity: 0.9, top: '3px' }}
         />
       </TaskbarIcon>
-      {MYINFO?.social.map((social) => (
+      {MYINFO?.social?.map((social) => (
         <TaskbarIcon
           id={social.id}
           key={social.id}
-          aria-label={`${social.title} icon`}
+          aria-label={`${social.name} icon`}
           onClick={() =>
             openWindow(
               social.id,
-              `${MYINFO?.name} - ${social.title}`,
+              `${MYINFO?.name} - ${social.name}`,
               renderSocialContent(social)
             )
           }
         >
-          <Icon icon={social.image as IconOption} height="100%" />
+          <Icon icon={social.id as IconOption} height="100%" />
         </TaskbarIcon>
       ))}
       <WindowsListWrapper>

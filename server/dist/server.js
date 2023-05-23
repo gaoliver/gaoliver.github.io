@@ -28,7 +28,7 @@ const port = 8000;
 const server = http_1.default.createServer((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.setHeader('Access-Control-Allow-Origin', '*');
     switch (req.url) {
-        case '/':
+        case '/personal-details':
             const personalDetailsQuery = yield notion.databases.query({
                 database_id: notionDatabaseId
             });
@@ -61,10 +61,9 @@ const server = http_1.default.createServer((req, res) => __awaiter(void 0, void 
                 contact: contacts,
                 social: socialNetworks
             }));
-            // const personalDetails = query.results
             res.setHeader('Content-Type', 'application/json');
             res.writeHead(200);
-            res.end(JSON.stringify(personalDetails));
+            res.end(JSON.stringify(personalDetails[0]));
             break;
         default:
             res.setHeader('Content-Type', 'application/json');

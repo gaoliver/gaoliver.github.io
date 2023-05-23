@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import axios from 'axios';
-import { portfolioUrl } from 'src/mocks/index';
 import { Dispatch } from 'react';
 import { PortfolioModel, ToolsModel, WindowListProps } from './reducer';
 import { store } from './store';
@@ -8,8 +6,9 @@ import { Theme } from 'src/styles/styled';
 import { dark, light } from 'src/styles';
 import {
   PersonalDetails,
-  PersonalDetailsRetrieve,
-  ToolsRetrieve
+  GetPersonalDetailsApi,
+  GetToolsApi,
+  GetPortfolioApi
 } from 'src/@types/Api';
 import { createClient } from 'contentful';
 
@@ -202,7 +201,7 @@ export const getTools = () => {
     await client
       .getEntry(process.env.REACT_APP_CONTENTFUL_GET_TOOL || '')
       .then((response) => {
-        const res: ToolsRetrieve = response.fields as unknown as ToolsRetrieve;
+        const res: GetToolsApi = response.fields as unknown as GetToolsApi;
         const languages = res.languages.reduce(
           (prev, curr) => ({
             ...prev,
@@ -229,8 +228,8 @@ export const getInfo = () => {
     await client
       .getEntry(process.env.REACT_APP_CONTENTFUL_GET_INFO || '')
       .then((response) => {
-        const res: PersonalDetailsRetrieve =
-          response.fields as unknown as PersonalDetailsRetrieve;
+        const res: GetPersonalDetailsApi =
+          response.fields as unknown as GetPersonalDetailsApi;
         const social = res.social.map((item) => ({
           ...item.fields,
           image: item.fields.image.fields.file.url
@@ -251,13 +250,38 @@ export const getInfo = () => {
 
 export const getPortfolio = () => {
   let data: Array<PortfolioModel>;
+  let jobsList: GetPortfolioApi['portfolio'];
+  let jobsInfoList: Array<GetPortfolioApi['portfolio'][0]['fields']['jobInfo']>;
+
   return async (dispatch: Dispatch<AppActions>) => {
-    await axios
-      .get(portfolioUrl)
-      .then((res) => {
-        data = res.data;
-      })
-      .catch((err) => console.log('Erro:', err));
+    await client
+      .getEntry(process.env.REACT_APP_CONTENTFUL_GET_PORTFOLIO || '')
+      .then((response) => {
+        const res: GetPortfolioApi =
+          response.fields as unknown as GetPortfolioApi;
+        jobsList = res.portfolio;
+      });
+
+    await client
+      .getEntries({ content_type: 'jobInfo' })
+      .then((res) => (jobsInfoList = res.items as typeof jobsInfoList));
+
+    data = jobsList.map((job) => {
+      const jobInfo:
+        | GetPortfolioApi['portfolio'][0]['fields']['jobInfo']['fields']
+        | undefined = jobsInfoList.find(
+          (i) => i.sys.id === job.fields.jobInfo.sys.id
+        )?.fields;
+
+      return {
+        ...job.fields,
+        mainImage: job.fields.mainImage.fields.file.url,
+        jobInfo: {
+          ...jobInfo,
+          images: jobInfo?.images.map((i) => i.fields.file.url)
+        }
+      };
+    }) as typeof data;
     dispatch({
       type: ActionTypes.ON_SET_PORTFOLIO,
       payload: data

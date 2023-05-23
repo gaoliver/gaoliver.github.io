@@ -95,7 +95,6 @@ export interface GetPortfolioApi {
   portfolio: [
     {
       fields: {
-        id: number;
         name: string;
         company: string;
         mainImage: {

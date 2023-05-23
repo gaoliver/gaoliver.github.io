@@ -12,7 +12,6 @@ export type WindowListProps = {
 };
 
 export type PortfolioModel = {
-  id: number;
   name: string;
   company: string;
   mainImage: string;

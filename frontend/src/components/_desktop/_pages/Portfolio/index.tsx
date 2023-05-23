@@ -20,7 +20,7 @@ export const Portfolio: React.FC = () => {
   return (
     <PortfolioWrapper>
       {PORTFOLIO?.map((project) => (
-        <FolderIconContainer key={project.id}>
+        <FolderIconContainer key={project.slug}>
           <FolderIcon
             id={project.slug}
             label={project.name}

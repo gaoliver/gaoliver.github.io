@@ -21,7 +21,7 @@ export const Portfolio = () => {
   return (
     <PortfolioWrapper>
       {PORTFOLIO?.map((project) => (
-        <FolderIconContainer key={project.id}>
+        <FolderIconContainer key={project.slug}>
           <FolderScreenIcon
             id={project.slug}
             label={project.name}

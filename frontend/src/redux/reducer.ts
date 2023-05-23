@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { PersonalDetails } from 'src/@types/Api';
+import { PersonalDetails, ThemeModelApi } from 'src/@types/Api';
 import { light } from 'src/styles';
 import { Theme } from 'src/styles/styled';
 import { ActionTypes, AppActions } from './actions';
@@ -49,6 +49,7 @@ interface InitialStateModel {
   windowsList: WindowListProps[];
   taskSettings: boolean;
   theme: Theme;
+  themeConfig: ThemeModelApi;
   windowOnFocus?: string;
 }
 
@@ -61,6 +62,7 @@ const initialState: InitialStateModel = {
   windowsList: [],
   taskSettings: false,
   theme: light,
+  themeConfig: { desktopBackgroundImage: '', mobileBackgroundImage: '' },
   windowOnFocus: undefined
 };
 
@@ -120,6 +122,16 @@ export const reducer = (
         ...state,
         lastType: action.type,
         theme: action.payload
+      };
+
+    case ActionTypes.GET_THEME:
+      return {
+        ...state,
+        lastType: action.type,
+        themeConfig: {
+          desktopBackgroundImage: action.payload.desktopBackgroundImage,
+          mobileBackgroundImage: action.payload.mobileBackgroundImage
+        }
       };
 
     case ActionTypes.ON_SET_TOOLS:

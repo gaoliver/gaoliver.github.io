@@ -1,3 +1,8 @@
+export interface ThemeModelApi {
+  desktopBackgroundImage: string;
+  mobileBackgroundImage: string;
+}
+
 export interface SocialNetwork {
   id: string;
   name: string;
@@ -156,4 +161,21 @@ export interface GetPortfolioApi {
       };
     }
   ];
+}
+
+export interface GetThemeApi {
+  desktopBackgroundImage: {
+    fields: {
+      file: {
+        url: string;
+      };
+    };
+  };
+  mobileBackgroundImage: {
+    fields: {
+      file: {
+        url: string;
+      };
+    };
+  };
 }

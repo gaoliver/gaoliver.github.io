@@ -14,7 +14,7 @@ export const handleMonthYear = (date: string): string => {
     'December'
   ];
 
-  return ` ${monthNames[new Date(date).getMonth()]}, ${new Date(
+  return ` ${monthNames[new Date(date).getUTCMonth()]}, ${new Date(
     date
   ).getFullYear()}`;
 };

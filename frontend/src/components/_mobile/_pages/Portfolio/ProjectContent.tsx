@@ -44,10 +44,12 @@ const ProjectContentWrapper = styled.section<
   h1 {
     margin-top: 20px;
     color: ${(props) => props.theme.h1};
+    font-size: 2.3rem;
   }
 
   h2 {
     margin-top: 10px;
+    font-size: 1.3rem;
   }
 
   a {

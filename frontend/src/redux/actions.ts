@@ -8,7 +8,9 @@ import {
   PersonalDetails,
   GetPersonalDetailsApi,
   GetToolsApi,
-  GetPortfolioApi
+  GetPortfolioApi,
+  ThemeModelApi,
+  GetThemeApi
 } from 'src/@types/Api';
 import { createClient } from 'contentful';
 
@@ -23,7 +25,8 @@ export enum ActionTypes {
   ON_SET_TOOLS = 'ON_SET_TOOLS',
   ON_SET_INFO = 'ON_SET_INFO',
   ON_SET_PORTFOLIO = 'ON_SET_PORTFOLIO',
-  TOGGLE_LOADING = 'TOGGLE_LOADING'
+  TOGGLE_LOADING = 'TOGGLE_LOADING',
+  GET_THEME = 'GET_THEME'
 }
 
 export interface AddNewWindow {
@@ -53,6 +56,11 @@ export interface CloseAllApps {
 export interface ToggleTaskSettings {
   readonly type: ActionTypes.TOGGLE_TASK_SETTINGS;
 }
+export interface GetTheme {
+  readonly type: ActionTypes.GET_THEME;
+  payload: ThemeModelApi;
+}
+
 export interface ToggleTheme {
   readonly type: ActionTypes.TOGGLE_THEME;
   payload: Theme;
@@ -89,7 +97,8 @@ export type AppActions =
   | ToggleTheme
   | WindowOnFocus
   | CloseAllApps
-  | ToggleLoading;
+  | ToggleLoading
+  | GetTheme;
 
 export const toggleTaskSettings = () => {
   return async (dispatch: Dispatch<AppActions>) => {
@@ -195,6 +204,26 @@ const client = createClient({
   accessToken: process.env.REACT_APP_CONTENTFUL_TOKEN || ''
 });
 
+export const getThemeApi = () => {
+  let data: ThemeModelApi;
+  return async (dispatch: Dispatch<AppActions>) => {
+    await client
+      .getEntry(process.env.REACT_APP_CONTENTFUL_GET_THEME || '')
+      .then((response) => {
+        const res: GetThemeApi = response.fields as unknown as GetThemeApi;
+        data = {
+          desktopBackgroundImage: res.desktopBackgroundImage.fields.file.url,
+          mobileBackgroundImage: res.mobileBackgroundImage.fields.file.url
+        };
+      })
+      .catch((err) => console.log('Erro:', err));
+    dispatch({
+      type: ActionTypes.GET_THEME,
+      payload: data
+    });
+  };
+};
+
 export const getTools = () => {
   let data: ToolsModel;
   return async (dispatch: Dispatch<AppActions>) => {
@@ -236,6 +265,7 @@ export const getInfo = () => {
         }));
         data = {
           ...res,
+          image: res.image.fields.file.url,
           contact: [res.contact.fields],
           social
         } as unknown as PersonalDetails;
@@ -270,8 +300,8 @@ export const getPortfolio = () => {
       const jobInfo:
         | GetPortfolioApi['portfolio'][0]['fields']['jobInfo']['fields']
         | undefined = jobsInfoList.find(
-          (i) => i.sys.id === job.fields.jobInfo.sys.id
-        )?.fields;
+        (i) => i.sys.id === job.fields.jobInfo.sys.id
+      )?.fields;
 
       return {
         ...job.fields,

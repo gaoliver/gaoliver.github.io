@@ -8,8 +8,6 @@ import styled from 'styled-components';
 import { Button } from '../_atoms';
 import { fonts, fontWeights } from 'src/constants/fonts';
 
-import ProfilePicture from 'src/assets/images/professinal_profile_edited.png';
-
 const AboutMeWrapper = styled.section`
   display: flex;
   height: fit-content;
@@ -101,7 +99,7 @@ export const AboutMe: React.FC = () => {
 
   return (
     <AboutMeWrapper id="about-me">
-      <img src={ProfilePicture} alt="Profile picture" />
+      <img src={MYINFO?.image} alt="Profile picture" />
       <div className="col intro">
         <h1>About me</h1>
         <p className="first-paragraph__highlight">

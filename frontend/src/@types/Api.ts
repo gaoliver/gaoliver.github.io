@@ -1,3 +1,8 @@
+export interface ThemeModelApi {
+  desktopBackgroundImage: string;
+  mobileBackgroundImage: string;
+}
+
 export interface SocialNetwork {
   id: string;
   name: string;
@@ -12,6 +17,7 @@ export interface Contact {
 }
 
 export interface PersonalDetails {
+  image: string;
   name: string;
   surname: string;
   birthdate: string;
@@ -49,6 +55,13 @@ export interface GetToolsApi {
 }
 
 export interface GetPersonalDetailsApi {
+  image: {
+    fields: {
+      file: {
+        url: string;
+      };
+    };
+  };
   name: string;
   surname: string;
   birthdate: string;
@@ -148,4 +161,21 @@ export interface GetPortfolioApi {
       };
     }
   ];
+}
+
+export interface GetThemeApi {
+  desktopBackgroundImage: {
+    fields: {
+      file: {
+        url: string;
+      };
+    };
+  };
+  mobileBackgroundImage: {
+    fields: {
+      file: {
+        url: string;
+      };
+    };
+  };
 }

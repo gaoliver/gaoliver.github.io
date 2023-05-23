@@ -18,7 +18,8 @@ import {
   minimizeWindow,
   useAppSelector,
   changeWindowOnFocus,
-  toggleLoading
+  toggleLoading,
+  getThemeApi
 } from 'src/redux';
 import { useDispatch } from 'react-redux';
 import { AboutMe, EmbedModel, HomeInfo, Loading } from './components/_shared';
@@ -78,6 +79,7 @@ export const Desktop: FC = () => {
 
   useEffect(() => {
     dispatch(toggleLoading(true));
+    dispatch(getThemeApi());
     dispatch(getInfo());
     dispatch(getTools());
     dispatch(getPortfolio());

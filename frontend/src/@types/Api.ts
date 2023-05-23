@@ -6,7 +6,6 @@ export interface SocialNetwork {
 }
 
 export interface Contact {
-  id: string;
   name: string;
   telephone: string;
   email: string;
@@ -22,4 +21,71 @@ export interface PersonalDetails {
   country: string;
   contact: Array<Contact>;
   social: Array<SocialNetwork>;
+  // eslint-disable-next-line camelcase
+  about_me: string;
+  resume: {
+    fields: {
+      title: string;
+      description: string;
+      file: {
+        url: string;
+        fileName: string;
+      };
+    };
+  };
+}
+
+export interface ToolsRetrieve {
+  title: string;
+  languages: [
+    {
+      fields: {
+        category: string;
+        list: Array<string>;
+      };
+    }
+  ];
+  tools: Array<string>;
+}
+
+export interface PersonalDetailsRetrieve {
+  name: string;
+  surname: string;
+  birthdate: string;
+  city: string;
+  company: string;
+  country: string;
+  role: string;
+  // eslint-disable-next-line camelcase
+  about_me: string;
+  contact: {
+    fields: Contact;
+  };
+  social: [
+    {
+      fields: {
+        id: string;
+        title: string;
+        url: string;
+        image: {
+          fields: {
+            title: string;
+            file: {
+              url: string;
+            };
+          };
+        };
+      };
+    }
+  ];
+  resume: {
+    fields: {
+      title: string;
+      description: string;
+      file: {
+        url: string;
+        fileName: string;
+      };
+    };
+  };
 }

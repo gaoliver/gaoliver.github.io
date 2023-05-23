@@ -78,7 +78,7 @@ export const Taskbar: FC<TaskbarProps> = ({ windowsList, onClickWindow }) => {
   const theme = useTheme();
 
   const renderSocialContent = (social: SocialNetwork) => {
-    return <EmbedModel url={social.url} icon={social.image} notWorking />;
+    return <EmbedModel url={social.url} icon={social.id} notWorking />;
   };
 
   function openWindow(id: string, title: string, content: JSX.Element) {
@@ -137,7 +137,7 @@ export const Taskbar: FC<TaskbarProps> = ({ windowsList, onClickWindow }) => {
             )
           }
         >
-          <Icon icon={social.image as IconOption} height="100%" />
+          <Icon icon={social.id as IconOption} height="100%" />
         </TaskbarIcon>
       ))}
       <WindowsListWrapper>

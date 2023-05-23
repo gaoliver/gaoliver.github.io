@@ -1,12 +1,17 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import axios from 'axios';
-import { myInfoUrl, portfolioUrl, toolsUrl } from 'src/mocks/index';
+import { portfolioUrl } from 'src/mocks/index';
 import { Dispatch } from 'react';
 import { PortfolioModel, ToolsModel, WindowListProps } from './reducer';
 import { store } from './store';
 import { Theme } from 'src/styles/styled';
 import { dark, light } from 'src/styles';
-import { PersonalDetails } from 'src/@types/Api';
+import {
+  PersonalDetails,
+  PersonalDetailsRetrieve,
+  ToolsRetrieve
+} from 'src/@types/Api';
+import { createClient } from 'contentful';
 
 export enum ActionTypes {
   ADD_NEW_WINDOW = 'ADD_NEW_WINDOW',
@@ -185,13 +190,30 @@ export const closeAllApps = () => {
   };
 };
 
+const client = createClient({
+  space: process.env.REACT_APP_CONTENTFUL_SPACE || '',
+  environment: process.env.REACT_APP_CONTENTFUL_ENV || '',
+  accessToken: process.env.REACT_APP_CONTENTFUL_TOKEN || ''
+});
+
 export const getTools = () => {
   let data: ToolsModel;
   return async (dispatch: Dispatch<AppActions>) => {
-    await axios
-      .get(toolsUrl)
-      .then((res) => {
-        data = res.data;
+    await client
+      .getEntry(process.env.REACT_APP_CONTENTFUL_GET_TOOL || '')
+      .then((response) => {
+        const res: ToolsRetrieve = response.fields as unknown as ToolsRetrieve;
+        const languages = res.languages.reduce(
+          (prev, curr) => ({
+            ...prev,
+            [curr.fields.category]: curr.fields.list
+          }),
+          {}
+        );
+        data = {
+          ...res,
+          languages
+        } as unknown as ToolsModel;
       })
       .catch((err) => console.log('Erro:', err));
     dispatch({
@@ -204,10 +226,20 @@ export const getTools = () => {
 export const getInfo = () => {
   let data: PersonalDetails;
   return async (dispatch: Dispatch<AppActions>) => {
-    await axios
-      .get(myInfoUrl)
-      .then((res) => {
-        data = res.data;
+    await client
+      .getEntry(process.env.REACT_APP_CONTENTFUL_GET_INFO || '')
+      .then((response) => {
+        const res: PersonalDetailsRetrieve =
+          response.fields as unknown as PersonalDetailsRetrieve;
+        const social = res.social.map((item) => ({
+          ...item.fields,
+          image: item.fields.image.fields.file.url
+        }));
+        data = {
+          ...res,
+          contact: [res.contact.fields],
+          social
+        } as unknown as PersonalDetails;
       })
       .catch((err) => console.log('Erro:', err));
     dispatch({

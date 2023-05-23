@@ -45,6 +45,10 @@ const AboutMeWrapper = styled.section`
       color: ${(props) => props.theme.window};
       ${fonts.h3};
       font-weight: ${fontWeights.regular};
+
+      @media screen and (max-width: 800px) {
+        font-size: 1.3rem;
+      }
     }
 
     p {

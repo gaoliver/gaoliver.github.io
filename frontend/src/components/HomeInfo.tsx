@@ -18,13 +18,17 @@ const HomeInfoWrapper = styled.div`
   transform: translateY(30vh);
   align-items: center;
   justify-content: center;
-  color: ${colors.white};
-  opacity: 0.7;
+  color: ${colors.black};
+  opacity: 0.5;
   user-select: none;
   line-height: normal;
 
   :hover {
     cursor: default;
+  }
+
+  @media (max-width: 800px) {
+    color: ${colors.white};
   }
 `;
 

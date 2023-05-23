@@ -34,6 +34,7 @@ const AboutMeWrapper = styled.section`
 
     h1 {
       color: ${(props) => props.theme.h1};
+      line-height: 1;
     }
 
     .first-paragraph__highlight {

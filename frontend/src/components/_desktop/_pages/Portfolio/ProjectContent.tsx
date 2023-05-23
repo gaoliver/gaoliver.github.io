@@ -37,11 +37,16 @@ const ProjectContentWrapper = styled.section<
   h1,
   h2 {
     text-align: center;
+    line-height: 1;
   }
 
   h1 {
     margin-top: 20px;
     color: ${(props) => props.theme.h1};
+  }
+
+  h2 {
+    margin-top: 10px;
   }
 
   a {

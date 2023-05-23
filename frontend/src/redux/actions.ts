@@ -284,7 +284,7 @@ export const getPortfolio = () => {
     }) as typeof data;
     dispatch({
       type: ActionTypes.ON_SET_PORTFOLIO,
-      payload: data
+      payload: data.reverse()
     });
   };
 };

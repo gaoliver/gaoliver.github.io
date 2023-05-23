@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { useAppSelector } from 'src/redux';
 import { ProjectContent } from './ProjectContent';
 import { FolderScreenIcon } from '../../_atoms/FolderScreenIcon';
-import { baseUrl } from 'src/mocks';
 
 const PortfolioWrapper = styled.section`
   display: table;
@@ -26,7 +25,7 @@ export const Portfolio = () => {
           <FolderScreenIcon
             id={project.slug}
             label={project.name}
-            imageSource={baseUrl + project.mainImage}
+            imageSource={project.mainImage}
           >
             <ProjectContent project={project} />
           </FolderScreenIcon>

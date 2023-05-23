@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { FolderIcon } from '../../_atoms';
 import { useAppSelector } from 'src/redux';
 import { ProjectContent } from './ProjectContent';
-import { baseUrl } from 'src/mocks';
 
 const PortfolioWrapper = styled.section`
   display: block;
@@ -25,7 +24,7 @@ export const Portfolio: React.FC = () => {
           <FolderIcon
             id={project.slug}
             label={project.name}
-            imageSource={baseUrl + project.mainImage}
+            imageSource={project.mainImage}
           >
             <ProjectContent project={project} />
           </FolderIcon>

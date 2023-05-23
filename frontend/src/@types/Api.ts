@@ -35,7 +35,7 @@ export interface PersonalDetails {
   };
 }
 
-export interface ToolsRetrieve {
+export interface GetToolsApi {
   title: string;
   languages: [
     {
@@ -48,7 +48,7 @@ export interface ToolsRetrieve {
   tools: Array<string>;
 }
 
-export interface PersonalDetailsRetrieve {
+export interface GetPersonalDetailsApi {
   name: string;
   surname: string;
   birthdate: string;
@@ -88,4 +88,65 @@ export interface PersonalDetailsRetrieve {
       };
     };
   };
+}
+
+export interface GetPortfolioApi {
+  name: string;
+  portfolio: [
+    {
+      fields: {
+        id: number;
+        name: string;
+        company: string;
+        mainImage: {
+          fields: {
+            title: string;
+            description: string;
+            file: {
+              url: string;
+            };
+          };
+        };
+        url: string;
+        slug: string;
+        color: string;
+        jobInfo: {
+          sys: {
+            space: unknown;
+            id: string;
+            type: string;
+            createdAt: string;
+            updatedAt: string;
+            environment: unknown;
+            revision: number;
+            contentType: unknown;
+            locale: string;
+          };
+          metadata: {
+            tags: Array<unknown>;
+          };
+          fields: {
+            role: string;
+            type: string;
+            language: string;
+            startDate: string;
+            endDate: string;
+            mainTools: Array<string>;
+            images: [
+              {
+                fields: {
+                  title: string;
+                  description: string;
+                  file: {
+                    url: string;
+                  };
+                };
+              }
+            ];
+          };
+        };
+        text: string;
+      };
+    }
+  ];
 }

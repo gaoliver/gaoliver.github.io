@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/static/js/main.d8c9f083.js",
+    "main.js": "/static/js/main.689db5be.js",
     "static/media/Gabriel_Ramos_CV.pdf": "/static/media/Gabriel_Ramos_CV.b295f987ce10a9b2a11b.pdf",
     "static/media/email-background.webp": "/static/media/email-background.d90b0458f766984ff755.webp",
     "static/media/folder.png": "/static/media/folder.6f60a6e41862e6fddda3.png",
@@ -15,9 +15,9 @@
     "index.html": "/index.html",
     "static/media/linkedin.svg": "/static/media/linkedin.528c90c3be92a6a97ca3eaba169c7a02.svg",
     "static/media/github.svg": "/static/media/github.0acc5d6ab3d6b38059d9095c284dca90.svg",
-    "main.d8c9f083.js.map": "/static/js/main.d8c9f083.js.map"
+    "main.689db5be.js.map": "/static/js/main.689db5be.js.map"
   },
   "entrypoints": [
-    "static/js/main.d8c9f083.js"
+    "static/js/main.689db5be.js"
   ]
 }

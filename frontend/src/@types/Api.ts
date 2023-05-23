@@ -14,6 +14,7 @@ export interface Contact {
   name: string;
   telephone: string;
   email: string;
+  whatsAppMessage: string;
 }
 
 export interface PersonalDetails {

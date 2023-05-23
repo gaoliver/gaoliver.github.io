@@ -50,7 +50,9 @@ export const Contact = () => {
     (contact) => contact.name === 'personal_contact'
   );
 
-  const whatsappLink = `https://wa.me/+${personalContact?.telephone}?text=Hi%2C%20Gabriel!%20I'd%20like%20to%20talk%20to%20you`;
+  const whatsappLink = `https://wa.me/${
+    personalContact?.telephone
+  }?text=${encodeURI(personalContact?.whatsAppMessage || '')}`;
   const telegramLink = `https://telegram.me/gaoliver`;
   const emailLink = `mailto:${personalContact?.email}`;
 

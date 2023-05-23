@@ -1,11 +1,8 @@
-type EndDateProps = {
-  month?: string;
-  year?: number;
-};
+import { handleMonthYear } from './handleMonthYear';
 
-export const handleEndDate = (endDate?: EndDateProps): string => {
+export const handleEndDate = (endDate?: string): string => {
   if (endDate) {
-    return ` ${endDate.month}, ${endDate.year}`;
+    return handleMonthYear(endDate);
   }
   return 'current';
 };

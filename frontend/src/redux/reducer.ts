@@ -23,14 +23,8 @@ export type PortfolioModel = {
     role: string;
     type: string;
     language: string;
-    startDate: {
-      month: string;
-      year: number;
-    };
-    endDate?: {
-      month?: string;
-      year?: number;
-    };
+    startDate: string;
+    endDate?: string;
     mainTools: Array<string>;
     images: Array<string>;
   };

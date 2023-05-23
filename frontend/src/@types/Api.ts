@@ -61,6 +61,23 @@ export interface PersonalDetailsRetrieve {
   contact: {
     fields: Contact;
   };
+  social: [
+    {
+      fields: {
+        id: string;
+        title: string;
+        url: string;
+        image: {
+          fields: {
+            title: string;
+            file: {
+              url: string;
+            };
+          };
+        };
+      };
+    }
+  ];
   resume: {
     fields: {
       title: string;

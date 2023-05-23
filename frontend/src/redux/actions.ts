@@ -231,10 +231,17 @@ export const getInfo = () => {
       .then((response) => {
         const res: PersonalDetailsRetrieve =
           response.fields as unknown as PersonalDetailsRetrieve;
+        console.log(response.fields);
+        const social = res.social.map((item) => ({
+          ...item.fields,
+          image: item.fields.image.fields.file.url
+        }));
         data = {
           ...res,
-          contact: [res.contact.fields]
+          contact: [res.contact.fields],
+          social
         } as unknown as PersonalDetails;
+        console.log(data);
       })
       .catch((err) => console.log('Erro:', err));
     dispatch({

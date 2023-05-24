@@ -52,10 +52,6 @@ const ProjectContentWrapper = styled.section<
     font-size: 1.3rem;
   }
 
-  h2 {
-    margin-top: 10px;
-  }
-
   a {
     margin-top: 10px;
   }

@@ -92,7 +92,7 @@ export const Desktop: FC = () => {
             {(folder.type === 'Embed' || folder.type === 'Video') && (
               <EmbedModel
                 {...(folder.type === 'Embed' && { url: folder.url })}
-                {...(folder.type === 'Video' && { url: folder.youTubeVideoId })}
+                {...(folder.type === 'Video' && { youtubeVideoId: folder.youTubeVideoId })}
                 isNotWorking={folder.isNotWorking}
                 notWorkingText={folder.notWorkingText}
               />

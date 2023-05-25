@@ -129,7 +129,7 @@ export const Mobile: FC = () => {
                 <EmbedModel
                   {...(folder.type === 'Embed' && { url: folder.url })}
                   {...(folder.type === 'Video' && {
-                    url: folder.youTubeVideoId
+                    youtubeVideoId: folder.youTubeVideoId
                   })}
                   isNotWorking={folder.isNotWorking}
                   notWorkingText={folder.notWorkingText}

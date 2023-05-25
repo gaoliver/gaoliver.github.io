@@ -344,7 +344,6 @@ export const getDesktop = () => {
           image: folder.fields.image?.fields,
           gallery: folder.fields.gallery?.map((item) => item.fields)
         }));
-        console.log(res.folders)
       })
       .catch((err) => console.log('Erro:', err));
     dispatch({

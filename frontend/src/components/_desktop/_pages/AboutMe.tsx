@@ -68,7 +68,7 @@ const ProfileWrapper = styled.div`
     background: none;
     color: ${(props) => props.theme.text};
     width: fit-content;
-    text-align: center;
+    text-align: center !important;
     line-height: 20px;
     margin-top: 10px;
     ${fonts.body};

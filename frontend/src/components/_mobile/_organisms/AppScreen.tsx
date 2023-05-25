@@ -76,7 +76,8 @@ const HeaderWindow = styled.div`
   border-bottom: 1px solid ${(props) => rgba(props.theme.text, 0.1)};
 `;
 
-const HeaderTitle = styled.h3`
+const HeaderTitle = styled.span`
+  ${fonts.h3};
   display: -webkit-box;
   flex: 1;
   height: fit-content;

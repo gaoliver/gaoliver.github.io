@@ -11,20 +11,7 @@ interface TextModelProps {
 const TextBody = styled.div`
   height: fit-content;
   width: 100%;
-  padding: 0 20px 20px;
-
-  p {
-    ${fonts.body}
-    margin-top: 20px;
-  }
-
-  ul {
-    margin: 20px 0 0 40px;
-  }
-
-  li p {
-    margin-top: 0;
-  }
+  padding: 20px;
 `;
 
 export const TextModel: FC<TextModelProps> = ({ text }) => {

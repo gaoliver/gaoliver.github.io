@@ -24,15 +24,18 @@ export enum fontWeights {
 export const fonts: FontStyles = {
   h1: {
     fontSize: '3rem',
-    fontWeight: fontWeights.bold
+    fontWeight: fontWeights.bold,
+    lineHeight: 2.5
   },
   h2: {
     fontSize: '2rem',
-    fontWeight: fontWeights.bold
+    fontWeight: fontWeights.bold,
+    lineHeight: 2
   },
   h3: {
     fontSize: '1.5rem',
-    fontWeight: fontWeights.medium
+    fontWeight: fontWeights.medium,
+    lineHeight: 1.2
   },
   body: {
     fontSize: '1rem',

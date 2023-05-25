@@ -36,21 +36,32 @@ export default createGlobalStyle<{
   }
 
   h1 {
-    ${fonts.h1}
+    ${fonts.h1};
   }
   h2 {
     ${fonts.h2}
   }
   h3 {
-    ${fonts.h3}
-  }
-  p {
-    ${fonts.body}
-    line-height: 25px;
+    ${fonts.h3};
     margin-top: 30px;
   }
+
+  p {
+    ${fonts.body};
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
   button {
     ${fonts.button}
+  }
+
+  ul, ol {
+    margin: 20px 40px;
+  }
+
+  li p {
+    margin-bottom: 10px;
   }
 
 `;

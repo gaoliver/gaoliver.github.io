@@ -60,8 +60,8 @@ const ProfileWrapper = styled.div`
   }
 
   h3 {
-    margin-top: 40px;
     text-align: center;
+    margin-bottom: 20px;
   }
 
   p {
@@ -69,9 +69,6 @@ const ProfileWrapper = styled.div`
     color: ${(props) => props.theme.text};
     width: fit-content;
     text-align: center !important;
-    line-height: 20px;
-    margin-top: 10px;
-    ${fonts.body};
 
     b {
       margin-top: 20px;
@@ -89,12 +86,11 @@ const H1 = styled.h1`
 `;
 
 const FirstParagraph = styled.p`
+  ${fonts.h3};
   width: 100%;
-  margin-top: 0;
   padding: 5px 0;
   background-color: ${(props) => props.theme.h1};
   color: ${(props) => props.theme.window};
-  ${fonts.h3};
   font-weight: ${fontWeights.regular};
 
   @media screen and (max-width: 800px) {

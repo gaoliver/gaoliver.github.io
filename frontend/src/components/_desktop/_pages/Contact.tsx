@@ -27,9 +27,8 @@ const ContactWrapper = styled.section`
 
   p {
     width: 450px;
-    font-size: medium;
     text-align: center;
-    margin-bottom: 30px;
+    font-size: medium;
   }
 `;
 

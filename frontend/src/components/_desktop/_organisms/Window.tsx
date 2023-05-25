@@ -13,6 +13,7 @@ import { useDispatch } from 'react-redux';
 import { handleWindowPosition } from 'src/utils/handleWindowPosition';
 import { darken, rgba } from 'polished';
 import { light } from 'src/styles';
+import { fonts } from 'src/constants/fonts';
 
 type WindowProps = {
   onClose: (id: string) => void;
@@ -62,7 +63,8 @@ const HeaderWindow = styled.div`
   border-bottom: 1px solid ${(props) => rgba(props.theme.text, 0.1)};
 `;
 
-const HeaderTitle = styled.h3`
+const HeaderTitle = styled.span`
+  ${fonts.h3};
   display: flex;
   flex-grow: 5;
   flex-shrink: 0;

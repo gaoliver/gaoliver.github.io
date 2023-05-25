@@ -30,6 +30,11 @@ const HomeInfoWrapper = styled.div`
   @media (max-width: 800px) {
     color: ${colors.white};
   }
+
+  h1, h2, h3 {
+    margin: 0;
+    line-height: 1;
+  }
 `;
 
 export const HomeInfo: FC<HomeInfoProps> = ({

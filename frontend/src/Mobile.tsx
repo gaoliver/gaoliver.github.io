@@ -11,7 +11,6 @@ import {
 import blackIcon from 'src/assets/images/GabrielRamos-blackIcon.png';
 import folderIcon from 'src/assets/images/folder.png';
 import EmailIcon from 'src/assets/images/email.png';
-import WebsiteIcon from 'src/assets/images/website.png';
 import { closeAllApps, closeWindow, useAppSelector } from './redux';
 import {
   AboutMe,
@@ -25,7 +24,6 @@ import { useDispatch } from 'react-redux';
 import Instagram from 'src/assets/svg/instagram.svg';
 import LinkedIn from 'src/assets/svg/linkedin.svg';
 import GitHub from 'src/assets/svg/github.svg';
-import { colors } from './constants/colors';
 
 type SocialOptions = 'instagram' | 'linkedin' | 'github';
 

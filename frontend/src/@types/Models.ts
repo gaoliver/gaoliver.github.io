@@ -68,7 +68,7 @@ export interface PersonalDetails {
   country: string;
   contact: Array<Contact>;
   social: Array<SocialNetwork>;
-  about_me: string;
+  about_me: Document;
   resume: {
     fields: {
       title: string;

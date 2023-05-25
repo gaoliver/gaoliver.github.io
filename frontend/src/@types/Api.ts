@@ -31,7 +31,7 @@ export interface GetPersonalDetailsApi {
   company: string;
   country: string;
   role: string;
-  about_me: string;
+  about_me: Document;
   contact: {
     fields: Contact;
   };

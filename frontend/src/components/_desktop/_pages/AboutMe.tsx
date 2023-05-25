@@ -6,6 +6,7 @@ import getAge from 'src/utils/getAge';
 import styled from 'styled-components';
 import { Button } from '../_atoms';
 import { fonts, fontWeights } from 'src/constants/fonts';
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 const AboutMeWrapper = styled.section`
   display: flex;
@@ -113,7 +114,11 @@ export const AboutMe: React.FC = () => {
 
         <div
           className="about_me_text"
-          dangerouslySetInnerHTML={{ __html: MYINFO?.about_me || '' }}
+          dangerouslySetInnerHTML={{
+            __html: MYINFO?.about_me
+              ? documentToHtmlString(MYINFO.about_me)
+              : ''
+          }}
         />
 
         <div className="profile">

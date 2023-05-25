@@ -13,7 +13,7 @@ export type DesktopIconProps = {
 };
 
 const DesktopIconWrapper = styled.button`
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   width: 110px;
   height: 120px;

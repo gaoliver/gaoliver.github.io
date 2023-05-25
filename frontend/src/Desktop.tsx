@@ -25,7 +25,7 @@ import EmailIcon from 'src/assets/images/email.png';
 import { TextModel } from './components/_desktop/_organisms/TextModel';
 
 const PageWrapper = styled.div`
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   height: 100svh;
   width: 100%;
@@ -35,7 +35,7 @@ const PageWrapper = styled.div`
 const DesktopWrapper = styled.article`
   flex: 1;
   position: relative;
-  columns: 10;
+  columns: 12;
   column-fill: auto;
   overflow: hidden;
 `;

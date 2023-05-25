@@ -62,9 +62,9 @@ export const Desktop: FC = () => {
   }
 
   useEffect(() => {
-    // document.addEventListener('contextmenu', (ev: MouseEvent) =>
-    //   ev.preventDefault()
-    // );
+    document.addEventListener('contextmenu', (ev: MouseEvent) =>
+      ev.preventDefault()
+    );
   }, []);
 
   return (

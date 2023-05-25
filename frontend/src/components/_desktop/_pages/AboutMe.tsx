@@ -12,17 +12,10 @@ const AboutMeWrapper = styled.section`
   display: flex;
   height: fit-content;
   padding-top: 20px;
-  padding-bottom: 80px !important;
   width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  img {
-    width: 200px;
-    border-radius: 100%;
-    margin: 20px 0 30px 0;
-  }
 
   .intro {
     padding: 0 20%;
@@ -32,67 +25,80 @@ const AboutMeWrapper = styled.section`
       padding: 0 30px;
     }
 
-    h1 {
-      color: ${(props) => props.theme.h1};
-      line-height: 1;
-    }
-
-    .first-paragraph__highlight {
-      width: 100%;
-      margin-top: 0;
-      padding: 5px 0;
-      background-color: ${(props) => props.theme.h1};
-      color: ${(props) => props.theme.window};
-      ${fonts.h3};
-      font-weight: ${fontWeights.regular};
-
-      @media screen and (max-width: 800px) {
-        font-size: 1.3rem;
-      }
-    }
-
     p {
       text-align: justify;
     }
+  }
+`;
 
-    .profile {
-      margin: 40px 10%;
-      padding: 20px;
-      border: 3px dotted ${(props) => props.theme.h1};
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      @media (max-width: 800px) {
-        margin: 40px 0 !important;
-      }
+const Image = styled.img`
+  width: 200px;
+  border-radius: 100%;
+  margin: 20px 0 30px 0;
+`;
 
-      h2 {
-        color: ${(props) => props.theme.h1};
-      }
+const ButtonWrapper = styled.a`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  text-decoration: none;
+`;
 
-      h3 {
-        margin-top: 40px;
-        text-align: center;
-      }
+const ProfileWrapper = styled.div`
+  margin: 40px 10%;
+  padding: 20px;
+  border: 3px dotted ${(props) => props.theme.h1};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media (max-width: 800px) {
+    margin: 40px 0 !important;
+  }
 
-      p {
-        background: none;
-        color: ${(props) => props.theme.text};
-        width: fit-content;
-        text-align: center;
-        line-height: 20px;
-        margin-top: 10px;
-        ${fonts.body};
+  h2 {
+    color: ${(props) => props.theme.h1};
+  }
 
-        b {
-          margin-top: 20px;
-        }
+  h3 {
+    margin-top: 40px;
+    text-align: center;
+  }
 
-        li {
-          list-style: none;
-        }
-      }
+  p {
+    background: none;
+    color: ${(props) => props.theme.text};
+    width: fit-content;
+    text-align: center;
+    line-height: 20px;
+    margin-top: 10px;
+    ${fonts.body};
+
+    b {
+      margin-top: 20px;
     }
+
+    li {
+      list-style: none;
+    }
+  }
+`;
+
+const H1 = styled.h1`
+  color: ${(props) => props.theme.h1};
+  line-height: 1;
+`;
+
+const FirstParagraph = styled.p`
+  width: 100%;
+  margin-top: 0;
+  padding: 5px 0;
+  background-color: ${(props) => props.theme.h1};
+  color: ${(props) => props.theme.window};
+  ${fonts.h3};
+  font-weight: ${fontWeights.regular};
+
+  @media screen and (max-width: 800px) {
+    font-size: 1.3rem;
   }
 `;
 
@@ -106,14 +112,14 @@ export const AboutMe: React.FC = () => {
 
   return (
     <AboutMeWrapper id="about-me">
-      <img src={MYINFO?.image} alt="Profile picture" />
+      <Image src={MYINFO?.image} alt="Profile picture" />
       <div className="col intro">
-        <h1>About me</h1>
-        <p className="first-paragraph__highlight">
+        <H1>About me</H1>
+        <FirstParagraph>
           {`My name is ${MYINFO?.name} ${MYINFO?.surname} 👨🏽‍💻. (${getAge(
             translate.birthdate
           )} y-o)`}
-        </p>
+        </FirstParagraph>
 
         <div
           className="about_me_text"
@@ -122,7 +128,7 @@ export const AboutMe: React.FC = () => {
           }}
         />
 
-        <div className="profile">
+        <ProfileWrapper>
           <h2>{MYINFO?.role}</h2>
           <h3>Languages and Frameworks</h3>
           <p>
@@ -148,13 +154,12 @@ export const AboutMe: React.FC = () => {
               return <li key={Math.random()}>{tool}</li>;
             })}
           </p>
-        </div>
+        </ProfileWrapper>
 
-        <a
+        <ButtonWrapper
           href={MYINFO?.resume.fields.file.url}
           target="_blank"
           download="Gabriel_Ramos_CV"
-          style={{ display: 'contents' }}
           rel="noreferrer"
         >
           <Button
@@ -162,7 +167,7 @@ export const AboutMe: React.FC = () => {
             role="link"
             label="Click to download my resumé (C.V.)"
           />
-        </a>
+        </ButtonWrapper>
       </div>
     </AboutMeWrapper>
   );

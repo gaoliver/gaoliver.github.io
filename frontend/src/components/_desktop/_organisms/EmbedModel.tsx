@@ -69,7 +69,7 @@ export const EmbedModel: FC<EmbedModelProps> = ({
     <iframe
       src={url || `https://www.youtube.com/embed/${youtubeVideoId}`}
       width="100%"
-      height={url ? '100%' : '90%'}
+      height="100%"
       style={{ border: 0, backgroundColor: colors.white }}
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
     />

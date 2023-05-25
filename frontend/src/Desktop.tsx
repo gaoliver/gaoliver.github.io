@@ -22,6 +22,7 @@ import { AboutMe, EmbedModel, HomeInfo, Loading } from './components/_shared';
 import whiteIcon from 'src/assets/images/GabrielRamos-whiteIcon.png';
 import folderIcon from 'src/assets/images/folder.png';
 import EmailIcon from 'src/assets/images/email.png';
+import { TextModel } from './components/_desktop/_organisms/TextModel';
 
 const PageWrapper = styled.div`
   display: flex;
@@ -61,9 +62,9 @@ export const Desktop: FC = () => {
   }
 
   useEffect(() => {
-    document.addEventListener('contextmenu', (ev: MouseEvent) =>
-      ev.preventDefault()
-    );
+    // document.addEventListener('contextmenu', (ev: MouseEvent) =>
+    //   ev.preventDefault()
+    // );
   }, []);
 
   return (
@@ -92,11 +93,14 @@ export const Desktop: FC = () => {
             {(folder.type === 'Embed' || folder.type === 'Video') && (
               <EmbedModel
                 {...(folder.type === 'Embed' && { url: folder.url })}
-                {...(folder.type === 'Video' && { youtubeVideoId: folder.youTubeVideoId })}
+                {...(folder.type === 'Video' && {
+                  youtubeVideoId: folder.youTubeVideoId
+                })}
                 isNotWorking={folder.isNotWorking}
                 notWorkingText={folder.notWorkingText}
               />
             )}
+            {folder.type === 'Text' && <TextModel text={folder.text} />}
           </DesktopIcon>
         ))}
 

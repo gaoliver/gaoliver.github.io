@@ -11,7 +11,7 @@ import {
 } from 'src/redux';
 import { useDispatch } from 'react-redux';
 import { handleWindowPosition } from 'src/utils/handleWindowPosition';
-import { backgrounds, darken, rgba } from 'polished';
+import { darken, rgba } from 'polished';
 import { light } from 'src/styles';
 
 type WindowProps = {
@@ -23,6 +23,8 @@ type WindowProps = {
 const WindowWrapper = styled.article<
   HTMLAttributes<HTMLDivElement> & { isFullSize?: boolean }
 >`
+  display: flex;
+  flex-direction: column;
   position: absolute;
   z-index: ${(props) => handleWindowPosition(props.id || '')};
   width: 800px;
@@ -41,8 +43,7 @@ const WindowWrapper = styled.article<
   );
 
   .window--content {
-    width: 100%;
-    height: 100%;
+    flex: 1;
     overflow: auto;
 
     section {
@@ -95,11 +96,11 @@ export const Window: FC<WindowProps> = ({ children, onClose, title, id }) => {
     windowRef.current.style.transition = 'none';
 
     if (windowItem) {
-      windowRef.current.style.display = 'block';
+      windowRef.current.style.display = 'flex';
       dispatch(changeWindowOnFocus(id));
     } else {
       windowRef.current.style.opacity = '0';
-      windowRef.current.style.display = 'block';
+      windowRef.current.style.display = 'flex';
     }
   }
 

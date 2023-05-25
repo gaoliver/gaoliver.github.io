@@ -1,7 +1,7 @@
 {
     "homepage": "http://gaoliver.github.io/",
     "name": "my-webapp",
-    "version": "4.0",
+    "version": "4.0.1",
     "private": true,
     "engines": {
         "node": "^16",
@@ -17,6 +17,8 @@
     },
     "dependencies": {
         "@chakra-ui/react": "^2.1.2",
+        "@contentful/rich-text-html-renderer": "^16.0.4",
+        "@contentful/rich-text-types": "^16.1.0",
         "@emotion/react": "^11",
         "@emotion/styled": "^11",
         "@testing-library/jest-dom": "^5.11.4",

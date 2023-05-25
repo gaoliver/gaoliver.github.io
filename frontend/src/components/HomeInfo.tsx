@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { PersonalDetails } from 'src/@types/Api';
+import { PersonalDetails } from 'src/@types/Models';
 import { colors } from 'src/constants/colors';
 import styled from 'styled-components';
 

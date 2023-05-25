@@ -15,7 +15,10 @@ type WindowProps = {
 };
 
 const WindowWrapper = styled.article<
-  HTMLAttributes<HTMLDivElement> & { isFullSize?: boolean }>`
+  HTMLAttributes<HTMLDivElement> & { isFullSize?: boolean }
+>`
+  display: flex;
+  flex-direction: column;
   position: absolute;
   top: 0;
   z-index: 100;
@@ -51,12 +54,8 @@ const WindowWrapper = styled.article<
 
   .window--content {
     width: 100%;
-    height: 93%;
+    flex: 1;
     overflow: scroll;
-
-    section {
-      padding-bottom: 150px;
-    }
 
     #contact-page {
       p,
@@ -70,7 +69,7 @@ const WindowWrapper = styled.article<
 const HeaderWindow = styled.div`
   display: flex;
   width: 100%;
-  height: 7%;
+  height: 50px;
   flex-direction: row;
   justify-content: flex-end;
   background-color: ${(props) => props.theme.window};
@@ -143,7 +142,10 @@ export const AppScreen: FC<WindowProps> = ({
         <HeaderTitle>{title}</HeaderTitle>
         <WindowButton />
       </HeaderWindow>
-      <div className="window--content">{children}</div>
+      <div className="window--content">
+        {children}
+        <footer style={{ height: '80px' }} />
+      </div>
     </WindowWrapper>
   );
 };

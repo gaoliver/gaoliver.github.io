@@ -1,5 +1,5 @@
 import { rgba } from 'polished';
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import {
   AppScreen,
@@ -11,23 +11,20 @@ import {
 import blackIcon from 'src/assets/images/GabrielRamos-blackIcon.png';
 import folderIcon from 'src/assets/images/folder.png';
 import EmailIcon from 'src/assets/images/email.png';
-import WebsiteIcon from 'src/assets/images/website.png';
+import { closeAllApps, closeWindow, useAppSelector } from './redux';
 import {
-  closeAllApps,
-  closeWindow,
-  getInfo,
-  getPortfolio,
-  getThemeApi,
-  getTools,
-  useAppSelector
-} from './redux';
-import { AboutMe, Contact, EmbedModel, HomeInfo, Loading } from './components/_shared';
+  AboutMe,
+  Contact,
+  EmbedModel,
+  HomeInfo,
+  Loading,
+  TextModel
+} from './components/_shared';
 import { useDispatch } from 'react-redux';
 
 import Instagram from 'src/assets/svg/instagram.svg';
 import LinkedIn from 'src/assets/svg/linkedin.svg';
 import GitHub from 'src/assets/svg/github.svg';
-import { colors } from './constants/colors';
 
 type SocialOptions = 'instagram' | 'linkedin' | 'github';
 
@@ -52,7 +49,7 @@ const FolderIconContainer = styled.div`
 
 export const Mobile: FC = () => {
   const dispatch = useDispatch();
-  const { windowsList, MYINFO, theme, isLoading } = useAppSelector(
+  const { windowsList, MYINFO, isLoading, desktop } = useAppSelector(
     (state) => state
   );
 
@@ -85,23 +82,6 @@ export const Mobile: FC = () => {
     }
   }
 
-  useEffect(() => {
-    dispatch(getInfo());
-    dispatch(getPortfolio());
-    dispatch(getTools());
-    dispatch(getThemeApi());
-
-    if (window.location.hash) {
-      window.location.hash = '';
-    }
-  }, []);
-
-  useEffect(() => {
-    document
-      .querySelector('meta[name="theme-color"]')
-      ?.setAttribute('content', theme.window);
-  }, [theme]);
-
   return (
     <ScreenWrapper>
       {isLoading && <Loading />}
@@ -124,41 +104,7 @@ export const Mobile: FC = () => {
             <Contact />
           </ScreenIcon>
         </FolderIconContainer>
-        <FolderIconContainer>
-          <ScreenIcon
-            label="No-sense website I just made for fun"
-            imageSource={WebsiteIcon}
-            id="infinity_scroller"
-          >
-            <div
-              style={{
-                height: '100%',
-                width: '100%',
-                backgroundColor: colors.white
-              }}
-            >
-              <EmbedModel url="https://gaoliver.github.io/scroller/" />
-            </div>
-          </ScreenIcon>
-        </FolderIconContainer>
-        <FolderIconContainer>
-          <ScreenIcon
-            label="About this project"
-            imageSource={WebsiteIcon}
-            id="post_about_project"
-          >
-            <EmbedModel url="https://www.linkedin.com/embed/feed/update/urn:li:share:6941295016061358081" />
-          </ScreenIcon>
-        </FolderIconContainer>
-        <FolderIconContainer>
-          <ScreenIcon
-            label="External links"
-            imageSource={WebsiteIcon}
-            id="external_links"
-          >
-            <EmbedModel url="https://bio.link/gaoliver" />
-          </ScreenIcon>
-        </FolderIconContainer>
+
         {MYINFO?.social.map((social) => (
           <FolderIconContainer key={social.id}>
             <ScreenIcon
@@ -166,7 +112,29 @@ export const Mobile: FC = () => {
               label={social.name}
               imageSource={handleSocialImage(social.id as SocialOptions)}
             >
-              <EmbedModel url={social.url} icon={social.id} notWorking />
+              <EmbedModel url={social.url} icon={social.id} isNotWorking />
+            </ScreenIcon>
+          </FolderIconContainer>
+        ))}
+
+        {desktop?.map((folder) => (
+          <FolderIconContainer key={folder.id}>
+            <ScreenIcon
+              label={folder.name}
+              imageSource={folder.image.file.url}
+              id={folder.id}
+            >
+              {(folder.type === 'Embed' || folder.type === 'Video') && (
+                <EmbedModel
+                  {...(folder.type === 'Embed' && { url: folder.url })}
+                  {...(folder.type === 'Video' && {
+                    youtubeVideoId: folder.youTubeVideoId
+                  })}
+                  isNotWorking={folder.isNotWorking}
+                  notWorkingText={folder.notWorkingText}
+                />
+              )}
+              {folder.type === 'Text' && <TextModel text={folder.text} />}
             </ScreenIcon>
           </FolderIconContainer>
         ))}

@@ -12,14 +12,9 @@ import styled from 'styled-components';
 import {
   AppState,
   closeWindow,
-  getInfo,
-  getPortfolio,
-  getTools,
   minimizeWindow,
   useAppSelector,
-  changeWindowOnFocus,
-  toggleLoading,
-  getThemeApi
+  changeWindowOnFocus
 } from 'src/redux';
 import { useDispatch } from 'react-redux';
 import { AboutMe, EmbedModel, HomeInfo, Loading } from './components/_shared';
@@ -27,11 +22,10 @@ import { AboutMe, EmbedModel, HomeInfo, Loading } from './components/_shared';
 import whiteIcon from 'src/assets/images/GabrielRamos-whiteIcon.png';
 import folderIcon from 'src/assets/images/folder.png';
 import EmailIcon from 'src/assets/images/email.png';
-import WebsiteIcon from 'src/assets/images/website.png';
-import { colors } from './constants/colors';
+import { TextModel } from './components/_desktop/_organisms/TextModel';
 
 const PageWrapper = styled.div`
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   height: 100svh;
   width: 100%;
@@ -41,14 +35,14 @@ const PageWrapper = styled.div`
 const DesktopWrapper = styled.article`
   flex: 1;
   position: relative;
-  columns: 10;
+  columns: 12;
   column-fill: auto;
   overflow: hidden;
 `;
 
 export const Desktop: FC = () => {
   const dispatch = useDispatch();
-  const { windowsList, MYINFO, theme, isLoading } = useAppSelector(
+  const { windowsList, MYINFO, isLoading, desktop } = useAppSelector(
     (state: AppState) => state
   );
 
@@ -71,31 +65,7 @@ export const Desktop: FC = () => {
     document.addEventListener('contextmenu', (ev: MouseEvent) =>
       ev.preventDefault()
     );
-
-    if (window.location.hash) {
-      window.location.hash = '';
-    }
   }, []);
-
-  useEffect(() => {
-    dispatch(toggleLoading(true));
-    dispatch(getThemeApi());
-    dispatch(getInfo());
-    dispatch(getTools());
-    dispatch(getPortfolio());
-  }, []);
-
-  useEffect(() => {
-    if (MYINFO) {
-      dispatch(toggleLoading(false));
-    }
-  }, [MYINFO]);
-
-  useEffect(() => {
-    document
-      .querySelector('meta[name="theme-color"]')
-      ?.setAttribute('content', theme.window);
-  }, [theme]);
 
   return (
     <PageWrapper>
@@ -112,35 +82,27 @@ export const Desktop: FC = () => {
         <DesktopIcon label="Contact" imageSource={EmailIcon} id="contact">
           <Contact />
         </DesktopIcon>
-        <DesktopIcon
-          label="No-sense website I just made for fun"
-          imageSource={WebsiteIcon}
-          id="infinity_scroller"
-        >
-          <div
-            style={{
-              height: '100%',
-              width: '100%',
-              backgroundColor: colors.white
-            }}
+
+        {desktop?.map((folder) => (
+          <DesktopIcon
+            label={folder.name}
+            imageSource={folder.image.file.url}
+            id={folder.id}
+            key={folder.id}
           >
-            <EmbedModel url="https://gaoliver.github.io/scroller/" />
-          </div>
-        </DesktopIcon>
-        <DesktopIcon
-          label="About the project"
-          imageSource={WebsiteIcon}
-          id="post_about_project"
-        >
-          <EmbedModel url="https://www.linkedin.com/embed/feed/update/urn:li:share:6941295016061358081" />
-        </DesktopIcon>
-        <DesktopIcon
-          label="External links"
-          imageSource={WebsiteIcon}
-          id="external_links"
-        >
-          <EmbedModel url="https://bio.link/gaoliver" />
-        </DesktopIcon>
+            {(folder.type === 'Embed' || folder.type === 'Video') && (
+              <EmbedModel
+                {...(folder.type === 'Embed' && { url: folder.url })}
+                {...(folder.type === 'Video' && {
+                  youtubeVideoId: folder.youTubeVideoId
+                })}
+                isNotWorking={folder.isNotWorking}
+                notWorkingText={folder.notWorkingText}
+              />
+            )}
+            {folder.type === 'Text' && <TextModel text={folder.text} />}
+          </DesktopIcon>
+        ))}
 
         {windowsList.map((window) => {
           return (

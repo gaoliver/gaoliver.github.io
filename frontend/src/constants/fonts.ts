@@ -1,6 +1,7 @@
 export type FontStyle = {
   fontSize: string;
   fontWeight: fontWeights;
+  lineHeight?: number
 };
 
 export type FontStyles = {
@@ -35,7 +36,8 @@ export const fonts: FontStyles = {
   },
   body: {
     fontSize: '1rem',
-    fontWeight: fontWeights.regular
+    fontWeight: fontWeights.regular,
+    lineHeight: 1.5
   },
   button: {
     fontSize: '1.2rem',

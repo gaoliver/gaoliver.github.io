@@ -17,7 +17,8 @@ import {
   Contact,
   EmbedModel,
   HomeInfo,
-  Loading
+  Loading,
+  TextModel
 } from './components/_shared';
 import { useDispatch } from 'react-redux';
 
@@ -133,6 +134,7 @@ export const Mobile: FC = () => {
                   notWorkingText={folder.notWorkingText}
                 />
               )}
+              {folder.type === 'Text' && <TextModel text={folder.text} />}
             </ScreenIcon>
           </FolderIconContainer>
         ))}

@@ -50,7 +50,9 @@ const FolderIconContainer = styled.div`
 
 export const Mobile: FC = () => {
   const dispatch = useDispatch();
-  const { windowsList, MYINFO, isLoading } = useAppSelector((state) => state);
+  const { windowsList, MYINFO, isLoading, desktop } = useAppSelector(
+    (state) => state
+  );
 
   window.onhashchange = function () {
     dispatch(closeWindow(windowsList[windowsList.length - 1]?.id));
@@ -103,41 +105,7 @@ export const Mobile: FC = () => {
             <Contact />
           </ScreenIcon>
         </FolderIconContainer>
-        <FolderIconContainer>
-          <ScreenIcon
-            label="No-sense website I just made for fun"
-            imageSource={WebsiteIcon}
-            id="infinity_scroller"
-          >
-            <div
-              style={{
-                height: '100%',
-                width: '100%',
-                backgroundColor: colors.white
-              }}
-            >
-              <EmbedModel url="https://gaoliver.github.io/scroller/" />
-            </div>
-          </ScreenIcon>
-        </FolderIconContainer>
-        <FolderIconContainer>
-          <ScreenIcon
-            label="About this project"
-            imageSource={WebsiteIcon}
-            id="post_about_project"
-          >
-            <EmbedModel url="https://www.linkedin.com/embed/feed/update/urn:li:share:6941295016061358081" />
-          </ScreenIcon>
-        </FolderIconContainer>
-        <FolderIconContainer>
-          <ScreenIcon
-            label="External links"
-            imageSource={WebsiteIcon}
-            id="external_links"
-          >
-            <EmbedModel url="https://bio.link/gaoliver" />
-          </ScreenIcon>
-        </FolderIconContainer>
+
         {MYINFO?.social.map((social) => (
           <FolderIconContainer key={social.id}>
             <ScreenIcon
@@ -145,7 +113,28 @@ export const Mobile: FC = () => {
               label={social.name}
               imageSource={handleSocialImage(social.id as SocialOptions)}
             >
-              <EmbedModel url={social.url} icon={social.id} notWorking />
+              <EmbedModel url={social.url} icon={social.id} isNotWorking />
+            </ScreenIcon>
+          </FolderIconContainer>
+        ))}
+
+        {desktop?.map((folder) => (
+          <FolderIconContainer key={folder.id}>
+            <ScreenIcon
+              label={folder.name}
+              imageSource={folder.image.file.url}
+              id={folder.id}
+            >
+              {(folder.type === 'Embed' || folder.type === 'Video') && (
+                <EmbedModel
+                  {...(folder.type === 'Embed' && { url: folder.url })}
+                  {...(folder.type === 'Video' && {
+                    url: folder.youTubeVideoId
+                  })}
+                  isNotWorking={folder.isNotWorking}
+                  notWorkingText={folder.notWorkingText}
+                />
+              )}
             </ScreenIcon>
           </FolderIconContainer>
         ))}

@@ -1,45 +1,15 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { PersonalDetails, ThemeModelApi } from 'src/@types/Api';
+import {
+  Folder,
+  PersonalDetails,
+  PortfolioModel,
+  ThemeModelApi,
+  ToolsModel,
+  WindowListProps
+} from 'src/@types/Models';
 import { light } from 'src/styles';
 import { Theme } from 'src/styles/styled';
 import { ActionTypes, AppActions } from './actions';
-
-export type WindowListProps = {
-  id: string;
-  title: string;
-  minimized: boolean;
-  content: JSX.Element;
-};
-
-export type PortfolioModel = {
-  name: string;
-  company: string;
-  mainImage: string;
-  url: string;
-  slug: string;
-  color: string;
-  jobInfo: {
-    role: string;
-    type: string;
-    language: string;
-    startDate: string;
-    endDate?: string;
-    mainTools: Array<string>;
-    images: Array<string>;
-  };
-  text?: string;
-};
-
-export type ToolsModel = {
-  description: string;
-  languages: {
-    pro: Array<string>;
-    intermediate: Array<string>;
-    beginner: Array<string>;
-  };
-  tools: Array<string>;
-};
-
 interface InitialStateModel {
   isLoading: boolean;
   lastType: string;
@@ -51,6 +21,7 @@ interface InitialStateModel {
   theme: Theme;
   themeConfig: ThemeModelApi;
   windowOnFocus?: string;
+  desktop: Array<Folder>;
 }
 
 const initialState: InitialStateModel = {
@@ -63,7 +34,8 @@ const initialState: InitialStateModel = {
   taskSettings: false,
   theme: light,
   themeConfig: { desktopBackgroundImage: '', mobileBackgroundImage: '' },
-  windowOnFocus: undefined
+  windowOnFocus: undefined,
+  desktop: []
 };
 
 export const reducer = (
@@ -160,6 +132,13 @@ export const reducer = (
         ...state,
         isLoading: action.payload
       };
+
+    case ActionTypes.GET_DESKTOP:
+      return {
+        ...state,
+        desktop: action.payload
+      };
+
     default:
       return state;
   }

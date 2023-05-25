@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import { fonts } from 'src/constants/fonts';
-import { ThemeModelApi } from 'src/@types/Api';
+import { ThemeModelApi } from 'src/@types/Models';
 
 export default createGlobalStyle<{
   backgrounds: ThemeModelApi;

@@ -9,7 +9,6 @@ import {
   minimizeWindow,
   store,
   toggleTaskSettings,
-  WindowListProps,
   changeWindowOnFocus
 } from 'src/redux';
 import { useDispatch } from 'react-redux';
@@ -20,7 +19,7 @@ import { fonts } from 'src/constants/fonts';
 import { colors } from 'src/constants/colors';
 import { taskbarIconsShadow } from 'src/constants/taskbarIconsShadow';
 import { dark } from 'src/styles';
-import { SocialNetwork } from 'src/@types/Api';
+import { SocialNetwork, WindowListProps } from 'src/@types/Models';
 
 type TaskbarProps = {
   windowsList: WindowListProps[];
@@ -78,7 +77,7 @@ export const Taskbar: FC<TaskbarProps> = ({ windowsList, onClickWindow }) => {
   const theme = useTheme();
 
   const renderSocialContent = (social: SocialNetwork) => {
-    return <EmbedModel url={social.url} icon={social.id} notWorking />;
+    return <EmbedModel url={social.url} icon={social.id} isNotWorking />;
   };
 
   function openWindow(id: string, title: string, content: JSX.Element) {

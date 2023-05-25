@@ -4,6 +4,7 @@ import GlobalStyle from 'src/styles/global';
 import { Desktop } from './Desktop';
 import { Mobile } from './Mobile';
 import {
+  getDesktop,
   getInfo,
   getPortfolio,
   getThemeApi,
@@ -74,6 +75,7 @@ const App: React.FC = () => {
     dispatch(getInfo());
     dispatch(getTools());
     dispatch(getPortfolio());
+    dispatch(getDesktop());
   }, []);
 
   return (

@@ -1,7 +1,7 @@
 import { rgba } from 'polished';
 import React, { FC, HTMLAttributes } from 'react';
+import { PortfolioModel } from 'src/@types/Models';
 import { Button } from 'src/components/_desktop';
-import { PortfolioModel } from 'src/redux';
 import { dark } from 'src/styles';
 import { handleEndDate } from 'src/utils/handleEndDate';
 import { handleMonthYear } from 'src/utils/handleMonthYear';

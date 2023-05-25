@@ -22,8 +22,6 @@ import { AboutMe, EmbedModel, HomeInfo, Loading } from './components/_shared';
 import whiteIcon from 'src/assets/images/GabrielRamos-whiteIcon.png';
 import folderIcon from 'src/assets/images/folder.png';
 import EmailIcon from 'src/assets/images/email.png';
-import WebsiteIcon from 'src/assets/images/website.png';
-import { colors } from './constants/colors';
 
 const PageWrapper = styled.div`
   display: flex;
@@ -43,7 +41,7 @@ const DesktopWrapper = styled.article`
 
 export const Desktop: FC = () => {
   const dispatch = useDispatch();
-  const { windowsList, MYINFO, isLoading } = useAppSelector(
+  const { windowsList, MYINFO, isLoading, desktop } = useAppSelector(
     (state: AppState) => state
   );
 
@@ -83,35 +81,24 @@ export const Desktop: FC = () => {
         <DesktopIcon label="Contact" imageSource={EmailIcon} id="contact">
           <Contact />
         </DesktopIcon>
-        <DesktopIcon
-          label="No-sense website I just made for fun"
-          imageSource={WebsiteIcon}
-          id="infinity_scroller"
-        >
-          <div
-            style={{
-              height: '100%',
-              width: '100%',
-              backgroundColor: colors.white
-            }}
+
+        {desktop?.map((folder) => (
+          <DesktopIcon
+            label={folder.name}
+            imageSource={folder.image.file.url}
+            id={folder.id}
+            key={folder.id}
           >
-            <EmbedModel url="https://gaoliver.github.io/scroller/" />
-          </div>
-        </DesktopIcon>
-        <DesktopIcon
-          label="About the project"
-          imageSource={WebsiteIcon}
-          id="post_about_project"
-        >
-          <EmbedModel url="https://www.linkedin.com/embed/feed/update/urn:li:share:6941295016061358081" />
-        </DesktopIcon>
-        <DesktopIcon
-          label="External links"
-          imageSource={WebsiteIcon}
-          id="external_links"
-        >
-          <EmbedModel url="https://bio.link/gaoliver" />
-        </DesktopIcon>
+            {(folder.type === 'Embed' || folder.type === 'Video') && (
+              <EmbedModel
+                {...(folder.type === 'Embed' && { url: folder.url })}
+                {...(folder.type === 'Video' && { url: folder.youTubeVideoId })}
+                isNotWorking={folder.isNotWorking}
+                notWorkingText={folder.notWorkingText}
+              />
+            )}
+          </DesktopIcon>
+        ))}
 
         {windowsList.map((window) => {
           return (

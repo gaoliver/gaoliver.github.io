@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import PDFCV from 'src/assets/Gabriel_Ramos_CV.pdf';
 import handleList from 'src/utils/listFormatter';
 import { AppState } from 'src/redux/store';
 import getAge from 'src/utils/getAge';
@@ -146,9 +145,11 @@ export const AboutMe: React.FC = () => {
         </div>
 
         <a
-          href={PDFCV}
+          href={MYINFO?.resume.fields.file.url}
+          target="_blank"
           download="Gabriel_Ramos_CV"
           style={{ display: 'contents' }}
+          rel="noreferrer"
         >
           <Button
             aria-label="download"

@@ -98,8 +98,10 @@ const AboutMeWrapper = styled.section`
 
 export const AboutMe: React.FC = () => {
   const { TOOLS, MYINFO } = useSelector((state: AppState) => state);
+
   const translate = {
-    birthdate: MYINFO?.birthdate ? MYINFO.birthdate : ''
+    birthdate: MYINFO?.birthdate ? MYINFO.birthdate : '',
+    about_me: MYINFO?.about_me ? documentToHtmlString(MYINFO.about_me) : ''
   };
 
   return (
@@ -108,16 +110,15 @@ export const AboutMe: React.FC = () => {
       <div className="col intro">
         <h1>About me</h1>
         <p className="first-paragraph__highlight">
-          My name is {`${MYINFO?.name} ${MYINFO?.surname}`} 👨🏽‍💻.{' '}
-          {`(${getAge(translate.birthdate)} y-o)`}
+          {`My name is ${MYINFO?.name} ${MYINFO?.surname} 👨🏽‍💻. (${getAge(
+            translate.birthdate
+          )} y-o)`}
         </p>
 
         <div
           className="about_me_text"
           dangerouslySetInnerHTML={{
-            __html: MYINFO?.about_me
-              ? documentToHtmlString(MYINFO.about_me)
-              : ''
+            __html: translate.about_me
           }}
         />
 

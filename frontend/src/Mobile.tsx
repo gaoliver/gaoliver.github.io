@@ -1,5 +1,5 @@
 import { rgba } from 'polished';
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import {
   AppScreen,
@@ -12,16 +12,14 @@ import blackIcon from 'src/assets/images/GabrielRamos-blackIcon.png';
 import folderIcon from 'src/assets/images/folder.png';
 import EmailIcon from 'src/assets/images/email.png';
 import WebsiteIcon from 'src/assets/images/website.png';
+import { closeAllApps, closeWindow, useAppSelector } from './redux';
 import {
-  closeAllApps,
-  closeWindow,
-  getInfo,
-  getPortfolio,
-  getThemeApi,
-  getTools,
-  useAppSelector
-} from './redux';
-import { AboutMe, Contact, EmbedModel, HomeInfo, Loading } from './components/_shared';
+  AboutMe,
+  Contact,
+  EmbedModel,
+  HomeInfo,
+  Loading
+} from './components/_shared';
 import { useDispatch } from 'react-redux';
 
 import Instagram from 'src/assets/svg/instagram.svg';
@@ -52,9 +50,7 @@ const FolderIconContainer = styled.div`
 
 export const Mobile: FC = () => {
   const dispatch = useDispatch();
-  const { windowsList, MYINFO, theme, isLoading } = useAppSelector(
-    (state) => state
-  );
+  const { windowsList, MYINFO, isLoading } = useAppSelector((state) => state);
 
   window.onhashchange = function () {
     dispatch(closeWindow(windowsList[windowsList.length - 1]?.id));
@@ -84,23 +80,6 @@ export const Mobile: FC = () => {
         return '';
     }
   }
-
-  useEffect(() => {
-    dispatch(getInfo());
-    dispatch(getPortfolio());
-    dispatch(getTools());
-    dispatch(getThemeApi());
-
-    if (window.location.hash) {
-      window.location.hash = '';
-    }
-  }, []);
-
-  useEffect(() => {
-    document
-      .querySelector('meta[name="theme-color"]')
-      ?.setAttribute('content', theme.window);
-  }, [theme]);
 
   return (
     <ScreenWrapper>

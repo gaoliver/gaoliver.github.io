@@ -12,14 +12,9 @@ import styled from 'styled-components';
 import {
   AppState,
   closeWindow,
-  getInfo,
-  getPortfolio,
-  getTools,
   minimizeWindow,
   useAppSelector,
-  changeWindowOnFocus,
-  toggleLoading,
-  getThemeApi
+  changeWindowOnFocus
 } from 'src/redux';
 import { useDispatch } from 'react-redux';
 import { AboutMe, EmbedModel, HomeInfo, Loading } from './components/_shared';
@@ -48,7 +43,7 @@ const DesktopWrapper = styled.article`
 
 export const Desktop: FC = () => {
   const dispatch = useDispatch();
-  const { windowsList, MYINFO, theme, isLoading } = useAppSelector(
+  const { windowsList, MYINFO, isLoading } = useAppSelector(
     (state: AppState) => state
   );
 
@@ -71,31 +66,7 @@ export const Desktop: FC = () => {
     document.addEventListener('contextmenu', (ev: MouseEvent) =>
       ev.preventDefault()
     );
-
-    if (window.location.hash) {
-      window.location.hash = '';
-    }
   }, []);
-
-  useEffect(() => {
-    dispatch(toggleLoading(true));
-    dispatch(getThemeApi());
-    dispatch(getInfo());
-    dispatch(getTools());
-    dispatch(getPortfolio());
-  }, []);
-
-  useEffect(() => {
-    if (MYINFO) {
-      dispatch(toggleLoading(false));
-    }
-  }, [MYINFO]);
-
-  useEffect(() => {
-    document
-      .querySelector('meta[name="theme-color"]')
-      ?.setAttribute('content', theme.window);
-  }, [theme]);
 
   return (
     <PageWrapper>

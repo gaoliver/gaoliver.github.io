@@ -55,7 +55,7 @@ const WindowWrapper = styled.article<
   .window--content {
     width: 100%;
     flex: 1;
-    overflow: scroll;
+    overflow: auto;
 
     #contact-page {
       p,

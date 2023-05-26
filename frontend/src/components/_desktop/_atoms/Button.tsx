@@ -9,14 +9,14 @@ export type ButtonProps = {
 } & HTMLAttributes<HTMLButtonElement>;
 
 const ButtonWrapper = styled.button`
+  ${fonts.button};
   padding: 15px 30px;
-  background-color: ${(props) => props.color || props.theme.primary};
-  color: ${colors.white};
+  background-color: ${(props) => props.color || props.theme.button.background};
+  color: ${(props) => props.theme.button.label};
   border-radius: 5px;
   border: none;
   transition: ease-in-out 0.1s;
   box-shadow: 0px 0px 2px 1px ${colors.black};
-  ${fonts.button}
 
   :active {
     filter: brightness(0.7);
@@ -29,8 +29,14 @@ const ButtonWrapper = styled.button`
 
 export const Button: FC<ButtonProps> = ({ label, children, ...props }) => {
   return (
-    <ButtonWrapper style={{ ...fonts.button }} type="button" {...props} role="button">
-      {label}{children}
+    <ButtonWrapper
+      style={{ ...fonts.button }}
+      type="button"
+      {...props}
+      role="button"
+    >
+      {label}
+      {children}
     </ButtonWrapper>
   );
 };

@@ -1,7 +1,7 @@
 export type FontStyle = {
   fontSize: string;
   fontWeight: fontWeights;
-  lineHeight?: number
+  lineHeight?: number;
 };
 
 export type FontStyles = {
@@ -25,17 +25,17 @@ export const fonts: FontStyles = {
   h1: {
     fontSize: '3rem',
     fontWeight: fontWeights.bold,
-    lineHeight: 2.5
+    lineHeight: 1
   },
   h2: {
     fontSize: '2rem',
     fontWeight: fontWeights.bold,
-    lineHeight: 2
+    lineHeight: 1
   },
   h3: {
     fontSize: '1.5rem',
     fontWeight: fontWeights.medium,
-    lineHeight: 1.2
+    lineHeight: 1
   },
   body: {
     fontSize: '1rem',

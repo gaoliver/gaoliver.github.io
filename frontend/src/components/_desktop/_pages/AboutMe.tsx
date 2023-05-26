@@ -34,7 +34,7 @@ const AboutMeWrapper = styled.section`
 const Image = styled.img`
   width: 200px;
   border-radius: 100%;
-  margin: 20px 0 30px 0;
+  margin: 20px 0 0;
 `;
 
 const ButtonWrapper = styled.a`
@@ -82,7 +82,7 @@ const ProfileWrapper = styled.div`
 
 const H1 = styled.h1`
   color: ${(props) => props.theme.h1};
-  line-height: 1;
+  margin-bottom: 0;
 `;
 
 const FirstParagraph = styled.p`

@@ -61,7 +61,7 @@ const ProjectContentWrapper = styled.section<
   }
 
   .project--info {
-    background-color: ${(props) => props.theme.h1};
+    background-color: ${(props) => props.theme.primary};
     padding: 0 5px;
     color: ${(props) => props.theme.window};
   }

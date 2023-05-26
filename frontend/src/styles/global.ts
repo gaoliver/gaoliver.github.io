@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { fonts } from 'src/constants/fonts';
 import { ThemeModelApi } from 'src/@types/Models';
+import { rgba } from 'polished';
 
 export default createGlobalStyle<{
   backgrounds: ThemeModelApi;
@@ -35,15 +36,23 @@ export default createGlobalStyle<{
     color: ${(props) => props.theme.selectedText}
   }
 
+  main {
+    background-color: ${(props) => rgba(props.theme.text, 0.7)};
+  }
+
   h1 {
     ${fonts.h1};
+    margin-top: 30px;
+    margin-bottom: 20px;
   }
   h2 {
-    ${fonts.h2}
+    ${fonts.h2};
+    margin-top: 20px;
+    margin-bottom: 10px;
   }
   h3 {
     ${fonts.h3};
-    margin-top: 30px;
+    margin: 20px 0;
   }
 
   p {
@@ -54,6 +63,8 @@ export default createGlobalStyle<{
 
   button {
     ${fonts.button}
+    background-color: ${(props) => props.theme.button.background};
+    color: ${(props) => props.theme.button.label};
   }
 
   ul, ol {

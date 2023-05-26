@@ -28,11 +28,11 @@ import GitHub from 'src/assets/svg/github.svg';
 
 type SocialOptions = 'instagram' | 'linkedin' | 'github';
 
-const ScreenWrapper = styled.div`
+const ScreenWrapper = styled.main`
   display: block;
   overflow: hidden;
-  height: ${window.innerHeight}px;
-  background-color: ${(props) => rgba(props.theme.primary, 0.7)};
+  height: 100svh;
+  background-color: ${(props) => rgba(props.theme.home.background, 0.7)};
 `;
 
 const InnerPage = styled.div`

@@ -56,6 +56,7 @@ const WindowWrapper = styled.article<
     width: 100%;
     flex: 1;
     overflow: auto;
+    padding-bottom: 70px;
 
     #contact-page {
       p,
@@ -145,7 +146,6 @@ export const AppScreen: FC<WindowProps> = ({
       </HeaderWindow>
       <div className="window--content">
         {children}
-        <footer style={{ height: '80px' }} />
       </div>
     </WindowWrapper>
   );

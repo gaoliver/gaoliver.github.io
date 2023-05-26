@@ -42,13 +42,17 @@ export default createGlobalStyle<{
 
   h1 {
     ${fonts.h1};
+    margin-top: 30px;
+    margin-bottom: 20px;
   }
   h2 {
-    ${fonts.h2}
+    ${fonts.h2};
+    margin-top: 20px;
+    margin-bottom: 10px;
   }
   h3 {
     ${fonts.h3};
-    margin-top: 30px;
+    margin: 20px 0;
   }
 
   p {

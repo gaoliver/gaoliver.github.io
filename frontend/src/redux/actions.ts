@@ -225,6 +225,7 @@ export const getThemeApi = () => {
       .then((response) => {
         const res: GetThemeApi = response.fields as unknown as GetThemeApi;
         data = {
+          ...res,
           desktopBackgroundImage: res.desktopBackgroundImage.fields.file.url,
           mobileBackgroundImage: res.mobileBackgroundImage.fields.file.url
         };
@@ -313,8 +314,8 @@ export const getPortfolio = () => {
       const jobInfo:
         | GetPortfolioApi['portfolio'][0]['fields']['jobInfo']['fields']
         | undefined = jobsInfoList.find(
-          (i) => i.sys.id === job.fields.jobInfo.sys.id
-        )?.fields;
+        (i) => i.sys.id === job.fields.jobInfo.sys.id
+      )?.fields;
 
       return {
         ...job.fields,

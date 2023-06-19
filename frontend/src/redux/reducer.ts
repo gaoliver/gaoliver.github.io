@@ -100,10 +100,7 @@ export const reducer = (
       return {
         ...state,
         lastType: action.type,
-        themeConfig: {
-          desktopBackgroundImage: action.payload.desktopBackgroundImage,
-          mobileBackgroundImage: action.payload.mobileBackgroundImage
-        }
+        themeConfig: action.payload
       };
 
     case ActionTypes.ON_SET_TOOLS:

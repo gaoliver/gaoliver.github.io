@@ -24,6 +24,7 @@ export default createGlobalStyle<{
     background-attachment: fixed;
     color: ${(props) => props.theme.text};
     transition: all 0.5s ease;
+    animation: opacityAnimation 1s;
     @media screen and (max-width: 800px) {
       background-image: ${(props) =>
         `url(${props.backgrounds.mobileBackgroundImage})`};
@@ -75,4 +76,12 @@ export default createGlobalStyle<{
     margin-bottom: 10px;
   }
 
+  @keyframes opacityAnimation {
+    from {
+      opacity: 0
+    }
+    to {
+      opacity: 1
+    }
+  }
 `;

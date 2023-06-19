@@ -25,7 +25,7 @@ import EmailIcon from 'src/assets/images/email.png';
 import { TextModel } from './components/_desktop/_organisms/TextModel';
 
 const PageWrapper = styled.main`
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   height: 100svh;
   width: 100%;
@@ -42,9 +42,8 @@ const DesktopWrapper = styled.article`
 
 export const Desktop: FC = () => {
   const dispatch = useDispatch();
-  const { windowsList, MYINFO, isLoading, desktop } = useAppSelector(
-    (state: AppState) => state
-  );
+  const { windowsList, MYINFO, isLoading, desktop, themeConfig } =
+    useAppSelector((state: AppState) => state);
 
   function handleToggleWindow(id: string) {
     dispatch(minimizeWindow(id));
@@ -66,6 +65,22 @@ export const Desktop: FC = () => {
       ev.preventDefault()
     );
   }, []);
+
+  if (themeConfig.isMaintenanceMode || (!MYINFO && !isLoading)) {
+    return (
+      <PageWrapper>
+        <DesktopWrapper id="desktop" style={{ columns: 1 }}>
+          {MYINFO && (
+            <HomeInfo
+              info={MYINFO}
+              isMaintenanceMode
+              maintenanceText={themeConfig.maintenanceText}
+            />
+          )}
+        </DesktopWrapper>
+      </PageWrapper>
+    );
+  }
 
   return (
     <PageWrapper>

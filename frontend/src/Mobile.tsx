@@ -49,7 +49,7 @@ const FolderIconContainer = styled.div`
 
 export const Mobile: FC = () => {
   const dispatch = useDispatch();
-  const { windowsList, MYINFO, isLoading, desktop } = useAppSelector(
+  const { windowsList, MYINFO, isLoading, desktop, themeConfig } = useAppSelector(
     (state) => state
   );
 
@@ -80,6 +80,22 @@ export const Mobile: FC = () => {
       default:
         return '';
     }
+  }
+
+  if (themeConfig.isMaintenanceMode || (!MYINFO && !isLoading)) {
+    return (
+      <ScreenWrapper>
+        <InnerPage id="desktop" style={{ columns: 1 }}>
+          {MYINFO && (
+            <HomeInfo
+              info={MYINFO}
+              isMaintenanceMode
+              maintenanceText={themeConfig.maintenanceText}
+            />
+          )}
+        </InnerPage>
+      </ScreenWrapper>
+    );
   }
 
   return (

@@ -41,6 +41,8 @@ export type ToolsModel = {
 export interface ThemeModelApi {
   desktopBackgroundImage: string;
   mobileBackgroundImage: string;
+  isMaintenanceMode?: boolean;
+  maintenanceText?: string;
 }
 
 export interface SocialNetwork {

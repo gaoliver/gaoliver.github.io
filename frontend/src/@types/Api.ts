@@ -139,6 +139,8 @@ export interface GetThemeApi {
       };
     };
   };
+  isMaintenanceMode: boolean;
+  maintenanceText?: string;
 }
 
 export interface GetDesktopApi {

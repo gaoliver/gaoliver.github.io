@@ -7,6 +7,7 @@ import {
   getDesktop,
   getInfo,
   getPortfolio,
+  getStickyNotes,
   getThemeApi,
   getTools,
   toggleLoading,
@@ -76,6 +77,7 @@ const App: React.FC = () => {
     dispatch(getTools());
     dispatch(getPortfolio());
     dispatch(getDesktop());
+    dispatch(getStickyNotes());
   }, []);
 
   return (

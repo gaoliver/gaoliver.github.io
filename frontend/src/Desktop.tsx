@@ -23,6 +23,7 @@ import whiteIcon from 'src/assets/images/GabrielRamos-whiteIcon.png';
 import folderIcon from 'src/assets/images/folder.png';
 import EmailIcon from 'src/assets/images/email.png';
 import { TextModel } from './components/_desktop/_organisms/TextModel';
+import { Note } from './components/_desktop/_organisms/Note';
 
 const PageWrapper = styled.main`
   display: flex;
@@ -42,7 +43,7 @@ const DesktopWrapper = styled.article`
 
 export const Desktop: FC = () => {
   const dispatch = useDispatch();
-  const { windowsList, MYINFO, isLoading, desktop, themeConfig } =
+  const { windowsList, MYINFO, isLoading, desktop, themeConfig, stickyNotes } =
     useAppSelector((state: AppState) => state);
 
   function handleToggleWindow(id: string) {
@@ -131,6 +132,11 @@ export const Desktop: FC = () => {
             </Window>
           );
         })}
+
+        {stickyNotes.map((note, index) => (
+          <Note note={note} noteIndex={index} key={index} />
+        ))}
+
         <TaskSettings />
       </DesktopWrapper>
       <Taskbar windowsList={windowsList} onClickWindow={handleToggleWindow} />

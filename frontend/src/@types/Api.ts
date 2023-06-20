@@ -15,6 +15,16 @@ export interface GetToolsApi {
   ];
   tools: Array<string>;
 }
+export interface NoteApi {
+  title: string;
+  color: string;
+  text: Document;
+}
+
+export interface GetStickyNotesApi {
+  title: string;
+  notesList: Array<{ fields: NoteApi }>;
+}
 
 export interface GetPersonalDetailsApi {
   image: {

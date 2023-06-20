@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import { NoteApi } from 'src/@types/Api';
 import {
   Folder,
   PersonalDetails,
@@ -22,6 +23,7 @@ interface InitialStateModel {
   themeConfig: ThemeModelApi;
   windowOnFocus?: string;
   desktop: Array<Folder>;
+  stickyNotes: Array<NoteApi>;
 }
 
 const initialState: InitialStateModel = {
@@ -35,7 +37,8 @@ const initialState: InitialStateModel = {
   theme: light,
   themeConfig: { desktopBackgroundImage: '', mobileBackgroundImage: '' },
   windowOnFocus: undefined,
-  desktop: []
+  desktop: [],
+  stickyNotes: []
 };
 
 export const reducer = (
@@ -134,6 +137,12 @@ export const reducer = (
       return {
         ...state,
         desktop: action.payload
+      };
+
+    case ActionTypes.GET_NOTES:
+      return {
+        ...state,
+        stickyNotes: action.payload
       };
 
     default:

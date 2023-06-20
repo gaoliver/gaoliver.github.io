@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { FC } from 'react';
 import { Icon } from 'src/components/Icon';
 import { fonts, fontWeights } from 'src/constants/fonts';

@@ -239,8 +239,6 @@ export const Window: FC<WindowProps> = ({ children, onClose, title, id }) => {
         ></div>
         <HeaderTitle>
           {title}
-          {/* Lorem ipsum, dolor sit amet consectetur adipisicing elit. In veniam
-          molestiae omnis voluptate atque */}
         </HeaderTitle>
         <div
           style={{

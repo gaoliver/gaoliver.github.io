@@ -8,7 +8,9 @@ import {
   GetToolsApi,
   GetPortfolioApi,
   GetThemeApi,
-  GetDesktopApi
+  GetDesktopApi,
+  NoteApi,
+  GetStickyNotesApi
 } from 'src/@types/Api';
 import { createClient } from 'contentful';
 import {
@@ -33,7 +35,8 @@ export enum ActionTypes {
   ON_SET_PORTFOLIO = 'ON_SET_PORTFOLIO',
   TOGGLE_LOADING = 'TOGGLE_LOADING',
   GET_THEME = 'GET_THEME',
-  GET_DESKTOP = 'GET_DESKTOP'
+  GET_DESKTOP = 'GET_DESKTOP',
+  GET_NOTES = 'GET_NOTES'
 }
 
 export interface AddNewWindow {
@@ -98,6 +101,11 @@ export interface GetDesktop {
   payload: Array<Folder>;
 }
 
+export interface GetNotes {
+  readonly type: ActionTypes.GET_NOTES;
+  payload: Array<NoteApi>;
+}
+
 export type AppActions =
   | SetTools
   | SetInfo
@@ -111,7 +119,8 @@ export type AppActions =
   | CloseAllApps
   | ToggleLoading
   | GetTheme
-  | GetDesktop;
+  | GetDesktop
+  | GetNotes;
 
 export const toggleTaskSettings = () => {
   return async (dispatch: Dispatch<AppActions>) => {
@@ -349,6 +358,24 @@ export const getDesktop = () => {
       .catch((err) => console.log('Erro:', err));
     dispatch({
       type: ActionTypes.GET_DESKTOP,
+      payload: data
+    });
+  };
+};
+
+export const getStickyNotes = () => {
+  let data: Array<NoteApi>;
+  return async (dispatch: Dispatch<AppActions>) => {
+    await client
+      .getEntry(process.env.REACT_APP_CONTENTFUL_GET_NOTES || '')
+      .then((response) => {
+        const res: GetStickyNotesApi =
+          response.fields as unknown as GetStickyNotesApi;
+        data = res.notesList.map((note) => ({ ...note.fields }));
+      })
+      .catch((err) => console.log('Erro:', err));
+    dispatch({
+      type: ActionTypes.GET_NOTES,
       payload: data
     });
   };

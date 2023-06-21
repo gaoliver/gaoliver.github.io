@@ -14,6 +14,11 @@ const NoteWrapper = styled.article`
   padding: 10px;
   filter: brightness(0.9);
   box-shadow: 0px 1px 1px 1px black;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
 `;
 
 const RichText = styled.div``;

@@ -49,9 +49,8 @@ const FolderIconContainer = styled.div`
 
 export const Mobile: FC = () => {
   const dispatch = useDispatch();
-  const { windowsList, MYINFO, isLoading, desktop, themeConfig } = useAppSelector(
-    (state) => state
-  );
+  const { windowsList, MYINFO, isLoading, desktop, themeConfig } =
+    useAppSelector((state) => state);
 
   window.onhashchange = function () {
     dispatch(closeWindow(windowsList[windowsList.length - 1]?.id));
@@ -82,7 +81,16 @@ export const Mobile: FC = () => {
     }
   }
 
-  if (themeConfig.isMaintenanceMode || (!MYINFO && !isLoading)) {
+  if (isLoading) {
+    return (
+      <ScreenWrapper>
+        <Loading />
+        <InnerPage id="desktop" style={{ columns: 1 }}></InnerPage>
+      </ScreenWrapper>
+    );
+  }
+
+  if (themeConfig?.isMaintenanceMode || !MYINFO || !desktop) {
     return (
       <ScreenWrapper>
         <InnerPage id="desktop" style={{ columns: 1 }}>
@@ -100,8 +108,6 @@ export const Mobile: FC = () => {
 
   return (
     <ScreenWrapper>
-      {isLoading && <Loading />}
-
       {MYINFO && <HomeInfo info={MYINFO} />}
 
       <InnerPage>

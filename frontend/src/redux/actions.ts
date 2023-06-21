@@ -239,7 +239,13 @@ export const getThemeApi = () => {
           mobileBackgroundImage: res.mobileBackgroundImage.fields.file.url
         };
       })
-      .catch((err) => console.log('Erro:', err));
+      .catch((err) => {
+        console.log('Erro:', err);
+        dispatch({
+          type: ActionTypes.TOGGLE_LOADING,
+          payload: false
+        });
+      });
     dispatch({
       type: ActionTypes.GET_THEME,
       payload: data
@@ -266,7 +272,13 @@ export const getTools = () => {
           languages
         } as unknown as ToolsModel;
       })
-      .catch((err) => console.log('Erro:', err));
+      .catch((err) => {
+        console.log('Erro:', err);
+        dispatch({
+          type: ActionTypes.TOGGLE_LOADING,
+          payload: false
+        });
+      });
     dispatch({
       type: ActionTypes.ON_SET_TOOLS,
       payload: data
@@ -293,7 +305,13 @@ export const getInfo = () => {
           social
         } as unknown as PersonalDetails;
       })
-      .catch((err) => console.log('Erro:', err));
+      .catch((err) => {
+        console.log('Erro:', err);
+        dispatch({
+          type: ActionTypes.TOGGLE_LOADING,
+          payload: false
+        });
+      });
     dispatch({
       type: ActionTypes.ON_SET_INFO,
       payload: data

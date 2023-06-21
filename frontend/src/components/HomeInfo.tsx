@@ -5,7 +5,7 @@ import styled, { keyframes } from 'styled-components';
 import { Button } from './_desktop';
 
 type HomeInfoProps = {
-  info: PersonalDetails;
+  info?: PersonalDetails;
   isMaintenanceMode?: boolean;
   maintenanceText?: string;
 };
@@ -93,7 +93,7 @@ const MaintenanceModeText = styled.span`
   opacity: 0.5;
   color: ${colors.black};
   animation: ${fadeInTextAnimation} 3s;
-  
+
   @media (max-width: 800px) {
     color: ${colors.white};
   }
@@ -112,9 +112,9 @@ const LinkButton = styled(Button)`
 `;
 
 export const HomeInfo: FC<HomeInfoProps> = ({
-  info: { name, surname, role, company },
+  info,
   isMaintenanceMode,
-  maintenanceText
+  maintenanceText = "We're in maintenance at the moment. Please, come back later!"
 }) => {
   return (
     <>
@@ -123,9 +123,20 @@ export const HomeInfo: FC<HomeInfoProps> = ({
       )}
 
       <HomeInfoWrapper>
-        <h1>{`${name} ${surname}`}</h1>
-        <h2>{role}</h2>
-        <h3>{`@ ${company}`}</h3>
+        {info?.name
+          ? (
+          <>
+            <h1>{`${info.name} ${info.surname}`}</h1>
+            <h2>{info.role}</h2>
+            <h3>{`@ ${info.company}`}</h3>
+          </>
+            )
+          : (
+          <>
+            <h1>Gabriel Ramos</h1>
+            <h2>Frontend Developer</h2>
+          </>
+            )}
       </HomeInfoWrapper>
 
       {isMaintenanceMode && (

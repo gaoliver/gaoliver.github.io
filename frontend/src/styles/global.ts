@@ -3,6 +3,9 @@ import { fonts } from 'src/constants/fonts';
 import { ThemeModelApi } from 'src/@types/Models';
 import { rgba } from 'polished';
 
+import DesktopImage from '../assets/images/desktop_background_sofa.webp';
+import MobileImage from '../assets/images/desktop_background_cozinha.webp';
+
 export default createGlobalStyle<{
   backgrounds: ThemeModelApi;
 }>`
@@ -17,7 +20,7 @@ export default createGlobalStyle<{
   }
   body {
     background-image: ${(props) =>
-      `url(${props.backgrounds.desktopBackgroundImage})`};
+      `url(${props.backgrounds.desktopBackgroundImage || DesktopImage})`};
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -25,9 +28,10 @@ export default createGlobalStyle<{
     color: ${(props) => props.theme.text};
     transition: all 0.5s ease;
     animation: opacityAnimation 1s;
+
     @media screen and (max-width: 800px) {
       background-image: ${(props) =>
-        `url(${props.backgrounds.mobileBackgroundImage})`};
+        `url(${props.backgrounds.mobileBackgroundImage || MobileImage})`};
 
     }
   }

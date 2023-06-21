@@ -7,7 +7,7 @@ import {
   Contact
 } from 'src/components/_desktop';
 import { rgba } from 'polished';
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import {
   AppState,
@@ -61,23 +61,24 @@ export const Desktop: FC = () => {
     }
   }
 
-  useEffect(() => {
-    document.addEventListener('contextmenu', (ev: MouseEvent) =>
-      ev.preventDefault()
+  if (isLoading) {
+    return (
+      <PageWrapper>
+        <Loading />
+        <DesktopWrapper id="desktop" style={{ columns: 1 }}></DesktopWrapper>
+      </PageWrapper>
     );
-  }, []);
+  }
 
-  if (themeConfig.isMaintenanceMode || (!MYINFO && !isLoading)) {
+  if (themeConfig?.isMaintenanceMode || !MYINFO || !desktop) {
     return (
       <PageWrapper>
         <DesktopWrapper id="desktop" style={{ columns: 1 }}>
-          {MYINFO && (
-            <HomeInfo
-              info={MYINFO}
-              isMaintenanceMode
-              maintenanceText={themeConfig.maintenanceText}
-            />
-          )}
+          <HomeInfo
+            info={MYINFO}
+            isMaintenanceMode
+            maintenanceText={themeConfig?.maintenanceText}
+          />
         </DesktopWrapper>
       </PageWrapper>
     );
@@ -85,9 +86,8 @@ export const Desktop: FC = () => {
 
   return (
     <PageWrapper>
-      {isLoading && <Loading />}
-
       {MYINFO && <HomeInfo info={MYINFO} />}
+
       <DesktopWrapper id="desktop">
         <DesktopIcon label="About me" imageSource={whiteIcon} id="about_me">
           <AboutMe />

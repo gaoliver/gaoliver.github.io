@@ -83,7 +83,14 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <RenderPlatform />
-      <GlobalStyle backgrounds={themeConfig} />
+      <GlobalStyle
+        backgrounds={
+          themeConfig || {
+            desktopBackgroundImage: undefined,
+            mobileBackgroundImage: undefined
+          }
+        }
+      />
     </ThemeProvider>
   );
 };

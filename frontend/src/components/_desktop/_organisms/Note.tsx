@@ -83,7 +83,7 @@ export const Note: FC<NoteProps> = ({ note, noteIndex }) => {
     const randomNumber = Math.round(Math.random() * 10);
     console.log(note.title, noteRef.current?.offsetWidth);
     const widthBase =
-      !!noteRef.current && noteRef.current?.offsetWidth < 250 ? 1280 : 1180;
+      !!noteRef.current && noteRef.current?.offsetWidth < 220 ? 1280 : 1180;
 
     setPosition((pos) => ({
       ...pos,

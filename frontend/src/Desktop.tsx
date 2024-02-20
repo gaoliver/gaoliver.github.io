@@ -24,16 +24,27 @@ import folderIcon from 'src/assets/images/folder.png';
 import EmailIcon from 'src/assets/images/email.png';
 import { TextModel } from './components/_desktop/_organisms/TextModel';
 import { Note } from './components/_desktop/_organisms/Note';
+import { ThemeModelApi } from './@types/Models';
 
-const PageWrapper = styled.main`
+import DesktopImage from 'src/assets/images/desktop_background_sofa.webp';
+
+const PageWrapper = styled.main<
+  Partial<typeof styled.main> & { backgrounds: ThemeModelApi }
+>`
   display: flex;
   flex-direction: column;
   height: 100svh;
   width: 100%;
+  background-image: ${(props) =>
+    `url(${props.backgrounds.desktopBackgroundImage || DesktopImage})`};
+  background-size: cover;
+  background-position: center;
   background-color: ${(props) => rgba(props.theme.home.background, 0.7)};
+  background-blend-mode: soft-light;
 `;
 
 const DesktopWrapper = styled.article`
+  position: relative;
   flex: 1;
   position: relative;
   columns: 12;
@@ -63,7 +74,7 @@ export const Desktop: FC = () => {
 
   if (isLoading) {
     return (
-      <PageWrapper>
+      <PageWrapper backgrounds={themeConfig}>
         <Loading />
         <DesktopWrapper id="desktop" style={{ columns: 1 }}></DesktopWrapper>
       </PageWrapper>
@@ -72,7 +83,7 @@ export const Desktop: FC = () => {
 
   if (themeConfig?.isMaintenanceMode || !MYINFO || !desktop) {
     return (
-      <PageWrapper>
+      <PageWrapper backgrounds={themeConfig}>
         <DesktopWrapper id="desktop" style={{ columns: 1 }}>
           <HomeInfo
             info={MYINFO}
@@ -85,7 +96,7 @@ export const Desktop: FC = () => {
   }
 
   return (
-    <PageWrapper>
+    <PageWrapper backgrounds={themeConfig}>
       {MYINFO && <HomeInfo info={MYINFO} />}
 
       <DesktopWrapper id="desktop">

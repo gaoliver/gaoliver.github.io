@@ -25,17 +25,28 @@ import { useDispatch } from 'react-redux';
 import Instagram from 'src/assets/svg/instagram.svg';
 import LinkedIn from 'src/assets/svg/linkedin.svg';
 import GitHub from 'src/assets/svg/github.svg';
+import { ThemeModelApi } from './@types/Models';
+
+import DesktopImage from 'src/assets/images/desktop_background_sofa.webp';
 
 type SocialOptions = 'instagram' | 'linkedin' | 'github';
 
-const ScreenWrapper = styled.main`
+const ScreenWrapper = styled.main<
+  Partial<typeof styled.main> & { backgrounds: ThemeModelApi }
+>`
   display: block;
   overflow: hidden;
   height: 100svh;
+  background-image: ${(props) =>
+    `url(${props.backgrounds.mobileBackgroundImage || DesktopImage})`};
+  background-size: 250%;
+  background-position: center;
   background-color: ${(props) => rgba(props.theme.home.background, 0.7)};
+  background-blend-mode: soft-light;
 `;
 
 const InnerPage = styled.div`
+  position: relative;
   display: table;
   width: 100%;
   height: 100%;
@@ -83,7 +94,7 @@ export const Mobile: FC = () => {
 
   if (isLoading) {
     return (
-      <ScreenWrapper>
+      <ScreenWrapper backgrounds={themeConfig}>
         <Loading />
         <InnerPage id="desktop" style={{ columns: 1 }}></InnerPage>
       </ScreenWrapper>
@@ -92,7 +103,7 @@ export const Mobile: FC = () => {
 
   if (themeConfig?.isMaintenanceMode || !MYINFO || !desktop) {
     return (
-      <ScreenWrapper>
+      <ScreenWrapper backgrounds={themeConfig}>
         <InnerPage id="desktop" style={{ columns: 1 }}>
           {MYINFO && (
             <HomeInfo
@@ -107,7 +118,7 @@ export const Mobile: FC = () => {
   }
 
   return (
-    <ScreenWrapper>
+    <ScreenWrapper backgrounds={themeConfig}>
       {MYINFO && <HomeInfo info={MYINFO} />}
 
       <InnerPage>

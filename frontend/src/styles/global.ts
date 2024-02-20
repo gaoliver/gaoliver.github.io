@@ -1,14 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
 import { fonts } from 'src/constants/fonts';
-import { ThemeModelApi } from 'src/@types/Models';
 import { rgba } from 'polished';
 
 import DesktopImage from '../assets/images/desktop_background_sofa.webp';
 import MobileImage from '../assets/images/desktop_background_cozinha.webp';
 
-export default createGlobalStyle<{
-  backgrounds: ThemeModelApi;
-}>`
+export default createGlobalStyle`
   :root {
     font-family: Ubuntu, sans-serif;
     font-size: 14px;
@@ -19,8 +16,7 @@ export default createGlobalStyle<{
     box-sizing: border-box;
   }
   body {
-    background-image: ${(props) =>
-      `url(${props.backgrounds.desktopBackgroundImage || DesktopImage})`};
+    background-image: url(${DesktopImage});
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -30,8 +26,7 @@ export default createGlobalStyle<{
     animation: opacityAnimation 1s;
 
     @media screen and (max-width: 800px) {
-      background-image: ${(props) =>
-        `url(${props.backgrounds.mobileBackgroundImage || MobileImage})`};
+      background-image: url(${MobileImage});
 
     }
   }

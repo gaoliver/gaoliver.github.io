@@ -18,7 +18,7 @@ import { useDispatch } from 'react-redux';
 import { dark, light } from './styles';
 
 const App: React.FC = () => {
-  const { theme, themeConfig, MYINFO } = useAppSelector((state) => state);
+  const { theme, MYINFO } = useAppSelector((state) => state);
   const dispatch = useDispatch();
   const getCurrentTime = new Date().getHours();
   const [screenSize, setScreenSize] = useState({
@@ -83,14 +83,7 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <RenderPlatform />
-      <GlobalStyle
-        backgrounds={
-          themeConfig || {
-            desktopBackgroundImage: undefined,
-            mobileBackgroundImage: undefined
-          }
-        }
-      />
+      <GlobalStyle />
     </ThemeProvider>
   );
 };

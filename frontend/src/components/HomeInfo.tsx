@@ -48,15 +48,15 @@ const HomeInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   position: fixed;
-  z-index: -1;
   width: 100%;
   height: 200px;
   place-self: center;
   transform: translateY(35vh);
   align-items: center;
   justify-content: center;
-  color: ${colors.black};
-  opacity: 0.5;
+  color: ${colors.white};
+  mix-blend-mode: difference;
+  opacity: 0.8;
   user-select: none;
   line-height: normal;
 
@@ -83,8 +83,6 @@ const MaintenanceModeText = styled.span`
   margin-right: auto;
   right: 0;
   left: 0;
-  z-index: -1;
-
   font-size: xx-large;
   max-width: 500px;
   text-align: center;
@@ -92,6 +90,7 @@ const MaintenanceModeText = styled.span`
   line-height: 1;
   opacity: 0.5;
   color: ${colors.black};
+  mix-blend-mode: darken;
   animation: ${fadeInTextAnimation} 3s;
 
   @media (max-width: 800px) {
@@ -122,7 +121,7 @@ export const HomeInfo: FC<HomeInfoProps> = ({
         <MaintenanceModeText>{maintenanceText}</MaintenanceModeText>
       )}
 
-      <HomeInfoWrapper>
+      <HomeInfoWrapper role='textbox' aria-multiline="true">
         {info?.name
           ? (
           <>

@@ -1,0 +1,19 @@
+{
+  "name": "gabrielramos",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "server"
+  ],
+  "author": "Gabriel Ramos",
+  "repository": "git@github.com:gaoliver/gaoliver.github.io.git",
+  "scripts": {
+    "frontend": "yarn workspace @gabrielramos/frontend",
+    "server": "yarn workspace @gabrielramos/server"
+  },
+  "engines": {
+    "npm": ">=8",
+    "node": ">=16"
+  }
+}

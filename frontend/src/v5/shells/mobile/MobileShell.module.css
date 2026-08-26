@@ -1,0 +1,38 @@
+.phone { position: relative; min-height: 100svh; overflow: hidden; color: white; background-color: #223e3d; background-image: linear-gradient(180deg, rgba(4,12,20,.06), rgba(4,12,20,.55)), url('../../../assets/images/desktop_background_cozinha.webp'); background-size: cover; background-position: center; }
+.statusbar { position: absolute; z-index: 50; inset: max(.45rem, env(safe-area-inset-top)) .95rem auto; display: flex; align-items: center; justify-content: space-between; font-size: .72rem; font-weight: 700; text-shadow: 0 1px 4px rgba(0,0,0,.55); }
+.island { position: absolute; z-index: 70; top: max(.45rem, env(safe-area-inset-top)); left: 50%; width: 10.5rem; min-height: 2.2rem; overflow: hidden; border: 1px solid rgba(255,255,255,.1); border-radius: 1.2rem; color: white; background: rgba(2,5,8,.94); box-shadow: 0 8px 28px rgba(0,0,0,.28); transform: translateX(-50%); transition: width .28s ease, border-radius .28s ease; }
+.islandExpanded { width: min(22rem, calc(100% - 1.4rem)); border-radius: 1.35rem; }
+.islandSummary { width: 100%; min-height: 2.2rem; display: grid; grid-template-columns: .55rem 1fr auto; align-items: center; gap: .55rem; padding: .4rem .72rem; border: 0; color: inherit; background: transparent; text-align: left; }
+.islandSummary strong, .islandSummary small { display: block; }
+.islandSummary strong { font-size: .68rem; }
+.islandSummary small { color: rgba(255,255,255,.58); font-size: .54rem; }
+.statusDot { width: .48rem; height: .48rem; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 .2rem rgba(120,220,202,.12); }
+.wave { display: flex; align-items: center; gap: 2px; }
+.wave i { width: 2px; height: .65rem; border-radius: 1px; background: var(--mint); animation: pulse 1.2s ease-in-out infinite alternate; }
+.wave i:nth-child(2) { height: .35rem; animation-delay: -.4s; }
+.wave i:nth-child(3) { height: .5rem; animation-delay: -.8s; }
+.islandActions { display: grid; grid-template-columns: repeat(3, 1fr); gap: .45rem; padding: .35rem .55rem .65rem; }
+.islandActions button { display: grid; place-items: center; gap: .25rem; padding: .55rem .3rem; border: 0; border-radius: .8rem; color: rgba(255,255,255,.8); background: rgba(255,255,255,.09); font-size: .63rem; }
+.islandActions svg { font-size: 1rem; }
+.home { height: 100svh; padding: calc(max(4.7rem, env(safe-area-inset-top) + 4rem)) 1rem 7.4rem; overflow: auto; }
+.greeting { margin: 1.35rem .25rem 2rem; text-shadow: 0 2px 10px rgba(0,0,0,.38); }
+.greeting span { font-size: .7rem; font-weight: 750; letter-spacing: .13em; text-transform: uppercase; opacity: .7; }
+.greeting h1 { margin: .25rem 0; font: 720 clamp(2.15rem, 11vw, 3.3rem)/1 var(--font-display); letter-spacing: -.05em; }
+.greeting p { margin: 0; opacity: .78; }
+.appGrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.3rem .55rem; }
+.appGrid button { min-width: 0; display: grid; justify-items: center; gap: .42rem; padding: 0; border: 0; color: white; background: transparent; text-shadow: 0 1px 6px rgba(0,0,0,.65); }
+.appGrid button > span, .dock button { width: clamp(3.3rem, 15vw, 4rem); height: clamp(3.3rem, 15vw, 4rem); display: grid; place-items: center; border: 1px solid rgba(255,255,255,.38); border-radius: 1.15rem; color: #09151e; background: linear-gradient(145deg, color-mix(in srgb, var(--app-tint), white 32%), var(--app-tint)); box-shadow: 0 10px 22px rgba(0,0,0,.25), inset 0 1px rgba(255,255,255,.7); font-size: 1.45rem; }
+.appGrid strong { max-width: 100%; overflow: hidden; font-size: .7rem; text-overflow: ellipsis; white-space: nowrap; }
+.themeButton { display: flex; align-items: center; gap: .5rem; margin: 2rem auto; padding: .7rem .9rem; border: 1px solid rgba(255,255,255,.24); border-radius: 999px; color: white; background: rgba(5,13,22,.3); backdrop-filter: blur(16px); }
+.dock { position: absolute; z-index: 40; left: 50%; bottom: calc(1.2rem + env(safe-area-inset-bottom)); display: flex; gap: clamp(.65rem, 4vw, 1rem); padding: .65rem; border: 1px solid rgba(255,255,255,.24); border-radius: 1.55rem; background: rgba(7,15,24,.45); backdrop-filter: blur(25px) saturate(155%); transform: translateX(-50%); }
+.dock button { width: 3.25rem; height: 3.25rem; padding: 0; border-radius: 1rem; }
+.mobileApp { position: absolute; z-index: 45; inset: 0; padding-top: calc(max(3.2rem, env(safe-area-inset-top) + 2.65rem)); color: var(--text); background: var(--mobile-app); animation: appOpen .28s cubic-bezier(.2,.8,.2,1); }
+.mobileAppBar { height: 3rem; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 0 .65rem; border-bottom: 1px solid var(--line); background: var(--chrome); backdrop-filter: blur(24px); }
+.mobileAppBar button { width: fit-content; display: flex; align-items: center; padding: .45rem; border: 0; color: var(--mint-strong); background: transparent; }
+.mobileAppBar strong { font-size: .78rem; }
+.mobileAppBody { height: calc(100% - 3rem); overflow: auto; padding-bottom: calc(2rem + env(safe-area-inset-bottom)); }
+.homeIndicator { position: absolute; z-index: 80; left: 50%; bottom: max(.35rem, env(safe-area-inset-bottom)); width: 7rem; height: .28rem; border-radius: 1rem; background: rgba(255,255,255,.75); transform: translateX(-50%); mix-blend-mode: difference; }
+@keyframes pulse { to { transform: scaleY(.45); opacity: .55; } }
+@keyframes appOpen { from { opacity: 0; transform: translateY(2rem) scale(.98); } }
+@media (max-width: 21rem) { .appGrid { grid-template-columns: repeat(3, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .island, .mobileApp, .wave i { transition: none; animation: none; } }

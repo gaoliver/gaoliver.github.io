@@ -1,0 +1,33 @@
+.desktop { position: relative; min-height: 100svh; overflow: hidden; background-color: #16292b; background-image: linear-gradient(145deg, rgba(5,13,24,.1), rgba(5,13,24,.4)), url('../../../assets/images/desktop_background_sofa.webp'); background-size: cover; background-position: center; color: #fff; }
+.topbar { position: absolute; z-index: 1000; inset: 0 0 auto; height: 2.35rem; display: flex; align-items: center; justify-content: space-between; padding: 0 1rem; border-bottom: 1px solid rgba(255,255,255,.16); background: rgba(6, 14, 22, .62); backdrop-filter: blur(22px) saturate(140%); font-size: .78rem; }
+.topbar strong { display: flex; align-items: baseline; gap: .45rem; font: 750 .92rem/1 var(--font-display); }
+.topbar strong span { color: rgba(255,255,255,.6); font: 500 .68rem/1 var(--font-body); letter-spacing: .08em; text-transform: uppercase; }
+.topbar > div { display: flex; align-items: center; gap: .8rem; color: rgba(255,255,255,.83); }
+.iconGrid { position: absolute; top: 4rem; right: 1.25rem; z-index: 1; display: grid; grid-template-columns: repeat(2, 5.5rem); gap: 1rem .6rem; }
+.iconGrid button { display: grid; justify-items: center; gap: .4rem; padding: .3rem; border: 0; color: white; background: transparent; cursor: default; text-shadow: 0 1px 6px rgba(0,0,0,.8); }
+.iconGrid button:focus-visible { outline: 2px solid var(--mint); border-radius: .75rem; }
+.iconGrid button > span { width: 3.4rem; height: 3.4rem; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.35); border-radius: 1rem; color: #0a1922; background: linear-gradient(145deg, color-mix(in srgb, var(--app-tint), white 30%), var(--app-tint)); box-shadow: 0 12px 25px rgba(0,0,0,.25), inset 0 1px rgba(255,255,255,.7); font-size: 1.45rem; transition: transform .2s ease; }
+.iconGrid button:hover > span { transform: translateY(-3px) scale(1.04); }
+.iconGrid strong { max-width: 5rem; font-size: .75rem; line-height: 1.2; }
+.window { position: absolute; min-width: 25rem; min-height: 18rem; overflow: hidden; resize: both; border: 1px solid var(--line-strong); border-radius: 1rem; color: var(--text); background: var(--window); box-shadow: 0 28px 90px rgba(0,0,0,.38), inset 0 1px rgba(255,255,255,.22); backdrop-filter: blur(34px) saturate(155%); animation: arrive .25s cubic-bezier(.2,.8,.2,1); }
+.maximized { inset: 2.7rem .5rem 4.6rem !important; width: auto !important; height: auto !important; resize: none; }
+.titlebar { height: 2.8rem; display: grid; grid-template-columns: 6rem 1fr 6rem; align-items: center; padding: 0 .85rem; border-bottom: 1px solid var(--line); background: var(--chrome); touch-action: none; user-select: none; }
+.titlebar > strong { overflow: hidden; font-size: .78rem; text-align: center; text-overflow: ellipsis; white-space: nowrap; }
+.traffic { display: flex; gap: .42rem; }
+.traffic button { width: .82rem; height: .82rem; display: grid; place-items: center; padding: 0; overflow: hidden; border: 0; border-radius: 50%; color: transparent; background: #ff665d; font-size: .65rem; }
+.traffic button:nth-child(2) { background: #f6c451; }
+.traffic button:nth-child(3) { background: #58c76f; }
+.traffic:hover button { color: rgba(0,0,0,.62); }
+.windowBody { height: calc(100% - 2.8rem); overflow: auto; overscroll-behavior: contain; }
+.taskbar { position: absolute; z-index: 1001; left: 50%; bottom: 1rem; width: min(46rem, calc(100% - 2rem)); min-height: 3.45rem; display: grid; grid-template-columns: 2.65rem 1fr 2.65rem; align-items: center; gap: .6rem; padding: .42rem; border: 1px solid rgba(255,255,255,.24); border-radius: 1.15rem; background: rgba(7,15,24,.68); box-shadow: 0 18px 50px rgba(0,0,0,.28); backdrop-filter: blur(28px) saturate(160%); transform: translateX(-50%); }
+.taskbar button { border: 0; color: rgba(255,255,255,.82); background: transparent; }
+.brand, .theme { width: 2.55rem; height: 2.55rem; display: grid; place-items: center; border-radius: .8rem !important; }
+.brand { color: #07131a !important; background: var(--mint) !important; font-weight: 800; }
+.theme:hover { background: rgba(255,255,255,.12); }
+.running { min-width: 0; display: flex; justify-content: center; gap: .35rem; }
+.running button { position: relative; min-width: 2.65rem; height: 2.55rem; display: flex; align-items: center; justify-content: center; gap: .4rem; padding: 0 .7rem; border-radius: .75rem; }
+.running button:hover, .running .active { background: rgba(255,255,255,.12); }
+.running .active::after { content: ''; position: absolute; bottom: .18rem; width: .3rem; height: .18rem; border-radius: 50%; background: var(--mint); }
+.running span { max-width: 6rem; overflow: hidden; font-size: .72rem; text-overflow: ellipsis; white-space: nowrap; }
+@keyframes arrive { from { opacity: 0; transform: translateY(10px) scale(.98); } }
+@media (prefers-reduced-motion: reduce) { .window { animation: none; } .iconGrid button > span { transition: none; } }

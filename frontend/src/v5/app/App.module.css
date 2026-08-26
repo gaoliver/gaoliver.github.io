@@ -1,0 +1,4 @@
+.app { min-height: 100svh; background: #081319; }
+.boot { min-height: 100svh; display: grid; place-content: center; justify-items: center; gap: .8rem; color: #dcece8; background: radial-gradient(circle at 50% 35%, #193c3a, #081319 60%); }
+.boot span { width: 3.25rem; height: 3.25rem; display: grid; place-items: center; border-radius: 1rem; color: #07131a; background: var(--mint); font-weight: 800; box-shadow: 0 16px 50px rgba(0,0,0,.35); }
+.boot p { margin: 0; color: #8da7a2; font-size: .78rem; }

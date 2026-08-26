@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "engines": {
-    "node": "^16",
-    "npm": "^9"
+    "node": ">=16",
+    "npm": ">=8"
   },
   "scripts": {
     "start": "tsc && node dist/server.js"

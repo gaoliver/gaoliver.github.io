@@ -47,6 +47,12 @@ h1 { margin-bottom: .35rem; font: 700 clamp(1.7rem, 4vw, 2.6rem)/1.05 var(--font
 .projectDetailHeader { display: grid; grid-template-columns: minmax(6rem, 9rem) 1fr; align-items: center; gap: 1.25rem; }
 .projectDetailHeader > img { width: 100%; aspect-ratio: 1.2; padding: .7rem; border: 1px solid var(--line); border-radius: var(--radius-lg); object-fit: contain; background: white; }
 .projectDetailHeader p { margin: .4rem 0 0; color: var(--text-muted); }
+.projectMetadata { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: .65rem; margin: 1.4rem 0; }
+.projectMetadata div { min-width: 0; padding: .85rem; border: 1px solid var(--line); border-radius: .8rem; background: var(--surface-soft); }
+.projectMetadata dt { margin-bottom: .28rem; color: var(--text-muted); font-size: .68rem; font-weight: 750; letter-spacing: .09em; text-transform: uppercase; }
+.projectMetadata dd { margin: 0; color: var(--text); font-size: .86rem; font-weight: 650; line-height: 1.4; }
+.projectTools, .projectStory { max-width: 55rem; margin-top: 1.7rem; }
+.projectTools h2, .projectStory h2 { margin-bottom: .75rem; font: 700 1.15rem/1.2 var(--font-display); }
 .projectFacts { margin: 1.25rem 0; }
 .richProject { max-width: 55rem; color: var(--text-soft); line-height: 1.72; }
 .richProject p { margin-bottom: 1rem; }
@@ -54,10 +60,24 @@ h1 { margin-bottom: .35rem; font: 700 clamp(1.7rem, 4vw, 2.6rem)/1.05 var(--font
 .primaryAction { display: inline-flex; width: fit-content; align-items: center; gap: .5rem; margin-top: .75rem; padding: .75rem .95rem; border-radius: .8rem; color: #07131a; background: var(--mint); font-weight: 750; text-decoration: none; }
 .projectGallery { margin-top: 2.4rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
 .projectGallery h2 { font: 700 1.45rem/1.1 var(--font-display); }
+.projectGallery h2 small { margin-left: .4rem; color: var(--text-muted); font: 500 .72rem/1 var(--font-body); }
 .projectGallery > div, .folderGallery > div { display: grid; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: .85rem; }
-.projectGallery figure, .folderGallery figure { margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface-soft); }
-.projectGallery img, .folderGallery img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
-.projectGallery figcaption, .folderGallery figcaption { padding: .55rem .7rem; overflow: hidden; color: var(--text-muted); font-size: .7rem; text-overflow: ellipsis; white-space: nowrap; }
+.projectGallery figure, .folderGallery figure, .galleryButton { margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface-soft); }
+.galleryButton { min-width: 0; padding: 0; color: var(--text); text-align: left; transition: border-color .18s ease, transform .18s ease; }
+.galleryButton:hover, .galleryButton:focus-visible { border-color: var(--mint-strong); transform: translateY(-2px); }
+.projectGallery img, .folderGallery img, .galleryButton img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+.projectGallery figcaption, .folderGallery figcaption, .galleryButton span { display: block; padding: .55rem .7rem; overflow: hidden; color: var(--text-muted); font-size: .7rem; text-overflow: ellipsis; white-space: nowrap; }
+.imageViewer { height: 100%; min-height: 24rem; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; color: #eef6f5; background: #070c0f; }
+.imageViewerHeader { min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .75rem 1rem; border-bottom: 1px solid rgba(255,255,255,.1); background: #11191d; }
+.imageViewerHeader > div:first-child { min-width: 0; }
+.imageViewerHeader strong { display: block; overflow: hidden; margin-top: .18rem; font-size: .82rem; text-overflow: ellipsis; white-space: nowrap; }
+.imageViewerActions { display: flex; flex: 0 0 auto; gap: .45rem; }
+.imageViewerActions button, .imageViewerActions a { display: inline-flex; align-items: center; gap: .4rem; padding: .5rem .65rem; border: 1px solid rgba(255,255,255,.14); border-radius: .6rem; color: #dce8e7; background: rgba(255,255,255,.06); font: 650 .7rem/1 var(--font-body); text-decoration: none; }
+.imageViewerActions button:hover, .imageViewerActions a:hover { background: rgba(255,255,255,.12); }
+.imageCanvas { min-width: 0; min-height: 0; overflow: hidden; padding: 1rem; background-color: #05080a; background-image: linear-gradient(45deg, rgba(255,255,255,.025) 25%, transparent 25%), linear-gradient(-45deg, rgba(255,255,255,.025) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(255,255,255,.025) 75%), linear-gradient(-45deg, transparent 75%, rgba(255,255,255,.025) 75%); background-position: 0 0, 0 8px, 8px -8px, -8px 0; background-size: 16px 16px; }
+.imageCanvas img { width: 100%; height: 100%; display: block; border-radius: .35rem; object-fit: contain; filter: drop-shadow(0 20px 32px rgba(0,0,0,.45)); }
+.imageViewer footer { padding: .55rem 1rem; overflow: hidden; border-top: 1px solid rgba(255,255,255,.1); color: #8fa2a0; background: #11191d; font-size: .68rem; text-overflow: ellipsis; white-space: nowrap; }
+.imageViewer footer span { margin: 0 .25rem; opacity: .5; }
 .embeddedApp { height: 100%; min-height: 24rem; display: grid; grid-template-rows: 2.65rem minmax(18rem, 1fr) auto; color: var(--text); background: var(--mobile-app); }
 .browserBar { min-width: 0; display: grid; grid-template-columns: 3.2rem 1fr 2rem; align-items: center; gap: .55rem; padding: .4rem .65rem; border-bottom: 1px solid var(--line); background: var(--chrome); }
 .browserBar > span { display: flex; gap: .3rem; }
@@ -98,4 +118,5 @@ h1 { margin-bottom: .35rem; font: 700 clamp(1.7rem, 4vw, 2.6rem)/1.05 var(--font
 .timeline span { color: var(--text-muted); }
 @media (max-width: 48rem) { .skillGroups, .contactOptions { grid-template-columns: 1fr; } .projectDetailHeader { grid-template-columns: 5.5rem 1fr; } .article, .contact, .resume, .workExplorer, .projectDetail, .folderGallery, .unavailable { padding: 1.25rem; } .projectFolders { grid-template-columns: repeat(3, minmax(0, 1fr)); } .folderIcon { width: 5.5rem; height: 4rem; } .noteApp { padding: 0; } .noteToolbar, .notePaper { border-radius: 0; } }
 @media (max-width: 25rem) { .projectFolders { grid-template-columns: repeat(2, minmax(0, 1fr)); } .profile { align-items: flex-start; } }
-@media (prefers-reduced-motion: reduce) { .contactOptions a { transition: none; } }
+@media (max-width: 36rem) { .imageViewerHeader { align-items: flex-start; flex-direction: column; } .imageViewerActions { width: 100%; } .imageViewerActions button, .imageViewerActions a { flex: 1; justify-content: center; } }
+@media (prefers-reduced-motion: reduce) { .contactOptions a, .galleryButton { transition: none; } }

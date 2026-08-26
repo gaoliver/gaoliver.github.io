@@ -40,4 +40,21 @@ describe('workspaceReducer', () => {
     expect(state.dark).toBe(false);
     vi.restoreAllMocks();
   });
+
+  it('opens a project as a separate window without replacing Work', () => {
+    vi.spyOn(Date, 'now').mockReturnValueOnce(4).mockReturnValueOnce(5);
+    let state = workspaceReducer(initialWorkspace, { type: 'open', appId: 'work', title: 'Work' });
+    state = workspaceReducer(state, { type: 'open', appId: 'project:steeltrace', title: 'SteelTrace Platform' });
+    expect(state.windows.map((window) => window.appId)).toEqual(['work', 'project:steeltrace']);
+    vi.restoreAllMocks();
+  });
+
+  it('opens a gallery image in a separate viewer window', () => {
+    vi.spyOn(Date, 'now').mockReturnValueOnce(6).mockReturnValueOnce(7);
+    let state = workspaceReducer(initialWorkspace, { type: 'open', appId: 'project:steeltrace', title: 'SteelTrace Platform' });
+    state = workspaceReducer(state, { type: 'open', appId: 'image:steeltrace:dashboard', title: 'Dashboard' });
+    expect(state.windows.map((window) => window.appId)).toEqual(['project:steeltrace', 'image:steeltrace:dashboard']);
+    expect(state.windows[1]).toMatchObject({ width: 900, height: 640 });
+    vi.restoreAllMocks();
+  });
 });

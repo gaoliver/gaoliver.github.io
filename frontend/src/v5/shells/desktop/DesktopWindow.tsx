@@ -72,7 +72,7 @@ export function DesktopWindow({ window, content, dispatch }: Props) {
         <strong>{window.title}</strong>
         <span />
       </div>
-      <div className={styles.windowBody}><FeatureContent appId={window.appId} content={content} /></div>
+      <div className={styles.windowBody}><FeatureContent appId={window.appId} content={content} onOpenApp={(appId, title) => dispatch({ type: 'open', appId, title })} /></div>
     </section>
   );
 }

@@ -21,6 +21,8 @@ const plainText = (value: any): string => {
 const fieldsOf = (entry: any): Fields => entry?.fields ?? entry ?? {};
 const idOf = (entry: any, fallback: string) => entry?.sys?.id ?? fallback;
 const asArray = <T,>(value: T | T[] | undefined): T[] => Array.isArray(value) ? value : value ? [value] : [];
+const richTextDocument = (value: any): RichTextNode | undefined =>
+  value?.nodeType === 'document' && Array.isArray(value.content) ? value as RichTextNode : undefined;
 
 const normaliseSocials = (items: any): SocialLink[] =>
   (Array.isArray(items) ? items : [])
@@ -43,9 +45,11 @@ const normaliseProjects = (items: any): Project[] =>
       url: item.url,
       tools: Array.isArray(details.mainTools) ? details.mainTools : [],
       role: details.role,
+      projectType: details.type,
+      language: details.language,
       period: start ? `${start} — ${end}` : undefined,
       accent: item.color,
-      descriptionDocument: item.text as RichTextNode | undefined,
+      descriptionDocument: richTextDocument(item.text ?? item.description),
       gallery: asArray(details.images).map((asset: any, assetIndex: number) => ({
         id: idOf(asset, `project-image-${assetIndex}`),
         title: fieldsOf(asset).title ?? `${item.name ?? 'Project'} image ${assetIndex + 1}`,
@@ -65,7 +69,7 @@ const normaliseFolders = (items: any): DesktopFolder[] =>
       url: item.url,
       videoId: item.youTubeVideoId,
       text: plainText(item.text),
-      textDocument: item.text as RichTextNode | undefined,
+      textDocument: richTextDocument(item.text),
       isNotWorking: item.isNotWorking,
       notWorkingText: item.notWorkingText,
       gallery: (Array.isArray(item.gallery) ? item.gallery : []).map((asset: any, assetIndex: number) => {
@@ -134,7 +138,7 @@ export async function loadPortfolioContent(): Promise<PortfolioContent> {
       role: info.role ?? fallbackContent.role,
       location: [info.city, info.country].filter(Boolean).join(', ') || fallbackContent.location,
       about: plainText(info.about_me ?? info.aboutMe) || fallbackContent.about,
-      aboutDocument: info.about_me as RichTextNode | undefined,
+      aboutDocument: richTextDocument(info.about_me ?? info.aboutMe),
       birthdate: info.birthdate,
       company: info.company,
       email: email ?? info.email ?? fallbackContent.email,

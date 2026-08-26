@@ -1,4 +1,4 @@
-export type AppId = 'about' | 'work' | 'contact' | 'resume' | `folder:${string}`;
+export type AppId = 'about' | 'work' | 'contact' | 'resume' | `folder:${string}` | `project:${string}` | `image:${string}:${string}`;
 
 export interface SocialLink {
   label: string;
@@ -14,6 +14,8 @@ export interface Project {
   url?: string;
   tools: string[];
   role?: string;
+  projectType?: string;
+  language?: string;
   period?: string;
   accent?: string;
   descriptionDocument?: RichTextNode;

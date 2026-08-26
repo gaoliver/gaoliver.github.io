@@ -39,7 +39,7 @@ export function DesktopShell({ content, state, dispatch }: Props) {
       </div>
 
       <div className={styles.iconGrid} aria-label="Portfolio applications">
-        {apps.map((app) => <button key={app.id} onDoubleClick={() => open(app.id, app.title)} onClick={() => open(app.id, app.title)}><span style={{ '--app-tint': app.tint } as React.CSSProperties}><app.icon /></span><strong>{app.shortTitle}</strong></button>)}
+        {apps.filter((app) => app.launcher).map((app) => <button key={app.id} onDoubleClick={() => open(app.id, app.title)} onClick={() => open(app.id, app.title)}><span style={{ '--app-tint': app.tint } as React.CSSProperties}><app.icon /></span><strong>{app.shortTitle}</strong></button>)}
       </div>
 
       {state.windows.map((window) => <DesktopWindow key={window.id} window={window} content={content} dispatch={dispatch} />)}

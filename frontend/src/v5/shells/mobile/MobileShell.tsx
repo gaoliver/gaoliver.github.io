@@ -29,7 +29,7 @@ export function MobileShell({ content, state, dispatch }: Props) {
           <p>{content.role}</p>
         </header>
         <div className={styles.appGrid}>
-          {apps.map((app) => <button key={app.id} onClick={() => dispatch({ type: 'openMobile', appId: app.id })}><span style={{ '--app-tint': app.tint } as React.CSSProperties}><app.icon /></span><strong>{app.shortTitle}</strong></button>)}
+          {apps.filter((app) => app.launcher).map((app) => <button key={app.id} onClick={() => dispatch({ type: 'openMobile', appId: app.id })}><span style={{ '--app-tint': app.tint } as React.CSSProperties}><app.icon /></span><strong>{app.shortTitle}</strong></button>)}
         </div>
         <button className={styles.themeButton} onClick={() => dispatch({ type: 'toggleTheme' })}>{state.dark ? <FiSun /> : <FiMoon />} {state.dark ? 'Light' : 'Dark'} appearance</button>
       </section>
@@ -40,7 +40,7 @@ export function MobileShell({ content, state, dispatch }: Props) {
             <button onClick={() => dispatch({ type: 'closeMobile' })}><FiChevronLeft /> Home</button>
             <strong>{active.shortTitle}</strong><span />
           </header>
-          <div className={styles.mobileAppBody}><FeatureContent appId={active.id} content={content} /></div>
+          <div className={styles.mobileAppBody}><FeatureContent appId={active.id} content={content} onOpenApp={(appId) => dispatch({ type: 'openMobile', appId })} /></div>
         </section>
       )}
 

@@ -12,7 +12,10 @@ interface Props { content: PortfolioContent; state: WorkspaceState; dispatch: Re
 export function MobileShell({ content, state, dispatch }: Props) {
   const apps = useMemo(() => getApps(content), [content]);
   const active = apps.find((app) => app.id === state.mobileApp);
-  const background = content.mobileBackground ? { backgroundImage: `linear-gradient(180deg, rgba(4,12,20,.08), rgba(4,12,20,.5)), url(${content.mobileBackground})` } : undefined;
+  const overlay = state.dark
+    ? 'linear-gradient(180deg, rgba(4,12,20,.08), rgba(4,12,20,.55))'
+    : 'linear-gradient(180deg, rgba(239,250,246,.22), rgba(178,214,203,.48))';
+  const background = content.mobileBackground ? { backgroundImage: `${overlay}, url(${content.mobileBackground})` } : undefined;
 
   return (
     <main className={styles.phone} style={background}>

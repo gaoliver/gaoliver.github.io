@@ -1,6 +1,6 @@
-import { createClient, type Entry } from 'contentful';
+import { createClient } from 'contentful';
 import { fallbackContent } from './fallback';
-import type { DesktopFolder, PortfolioContent, Project, SocialLink } from '../types/content';
+import type { DesktopFolder, PortfolioContent, Project, RichTextNode, SkillGroup, SocialLink } from '../types/content';
 
 type Fields = Record<string, any>;
 
@@ -20,6 +20,7 @@ const plainText = (value: any): string => {
 
 const fieldsOf = (entry: any): Fields => entry?.fields ?? entry ?? {};
 const idOf = (entry: any, fallback: string) => entry?.sys?.id ?? fallback;
+const asArray = <T,>(value: T | T[] | undefined): T[] => Array.isArray(value) ? value : value ? [value] : [];
 
 const normaliseSocials = (items: any): SocialLink[] =>
   (Array.isArray(items) ? items : [])
@@ -44,6 +45,12 @@ const normaliseProjects = (items: any): Project[] =>
       role: details.role,
       period: start ? `${start} — ${end}` : undefined,
       accent: item.color,
+      descriptionDocument: item.text as RichTextNode | undefined,
+      gallery: asArray(details.images).map((asset: any, assetIndex: number) => ({
+        id: idOf(asset, `project-image-${assetIndex}`),
+        title: fieldsOf(asset).title ?? `${item.name ?? 'Project'} image ${assetIndex + 1}`,
+        image: fileUrl(asset) ?? '',
+      })).filter((asset) => asset.image),
     };
   });
 
@@ -58,6 +65,9 @@ const normaliseFolders = (items: any): DesktopFolder[] =>
       url: item.url,
       videoId: item.youTubeVideoId,
       text: plainText(item.text),
+      textDocument: item.text as RichTextNode | undefined,
+      isNotWorking: item.isNotWorking,
+      notWorkingText: item.notWorkingText,
       gallery: (Array.isArray(item.gallery) ? item.gallery : []).map((asset: any, assetIndex: number) => {
         const image = fieldsOf(asset);
         return {
@@ -69,9 +79,22 @@ const normaliseFolders = (items: any): DesktopFolder[] =>
     };
   });
 
-const getEntry = async (client: ReturnType<typeof createClient>, id?: string): Promise<Entry | undefined> => {
-  if (!id) return undefined;
-  return client.getEntry(id);
+const normaliseSkillGroups = (items: any): SkillGroup[] =>
+  asArray(items).map(fieldsOf).map((item) => ({
+    category: item.category ?? 'Skills',
+    items: asArray(item.list).filter((value): value is string => typeof value === 'string'),
+  })).filter((group) => group.items.length > 0);
+
+const PERSONAL_INFORMATION_CONTENT_TYPE = 'personalInformation';
+
+const getEntries = async (client: ReturnType<typeof createClient>, contentType?: string) => {
+  if (!contentType) return [];
+  const collection = await client.getEntries({
+    content_type: contentType,
+    include: 10,
+    limit: 1000,
+  });
+  return collection.items;
 };
 
 export async function loadPortfolioContent(): Promise<PortfolioContent> {
@@ -86,19 +109,24 @@ export async function loadPortfolioContent(): Promise<PortfolioContent> {
   });
 
   try {
-    const [infoEntry, themeEntry, portfolioEntry, desktopEntry] = await Promise.all([
-      getEntry(client, import.meta.env.REACT_APP_CONTENTFUL_GET_INFO),
-      getEntry(client, import.meta.env.REACT_APP_CONTENTFUL_GET_THEME),
-      getEntry(client, import.meta.env.REACT_APP_CONTENTFUL_GET_PORTFOLIO),
-      getEntry(client, import.meta.env.REACT_APP_CONTENTFUL_GET_DESKTOP),
+    const [infoEntries, themeEntries, portfolioEntries, desktopEntries, toolEntries] = await Promise.all([
+      getEntries(client, PERSONAL_INFORMATION_CONTENT_TYPE),
+      getEntries(client, import.meta.env.REACT_APP_CONTENTFUL_GET_THEME),
+      getEntries(client, import.meta.env.REACT_APP_CONTENTFUL_GET_PORTFOLIO),
+      getEntries(client, import.meta.env.REACT_APP_CONTENTFUL_GET_DESKTOP),
+      getEntries(client, import.meta.env.REACT_APP_CONTENTFUL_GET_TOOL),
     ]);
-    const info = fieldsOf(infoEntry);
-    const theme = fieldsOf(themeEntry);
-    const portfolio = fieldsOf(portfolioEntry);
-    const desktop = fieldsOf(desktopEntry);
-    const contacts = (Array.isArray(info.contact) ? info.contact : []).map(fieldsOf);
-    const email = contacts.find((item: Fields) => item.type === 'email' || item.name?.toLowerCase().includes('mail'))?.value;
-    const phone = contacts.find((item: Fields) => item.type === 'phone' || item.name?.toLowerCase().includes('phone'))?.value;
+    const info = fieldsOf(infoEntries[0]);
+    const theme = fieldsOf(themeEntries[0]);
+    const desktop = fieldsOf(desktopEntries[0]);
+    const toolContent = fieldsOf(toolEntries[0]);
+    const projectEntries = portfolioEntries.flatMap((entry) => {
+      const fields = fieldsOf(entry);
+      return Array.isArray(fields.portfolio) ? fields.portfolio : [entry];
+    });
+    const contacts = asArray(info.contact).map(fieldsOf);
+    const email = contacts.find((item: Fields) => item.email)?.email;
+    const phone = contacts.find((item: Fields) => item.telephone)?.telephone;
 
     return {
       ...fallbackContent,
@@ -106,14 +134,21 @@ export async function loadPortfolioContent(): Promise<PortfolioContent> {
       role: info.role ?? fallbackContent.role,
       location: [info.city, info.country].filter(Boolean).join(', ') || fallbackContent.location,
       about: plainText(info.about_me ?? info.aboutMe) || fallbackContent.about,
+      aboutDocument: info.about_me as RichTextNode | undefined,
+      birthdate: info.birthdate,
+      company: info.company,
       email: email ?? info.email ?? fallbackContent.email,
       phone,
+      whatsAppMessage: contacts.find((item: Fields) => item.whatsAppMessage)?.whatsAppMessage,
+      telegramUrl: fallbackContent.telegramUrl,
       avatar: fileUrl(info.image),
       resumeUrl: fileUrl(info.resume) ?? info.resumeUrl,
       desktopBackground: fileUrl(theme.desktopBackgroundImage),
       mobileBackground: fileUrl(theme.mobileBackgroundImage),
       socials: normaliseSocials(info.social).length ? normaliseSocials(info.social) : fallbackContent.socials,
-      projects: normaliseProjects(portfolio.portfolio).length ? normaliseProjects(portfolio.portfolio) : fallbackContent.projects,
+      skillGroups: normaliseSkillGroups(toolContent.languages).length ? normaliseSkillGroups(toolContent.languages) : fallbackContent.skillGroups,
+      tools: asArray(toolContent.tools).filter((value): value is string => typeof value === 'string'),
+      projects: normaliseProjects(projectEntries).length ? normaliseProjects(projectEntries) : fallbackContent.projects,
       folders: normaliseFolders(desktop.folders),
     };
   } catch (error) {

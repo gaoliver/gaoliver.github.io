@@ -26,7 +26,10 @@ export function DesktopShell({ content, state, dispatch }: Props) {
   }, [dispatch]);
 
   const open = (appId: (typeof apps)[number]['id'], title: string) => dispatch({ type: 'open', appId, title });
-  const background = content.desktopBackground ? { backgroundImage: `linear-gradient(145deg, rgba(5,13,24,.08), rgba(5,13,24,.36)), url(${content.desktopBackground})` } : undefined;
+  const overlay = state.dark
+    ? 'linear-gradient(145deg, rgba(5,13,24,.08), rgba(5,13,24,.42))'
+    : 'linear-gradient(145deg, rgba(238,250,246,.25), rgba(214,238,231,.48))';
+  const background = content.desktopBackground ? { backgroundImage: `${overlay}, url(${content.desktopBackground})` } : undefined;
 
   return (
     <main className={styles.desktop} style={background}>

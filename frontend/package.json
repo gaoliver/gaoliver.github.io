@@ -8,9 +8,9 @@
     "npm": ">=10"
   },
   "scripts": {
-    "start": "vite",
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "start": "vite --mode dev",
+    "dev": "vite --mode dev",
+    "build": "tsc -b && vite build --mode dev",
     "preview": "vite preview",
     "test": "vitest run"
   },

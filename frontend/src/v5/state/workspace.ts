@@ -55,6 +55,7 @@ export function workspaceReducer(state: WorkspaceState, action: WorkspaceAction)
         };
       }
       const offset = state.windows.length * 28;
+      const isExplorer = action.appId === 'work' || action.appId.startsWith('folder:');
       return {
         ...state,
         nextZ: state.nextZ + 1,
@@ -64,8 +65,8 @@ export function workspaceReducer(state: WorkspaceState, action: WorkspaceAction)
           title: action.title,
           x: 88 + offset,
           y: 74 + offset,
-          width: action.appId === 'work' ? 780 : 620,
-          height: action.appId === 'work' ? 570 : 460,
+          width: isExplorer ? 820 : 620,
+          height: isExplorer ? 590 : 460,
           z: state.nextZ,
           minimized: false,
           maximized: false,

@@ -27,4 +27,17 @@ describe('workspaceReducer', () => {
     expect(state.windows).toEqual([]);
     vi.restoreAllMocks();
   });
+
+  it('restores maximized windows and toggles appearance', () => {
+    vi.spyOn(Date, 'now').mockReturnValue(3);
+    let state = workspaceReducer(initialWorkspace, { type: 'open', appId: 'work', title: 'Work' });
+    const id = state.windows[0].id;
+    state = workspaceReducer(state, { type: 'maximize', id });
+    expect(state.windows[0].maximized).toBe(true);
+    state = workspaceReducer(state, { type: 'maximize', id });
+    expect(state.windows[0].maximized).toBe(false);
+    state = workspaceReducer(state, { type: 'toggleTheme' });
+    expect(state.dark).toBe(false);
+    vi.restoreAllMocks();
+  });
 });

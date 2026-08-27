@@ -4,6 +4,12 @@ This is my personal site, which I use to show my portfolio. You can access it by
 
 ## Deploying to GitHub Pages
 
-Deployment is automated by [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml). Push to `main`, or run the workflow manually from the **Actions** tab.
+The site is published from the generated frontend build on the `gh-pages` branch, matching the deployment flow used by previous versions of this project.
 
-For the first deployment, open **Settings → Pages** in the repository and set **Source** to **GitHub Actions**. Add the Contentful values from `frontend/.env.dev` as repository secrets with the same names under **Settings → Secrets and variables → Actions**. Without those secrets, the site still builds but uses its local fallback content.
+From the repository root, run:
+
+```bash
+yarn deploy
+```
+
+This builds the Vite frontend from `frontend/.env.dev` and publishes `frontend/dist` to the `gh-pages` branch. In the repository's **Settings → Pages**, set the source to **Deploy from a branch**, choose `gh-pages`, and select `/(root)`.

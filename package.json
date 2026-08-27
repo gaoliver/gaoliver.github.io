@@ -11,10 +11,14 @@
   "scripts": {
     "frontend": "yarn workspace @gabrielramos/frontend",
     "server": "yarn workspace @gabrielramos/server",
-    "deploy": "yarn workspace @gabrielramos/frontend deploy"
+    "predeploy": "yarn workspace @gabrielramos/frontend build",
+    "deploy": "gh-pages -d frontend/dist"
   },
   "engines": {
     "npm": ">=8",
     "node": ">=16"
+  },
+  "devDependencies": {
+    "gh-pages": "6.3.0"
   }
 }
